@@ -1,0 +1,9 @@
+工具,工具语言,目标语言,起始年份,贡献者,GitHub Stars
+Make,C,C/C++,1976,-,-
+CMake,C/C++,"C/C++, Java",2000,1200+,6.1kᵃ
+Maven,Java,"C/C++, Java, etc",2003,100+,4k
+Gradle,"Groovy, Java","C/C++, Java, etc",2007,600+,15.5k
+Ninja,C++,C/C++,2010,200+,10k
+Meson,Python,"C/C++, Java, Rust, etc",2012,700+,5k
+Bazel,Java,"C/C++, Java, etc",2015,900+,21.7k
+XMake,Lua,"C/C++, Java, Rust, etc",2015,100+,8.1k

@@ -1,0 +1,23 @@
+[skill]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "高效工作流"
+lang = "zh"
+
+[tool]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "编程工具链"
+lang = "zh"
+
+[knowledge]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "生活常识"
+lang = "zh"
+
+[management]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "企业管理"
+lang = "zh"

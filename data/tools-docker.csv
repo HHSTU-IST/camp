@@ -1,0 +1,14 @@
+参数,参数全称,参数类型,功能,格式
+,,,运行镜像,
+-d,--detach,-,后台运行,
+-i,--interactive,,交互,
+-t,--tty,,使用宿主机终端,
+-q,--quiet,,静默,
+,--name,,容器名称,
+-e,--env,list,环境参数,
+-h,--hostname,string,宿主机名称,
+-l,--label,list,容器标签,
+-p,--publish,list,发布的端口号,{host}:{container}
+-u,--user,string,用户名,
+-v,--volume,list,目录挂载,{host}:{container}
+-w,--workdir,string,容器内工作目录,

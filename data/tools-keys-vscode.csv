@@ -1,0 +1,4 @@
+功能键,触发键,功能
+command,→,光标移动至右端
+command,删除,整行删除
+command + option,p,打开命令控制台
