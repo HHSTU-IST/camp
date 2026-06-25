@@ -6,31 +6,34 @@ Windows 下的编程环境经常会给人带来一系列的困扰，如，时隐
 
 ### 1.1. 开启虚拟机功能
 
-在控制面板 -> 程序和功能 -> Windows 功能窗口中勾选适用于 Linux 的 Windows 子系统 功能，点击确定，并按照提示重启电脑。
+以管理员身份在终端键入
 
-![WSL2](images/wsl-wsl2.png)
-
-或以管理员身份在命令行键入
-
-```powershell
+```console
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 ```
 
-中间需要下载一个 [WSL2-kernel](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+![WSL2](images/wsl-wsl2.png)
 
-若之前没有用过 WSL，则首先需要安装 Windows 10 的 WSL 功能：
+若之前没有用过 WSL2，则首先需要安装 Windows 10/11 的 WSL2 功能：
 
-```powershell
+```console
+# 启用 Linux 子系统功能
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+# 启用虚拟机平台功能（WSL 2 必备）
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
 这部分详情见 [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel)
+
+```console
+wsl --install
+```
 
 ### 1.2. 安装发行版
 
 类似 Ubuntu 安装，点击下载安装即可。
 
-![Kali](images/wsl-app.png)
+![wsl](images/wsl-app.png)
 
 ### 1.3. 初始化
 
@@ -105,7 +108,7 @@ sudo apt -y clean && sudo apt -y autoclean && sudo apt -y autoremove
 
 Powershell 中，管理员执行如下命令
 
-```powershell
+```console
 New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
 ```
 
@@ -141,19 +144,19 @@ nameserver 8.8.8.8
 
 通过如下命令查看版本
 
-```powershell
+```console
 wsl -l -v
 ```
 
 设置 WSL2 为默认版本
 
-```powershell
+```console
 wsl --set-default-version 2
 ```
 
 卸载
 
-```powershell
+```console
 wslconfig /u Ubuntu-20.04
 ```
 
@@ -169,7 +172,7 @@ sudo apt remove --purge python3
 
 也可通过包管理器安装
 
-```powershell
+```console
 scoop install vcxsrv
 ```
 
@@ -200,7 +203,7 @@ generateResolvConf = false
 
 在 Powershell 中，查询本地 IP
 
-```powershell
+```console
 ipconfig
 ```
 
@@ -236,7 +239,7 @@ startxfce4
 
 由于版本问题，好多人的的子系统还停留在 WSL，而非 WSL2，由于后者实质上是一个虚拟机。故要启动虚拟化：
 
-```powershell
+```console
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 wsl -l # 查看 WSL 列表
 wsl --set-version kali-linux 2
@@ -322,7 +325,7 @@ kex --sl -s
 
 随着使用时间的延长，WSL2 占用的硬盘空间会越来越多，这个时候就需要对其文件进行压缩。方法如下
 
-```powershell
+```console
 wsl --shutdown
 # open window Diskpart
 diskpart
@@ -337,7 +340,7 @@ detach vdisk
 
 当然，WSL2 也会带来内存占用的问题，可以打开 `~/.wslconfig`，进行如下设置
 
-```powershell
+```console
 [wsl2]
 memory=4GB
 swap=0
@@ -347,6 +350,6 @@ swap=0
 
 The attempted operation is not supported for the type of object referenced.
 
-```powershell
+```console
 sudo netsh winsock reset
 ```

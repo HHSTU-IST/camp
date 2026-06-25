@@ -159,9 +159,9 @@ Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 ```
 
-## 4. 整合
+## 4. 集成
 
-### 4.1. 整合 VSCode
+### 4.1. 集成 VSCode
 
 ![settings](images/vscode-settings.png)
 
@@ -182,7 +182,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 }
 ```
 
-### 4.2. 整合 Scoop
+### 4.2. 集成 Scoop
 
 添加以下配置
 
