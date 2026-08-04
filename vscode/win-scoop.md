@@ -288,4 +288,4 @@ certutil -hashfile [file] sha1
 
 ![Scoop script](images/scoop-manifest2.png)
 
-祝愿感兴趣的朋友早日拥有自己的 bucket，方便自己，也方便他人。
+祝愿感兴趣的朋友早日拥有自己的 bucket，惠人惠己。

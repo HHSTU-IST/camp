@@ -13,13 +13,10 @@ Matplotlib 是 Python 的默认可视化库，拥有最丰富的生态，其重�
 - Matplotlib (⭐13.4k)
   - Seaborn (⭐8.3k)
   - PlotNine (⭐2.6k)
-  - Yellowbrick (⭐3.1k)
   - CartoPy (⭐0.8k)
   - WordCloud (⭐8k)
 
 Seaborn 兴起于 Kaggle，其采用图形语法，加上漂亮的配色，被认为是数据分析的首选工具。在拓展 Matplotlib 的同时，保持了其灵活性。PlotNine 同样使用图形语法，是 ggplot2 的 Python 克隆，非常适合 R 转 Py 的人。相比于 Seaborn，一些时候，PlotNine 的绘图更加方便，但是返回的是 figure 对象，在绘制子图和调整细节的时候，会非常不灵活。
-
-Yellowbrick 是服务 Scikit-Learn 的可视化库，不过随着后者和 Pandas 也逐渐有了原生的可视化模块，这个曾经风靡一时的仓库可能会逐渐淡出视野。
 
 CartoPy 几乎是地理和气象分析的必须了解的可视化库。WordCloud 字如其名，用于生成词云。
 

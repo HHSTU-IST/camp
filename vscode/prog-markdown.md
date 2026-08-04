@@ -19,7 +19,7 @@ VSCode 默认是支持 Markdown 的，但还是有必要安装下面的扩展提
 
 - Markdown All in One
 - rumdl
-- Markdown Kroki
+- Markdown Inline Editor
 
 ### 2.1. Markdown All in One
 

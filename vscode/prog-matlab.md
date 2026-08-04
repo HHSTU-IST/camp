@@ -21,7 +21,7 @@
   "[matlab]": {
     "editor.defaultFormatter": "MathWorks.language-matlab"
   },
-  "MATLAB.installPath": "/Applications/MATLAB_R2022b_Beta.app"
+  "MATLAB.installPath": "/Applications/MATLAB_R2026b.app"
 }
 ```
 
@@ -32,7 +32,7 @@
   "[matlab]": {
     "editor.defaultFormatter": "MathWorks.language-matlab"
   },
-  "MATLAB.installPath": "c:\\program files\\polyspace\\r2019a\\bin\\matlab.exe"
+  "MATLAB.installPath": "c:\\program files\\polyspace\\r2026a\\bin\\matlab.exe"
 }
 ```
 
