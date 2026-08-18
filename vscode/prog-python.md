@@ -176,9 +176,9 @@ mamba install ipykernel
 
 在 VSCode 扩展商店，搜索并安装以下扩展：
 
-- Python
-- Jupyter
+- Pyrefly
 - Ruff
+- Jupyter
 
 > 图片没必要展示了。
 
