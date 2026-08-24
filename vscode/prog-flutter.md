@@ -25,19 +25,19 @@ scoop install flutter
 macOS/Linux 用户，使用 Homebrew
 
 ```shell
-brew install android-commandlinetools
+brew install --cask android-cli
 ```
 
 Windows 用户，使用 Scoop
 
 ```powershell
-scoop install android-clt
+scoop install android-cli
 ```
 
 ### 安装 Android SDK
 
 ```bash
-sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+android sdk install "platform-tools" "platforms;android-36" "build-tools;36.0.0" "ndk;29.0.14206865" "cmake;4.1.2"
 ```
 
 安装完毕后，使用 Flutter 检查

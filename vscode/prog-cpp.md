@@ -8,7 +8,7 @@
 
 - 手动安装
 
-下载[安装包](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/msys2-x86_64-latest.exe)，默认一路向下，直至完成。
+下载[安装包](https://mirrors.ustc.edu.cn/msys2/distrib/msys2-x86_64-latest.exe)，默认一路向下，直至完成。
 
 - 包管理器安装（如果有的话）
 
@@ -22,7 +22,7 @@ scoop install msys2-cn
 进入 MSYS2 的 UCRT64 终端，执行如下命令，使用清华源
 
 ```shell
-sed -i "s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
+sed -i "s#https\?://mirror.msys2.org/#https://mirrors.ustc.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
 ```
 
 然后安装 UCRT (Universal C Runtime) 工具链
