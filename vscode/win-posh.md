@@ -33,8 +33,8 @@ Invoke-Expression (&starship init powershell)
 因为涉及到字体和 Windows-Terminal，这里推荐使用 Scoop 安装（见 Scoop 篇的介绍）：
 
 ```powershell
-scoop bucket add scoopforge/extras-cn
-scoop install firacode-nf
+scoop bucket add nerd-fonts
+scoop install FiraCode-NF
 ```
 
 ### 1.2. 使用 Linux 命令
@@ -204,5 +204,4 @@ function sck {scoop checkup}
 function scat {scoop config aria2-enabled true}
 function scaf {scoop config aria2-enabled false}
 function srm {del -r $env:scoop\cache\*; clear}
-function sbc {cd $env:scoop\buckets\extras-cn}
 ```

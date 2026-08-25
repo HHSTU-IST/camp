@@ -13,8 +13,7 @@
 - 包管理器安装（如果有的话）
 
 ```powershell
-scoop bucket add scoopforge/extras-cn
-scoop install msys2-cn
+scoop install msys2
 ```
 
 ### 1.2. 配置
@@ -29,7 +28,6 @@ sed -i "s#https\?://mirror.msys2.org/#https://mirrors.ustc.edu.cn/msys2/#g" /etc
 
 ```shell
 pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
-pacman -S mingw-w64-ucrt-x86_64-gdb
 ```
 
 - 接受默认配置，一路向下直至完成安装。
@@ -104,7 +102,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg mingw-w64
             "includePath": [
                 "${workspaceFolder}/**",
                 "{msys2根目录}\\ucrt64\\include",
-                "{msys2根目录}\\ucrt64\\include\\opencv4"
+                "{msys2根目录}\\ucrt64\\include\\opencv5"
             ],
             "defines": [
                 "_DEBUG",
@@ -147,7 +145,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg mingw-w64
                     "ignoreFailures": false
                 }
             ],
-            // "preLaunchTask": "Build OpenCV4 on Windows"
+            // "preLaunchTask": "Build OpenCV5 on Windows"
         }
     ]
 }
@@ -161,7 +159,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg mingw-w64
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "Build OpenCV4 on Windows",
+            "label": "Build OpenCV5 on Windows",
             "command": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
@@ -172,7 +170,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg mingw-w64
                 "-I",
                 "{msys2根目录}\\ucrt64\\include",
                 "-I",
-                "{msys2根目录}\\ucrt64\\include\\opencv4",
+                "{msys2根目录}\\ucrt64\\include\\opencv5",
                 "-L",
                 "{msys2根目录}\\ucrt64\\lib",
                 "-lopencv_core",

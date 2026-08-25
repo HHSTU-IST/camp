@@ -18,8 +18,7 @@ brew install julia
 对 Windows 用户，有 Scoop
 
 ```powershell
-scoop bucket add scoopforge/extras-cn
-scoop install julia-cn
+scoop install julia
 ```
 
 ### 1.1. 源
