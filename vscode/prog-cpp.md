@@ -33,6 +33,8 @@ pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
 - 接受默认配置，一路向下直至完成安装。
 - 将 MSYS2 安装路径下的 `ucrt64\bin` 目录添加到环境变量 `PATH` 中
 
+> 如果报错： 无法提交处理 (有冲突的文件)，`pacman -S --overwrite="*" [package]`
+
 重启终端，在 PowerShell 中，检验是否安装成功
 
 ```powershell
