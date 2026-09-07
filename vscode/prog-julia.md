@@ -31,7 +31,7 @@ scoop install julia
 添加如下语句
 
 ```julia
-ENV["JULIA_PKG_SERVER"] = "https://mirrors.tuna.tsinghua.edu.cn/julia"
+ENV["JULIA_PKG_SERVER"] = "https://mirrors.nju.edu.cn/julia"
 ```
 
 ## 2. VSCode 调用 Julia

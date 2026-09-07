@@ -6,7 +6,7 @@
 
 Conda 是服务于 Python 和 R 的多语言包管理器，其解决了 Python 原生包管理器 Pip 的依赖冲突问题，极大地方便了 Python 环境的管理。Mamba 是 Conda 的 C++ 版本，默认并行下载，效率比 Conda 更上一个台阶。
 
-这里推荐安装 Miniforge，基于 Mamba 的最小安装版本，只包含环境管理功能。前往[清华源](https://mirrors.tuna.tsinghua.edu.cn/)，进入[对应页面](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/)，下载安装程序。
+这里推荐安装 Miniforge，基于 Mamba 的最小安装版本，只包含环境管理功能。前往[清华源](https://mirrors.ustc.edu.cn/)，进入[对应页面](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/)，下载安装程序。
 
 ### 1.2. 手动安装（不可翻墙用户推荐）
 

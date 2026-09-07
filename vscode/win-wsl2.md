@@ -64,10 +64,10 @@ sudo vi /etc/apt/sources.list
 - Ubuntu
 
 ```shell
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ noble main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ noble-security main restricted universe multiverse
 ```
 
 - Kali
@@ -90,7 +90,7 @@ sudo vi /etc/apt/sources.list.d/ubuntu.sources
 
 ```shell
 Types: deb
-URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+URIs: https://mirrors.ustc.edu.cn/ubuntu
 Suites: noble noble-updates noble-backports
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
