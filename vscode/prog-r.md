@@ -40,7 +40,7 @@ mamba install r-languageserver radian
 
 因为本配置主要针对需要同时使用 R 的 Python 用户，因此具体 mamba 是个什么东西，这里就不赘述了，具体介绍见 [mamba](https://github.com/mamba-org/mamba)。
 
-推荐安装其中的 Miniforge 版本，[Miniforge 的清华镜像](https://mirrors.tuna.tsinghua.edu.cn/github-release/conda-forge/miniforge/)
+推荐安装其中的 Miniforge 版本，[Miniforge 的清华镜像](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/)
 
 对于 R 的第三方包的安装，命令格式如下
 
