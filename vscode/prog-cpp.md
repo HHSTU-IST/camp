@@ -47,22 +47,22 @@ gdb --version
 
 进入 MSYS2 的 UCRT64 终端，执行如下命令
 
-- OpenCV
-
-```shell
-pacman -S mingw-w64-ucrt-x86_64-opencv
-```
-
 - CMake
 
 ```shell
 pacman -S mingw-w64-ucrt-x86_64-cmake
 ```
 
+- OpenCV
+
+```shell
+pacman -S mingw-w64-ucrt-x86_64-opencv
+```
+
 - Qt6
 
 ```shell
-pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-svg mingw-w64-ucrt-x86_64-qt6-declarative
+pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
 ```
 
 ## 2. VSCode 扩展
