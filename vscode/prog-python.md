@@ -27,6 +27,7 @@ sh Miniforge3-MacOSX-arm64.sh
 对 Windows 用户，使用 Scoop
 
 ```powershell
+scoop bucket add main-plus https://github.com/Scoopforge/Main-Plus
 scoop install micromamba
 ```
 

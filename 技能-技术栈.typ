@@ -24,9 +24,7 @@
 - ☐ 不安装多个具有相同功能的软件
 - ☐ 不从非官方渠道下载安装软件
 - ☐ 尽量使用包管理器下载安装软件
-- ☐ 尽量不使用破解版，除非该软件具有绝对的效率优势
-  - 如学习建模时，使用 Autodesk MAYA
-  - 如学习自动化控制时，使用 MATLAB
+- ☐ 尽量不使用破解版，除非该软件具有绝对的效率优势，如学习控制论时，使用 MATLAB
 
 == 默认选择
 
@@ -44,11 +42,10 @@
 
 通用编辑器，扩展生态繁荣，通过配置可作为强大的脚本语言（动态语言）编辑器，也适合写算法。其对应配置参考如下文章
 
-- #link("https://zhuanlan.zhihu.com/p/694181464")[搭建便捷 Git 文件管理环境]
-- #link("https://zhuanlan.zhihu.com/p/139140492")[搭建 Markdown 强大写作环境]
-- #link("https://zhuanlan.zhihu.com/p/147336202")[搭建 Python 轻量级编程环境]
-- #link("https://zhuanlan.zhihu.com/p/158824489")[搭建 Python 轻量级编程环境（WSL2）]
-- #link("https://zhuanlan.zhihu.com/p/493323612")[搭建 C/C++ 轻量级编程环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/tool-git.md")[搭建便捷 Git 文件管理环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-markdown.md")[搭建 Markdown 强大写作环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-python.md")[搭建 Python 轻量级编程环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-cpp.md")[搭建 C/C++ 轻量级编程环境]
 
 === Scoop / WinGet
 
@@ -68,15 +65,14 @@ Scoop / WinGet 的设计理念略有不同，其差别如下
 
 推荐首选 Scoop 进行管理。Scoop 的使用推荐阅读如下文章
 
-- #link("https://zhuanlan.zhihu.com/p/128955118")[搭建 Windows 统一开发环境]
-- #link("https://zhuanlan.zhihu.com/p/165635039")[Scoop 进阶 - 建立自己的 Bucket]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/win-scoop.md")[搭建 Windows 统一开发环境]
 
 若不习惯命令行操作，可使用 GUI 软件 UniGetUI，通过图形化操作 Scoop / WinGet 进行软件管理。
 
 === Terminal & WSL
 
-- #link("https://zhuanlan.zhihu.com/p/144611023")[打造 Windows 优雅终端]
-- #link("https://zhuanlan.zhihu.com/p/263658960")[搭建 WSL2 下的 Kali 环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/win-posh.md")[打造 Windows 优雅终端]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/win-wsl2.md")[搭建 WSL2 舒适开发环境]
 
 === 通用软件
 
@@ -86,7 +82,6 @@ Scoop / WinGet 的设计理念略有不同，其差别如下
   - 科学上网
     - Clash Verge Rev
   - 大模型
-    - Cherry Studio
     - Ollama
 ])
 
@@ -110,7 +105,7 @@ AI 时代，大模型均支持三种语言：
 
 现代文本语言，其拥有 Markdown 的简洁语法和 LaTeX 的多样版式。
 
-- #link("https://zhuanlan.zhihu.com/p/642509853")[搭建 Typst 舒适写作环境]
+- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-typst.md")[搭建 Typst 舒适写作环境]
 - #link("https://typst-doc-cn.github.io/docs/")[Typst 中文文档]
 
 === Desmos
@@ -123,10 +118,6 @@ AI 时代，大模型均支持三种语言：
 
 这类软件，上手有难度，值得尝试
 
-=== IntelliJ IDEA
-
-地位无可撼动的 Java IDE。
-
 === 数据科学编程语言
 
 #let data = csv("data/tools-compute.csv")
@@ -134,8 +125,6 @@ AI 时代，大模型均支持三种语言：
   tableq(data, 4),
   caption: "数据科学编程语言",
 )
-
-== 高难度级
 
 === Blender
 

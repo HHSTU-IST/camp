@@ -10,10 +10,11 @@
 
 下载[安装包](https://mirrors.ustc.edu.cn/msys2/distrib/msys2-x86_64-latest.exe)，默认一路向下，直至完成。
 
-- 包管理器安装（如果有的话）
+= 包管理器安装（可翻墙用户推荐）
 
 ```powershell
-scoop install msys2
+scoop bucket add extras-cn https://github.com/scoopforge/Extras-CN
+scoop install msys2-cn
 ```
 
 ### 1.2. 配置
