@@ -89,7 +89,7 @@
 
   #set text(size: 28pt)
   每个模块，都是把一个*点击的习惯*换成一份*能留存的文件*。
-])
+]
 
 == 今日所需
 
@@ -249,7 +249,7 @@
   === 添加官方扩展库
 
   ```shell
-  scoop bucket add extra
+  scoop bucket add extras
   ```
 
   === 添加自定义扩展库

@@ -1,13 +1,10 @@
 #import "lib/lib.typ": *
-
 #show: touying-quick.with(
   title: "编程环境",
   subtitle: "从解释器到终端，一次装好",
   info: info-skill,
   bgimg: bghexagon,
 )
-
-// 模块一 · Python 环境
 
 = Python 环境
 
@@ -24,7 +21,7 @@
 == 包管理器怎么选
 
 #align(center + horizon)[
-  #set text(size: 11pt)
+  #set text(size: 16pt)
   #let data = csv("data/env-pkgman.csv")
   #figure(
     tableq(data, 4),
@@ -239,8 +236,6 @@
   }
   ```
 ])
-
-// 模块二 · C/C++ 环境
 
 = C/C++ 环境
 
@@ -457,8 +452,6 @@
 
   想要图形化的构建与调试，也可以下载 #link("https://mirrors.ustc.edu.cn/qtproject/official_releases/qtcreator/latest/installer_source/", "Qt Creator")，在其中把同一套工具链再配一遍。
 ])
-
-// 模块三 · 终端环境
 
 = 终端环境
 
@@ -697,13 +690,3 @@
 
   这三件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
 ])
-
-== 延伸阅读
-
-- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/win-scoop.md")[搭建 Windows 统一开发环境]
-- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-python.md")[搭建 Python 轻量级编程环境]
-- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-cpp.md")[搭建 C/C++ 轻量级编程环境]
-- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/tool-terminal.md")[逐步搭建现代大一统终端]
-- #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/win-posh.md")[打造 Windows 优雅终端]
-
-#tip[ 本页对应的文本教程与课件同源，命令若有出入，以文本教程为准。 ]
