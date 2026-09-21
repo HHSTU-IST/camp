@@ -107,6 +107,7 @@ AI 时代，大模型均支持三种语言：
 
 - #link("https://github.com/HHSTU-IST/camp/blob/main/vscode/prog-typst.md")[搭建 Typst 舒适写作环境]
 - #link("https://typst-doc-cn.github.io/docs/")[Typst 中文文档]
+- #link("https://typst.app/universe/search/?kind=packages")[Typst 社区]
 
 === Desmos
 
