@@ -28,6 +28,7 @@ __pycache__
 *.pth
 vision/*.ipynb
 
-articles
 .workbuddy
+output
+articles
 test.*

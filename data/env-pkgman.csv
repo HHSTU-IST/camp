@@ -1,0 +1,9 @@
+﻿维度,pip,conda / mamba,uv
+实现语言,Python,Python / C++,Rust
+定位,Python 官方包管理器,跨语言的包与环境管理器,新一代 Python 项目与包管理器
+包源,PyPI,conda-forge 等频道,PyPI
+依赖求解,逐包安装，冲突需自己收拾,全局求解，可解版本冲突,全局求解，速度最快
+非 Python 依赖,不支持,支持编译器与 CUDA 等,不支持
+虚拟环境,需 venv 或 virtualenv,内建,内建
+依赖清单,requirements.txt,environment.yml,pyproject.toml
+适用场景,临时脚本,科学计算与多语言,日常 Python 项目
