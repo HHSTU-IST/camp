@@ -6,9 +6,6 @@
   bgimg: bghexagon,
 )
 
-// 短命令片段直接用围栏代码块，样式由 codly 接管。
-// 开场
-
 = 编程思维
 
 == 开场提问
@@ -46,24 +43,21 @@
   以上原则都指向了同一个关键字：*可复现*。
 ]
 
-
 == 今日路线图 · 四个模块
 
-#block(height: 19em, align(center + horizon)[
+#block(height: 18em, align(center + horizon)[
   #grid(
-    columns: (1fr, 1fr, 1fr, 1fr),
-    column-gutter: 12pt,
-    row-gutter: 10pt,
+    columns: (1fr,) * 4,
     block(
       fill: rgb("#EAF2FF"),
       stroke: rgb("#BFD7FF"),
       inset: 10pt,
-      radius: 6pt,
-      width: 100%,
+      radius: 18pt,
+      width: 90%,
     )[
       #align(center)[
         *🛠 模块一*\
-        #set text(size: 12pt)
+        #set text(size: 18pt)
         WinGet / Scoop \
         系统软件 \
         一条命令装好
@@ -73,12 +67,12 @@
       fill: rgb("#EAFBEA"),
       stroke: rgb("#A8E6A8"),
       inset: 10pt,
-      radius: 6pt,
-      width: 100%,
+      radius: 18pt,
+      width: 90%,
     )[
       #align(center)[
         *🌳 模块二*\
-        #set text(size: 12pt)
+        #set text(size: 18pt)
         Git \
         每一次改动 \
         都有出处
@@ -88,12 +82,12 @@
       fill: rgb("#FFF6E0"),
       stroke: rgb("#FFE08A"),
       inset: 10pt,
-      radius: 6pt,
-      width: 100%,
+      radius: 18pt,
+      width: 90%,
     )[
       #align(center)[
         *📝 模块三*\
-        #set text(size: 12pt)
+        #set text(size: 18pt)
         Markdown \
         程序文档 \
         本身就是文本
@@ -103,67 +97,70 @@
       fill: rgb("#F3EAFF"),
       stroke: rgb("#D6BBFF"),
       inset: 10pt,
-      radius: 6pt,
-      width: 100%,
+      radius: 18pt,
+      width: 90%,
     )[
       #align(center)[
         *📐 模块四*\
-        #set text(size: 12pt)
+        #set text(size: 18pt)
         Typst \
         笔记与幻灯片 \
         也可以是代码
       ]
     ],
   )
-  #v(0.6em)
-  #set text(size: 18pt)
+  \
+
+  #set text(size: 28pt)
   每个模块，都是把一个*点击的习惯*换成一份*能留存的文件*。
 ])
 
 == 今日所需
 
-#block(height: 15em, columns()[
-  #set text(size: 16pt)
+#[
+  #set text(size: 28pt)
 
   - 一台 Windows 10 / 11 电脑
   - 一条能上网的网络
   - 一个态度：*我只写一次，机器重复一万次*
-])
+]
 
 = 模块一 · 系统软件管理
 
 == 开场提问
 
 #align(center + horizon)[
-  #set text(size: 28pt)
+  #set text(size: 32pt)
 
   平时你是怎么*装软件*的？
   \
   \
-  下载安装包，一路点*下一步*？\
-  还是敲*一行命令*？
+  下载安装包，一路点*下一步*？还是敲*一行命令*？
 ]
 
-== 三个词：包 · 仓库 · 依赖
+== 包·依赖·包管理器·仓库
 
-#block(height: 17em, columns()[
-  #set text(size: 15pt)
+#[
+  #set text(size: 26pt)
 
   *核心概念*
 
-  - *包*—— 一个软件连同它的版本与安装、卸载规则
-  - *仓库*—— 包管理器检索的官方目录，Scoop 里叫 bucket
-  - *依赖*—— 这个软件还要用到的别的软件，由管理器自动解析
+  - *包*：一个软件连同它的版本与安装、卸载规则
+  - *依赖*：这个软件还要用到的别的软件，由管理器自动解析
+  - *包管理器*：
+  - *仓库*：包管理器检索的官方目录
+]
 
-  #colbreak()
+== 包管理器
 
-  *其实你早就见过它们*
+#[
+  #set text(size: 18pt)
+  *其实你早就见过包管理器*
 
-  - 📱 App Store / 各类应用商店 —— 手机上的软件
   - 🐍 `pip` —— Python · 📦 `npm` —— JavaScript
   - 🐧 `apt`（Ubuntu）· 🍺 `brew`（macOS）
-  - 🪟*`winget`*与*`scoop`*—— 今天的主角
-])
+  - 🪟*`winget`*与*`scoop`*：今天的主角
+]
 
 == 为什么要用包管理器
 
@@ -350,7 +347,7 @@
 
   #colbreak()
 
-  *更简单的写法*—— 一个 `setup.ps1`
+  *更简单的写法*：一个 `setup.ps1`
   #text(size: 12pt)[
     ```powershell
     winget install Git.Git --silent
@@ -387,11 +384,11 @@
 #block(height: 17em, columns()[
   #set text(size: 16pt)
 
-  - *版本控制*—— 随时回到历史上的任意一点
-  - *可追溯*—— 每一行都有作者与理由
-  - *备份*—— 你的工作同时活在不止一台机器上
-  - *分支*—— 放心试错，成功才合并
-  - *协作*—— 几个人改同一个工程，不会互相覆盖
+  - *版本控制*：随时回到历史上的任意一点
+  - *可追溯*：每一行都有作者与理由
+  - *备份*：你的工作同时活在不止一台机器上
+  - *分支*：放心试错，成功才合并
+  - *协作*：几个人改同一个工程，不会互相覆盖
 
   #colbreak()
   #figure(
@@ -562,13 +559,12 @@
 #align(center + horizon)[
   #set text(size: 27pt)
 
-  老师要一份实验报告。
+  当你要做一份学习笔记。
 
-  你打开*Word*，还是打开一个*纯文本文件*？
+  你打开的是*Word*，还是*纯文本文件*？
   \
   \
-  同样的内容、同样导出 PDF —— 哪一份能被 Git*比对*、\
-  能被*模板化*、能被*AI 直接改写*？
+  同样的内容 —— 哪一份更能被*模板化*、被*AI 直接改写*？
 ]
 
 == Word · Markdown · Typst 三者对照
@@ -621,20 +617,20 @@
 #block(height: 18em, columns()[
   #set text(size: 18pt)
 
-  *Markdown All in One*—— 大一统型扩展，Markdown 类插件下载榜榜首
+  *Markdown All in One*：大一统型扩展，Markdown 类插件下载榜榜首
 
   - 快捷命令与代码片
   - 自动生成标题编号、自动维护目录
   - LaTeX 数学公式支持
 
-  *rumdl*—— 语法检查器与格式化器
+  *rumdl*：语法检查器与格式化器
 
   - 帮你写出规范文档，避免语法错误导致渲染失败
   - 保存时自动修掉结构问题
 
   #colbreak()
 
-  *Markdown Inline Editor*—— 类似 Typora 的即时渲染
+  *Markdown Inline Editor*：类似 Typora 的即时渲染
 
   - 不用分屏预览，边写边看
   - 支持全部基础语法，也支持 mermaid 图表
@@ -652,7 +648,7 @@
 #block(height: 18em, columns(2, gutter: 1em)[
   #set text(size: 12pt)
 
-  *Markdown*—— 写起来就是内容本身
+  *Markdown*：写起来就是内容本身
   ```text
   # 轴扭转实验 —— 实验三
 
@@ -668,7 +664,7 @@
 
   #colbreak()
 
-  *Typst*—— 版式也能写进源码
+  *Typst*：版式也能写进源码
   ```typ
   #set page(paper: "a4")
 
@@ -787,7 +783,7 @@
 
   #colbreak()
 
-  *让编辑器用上它*—— `settings.json`
+  *让编辑器用上它*：`settings.json`
   #text(size: 11pt)[
     ```json
     {
@@ -810,7 +806,7 @@
 #block(height: 18em, columns()[
   #set text(size: 18pt)
 
-  *讲义与笔记*—— 用 `chapter-style`，按章节排版
+  *讲义与笔记*：用 `chapter-style`，按章节排版
 
   #text(size: 11pt)[
     ```typ
@@ -822,7 +818,7 @@
     ```
   ]
 
-  *幻灯片*—— 用 `touying-quick`，一个标题一页
+  *幻灯片*：用 `touying-quick`，一个标题一页
 
   #text(size: 11pt)[
     ```typ
@@ -836,7 +832,7 @@
 
   #colbreak()
 
-  *同一个工程的两种入口*—— 内容重复的部分由 `lib/` 与 `data/` 承担
+  *同一个工程的两种入口*：内容重复的部分由 `lib/` 与 `data/` 承担
 
   - 表格数据放在 `data/*.csv`，讲义与幻灯片共用同一份
   - 图片放在 `images/`，用仓库根相对路径引用
