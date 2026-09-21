@@ -68,63 +68,146 @@ sudo New-Item -Path "$basePath\wt\command" -Force -Type ExpandString -Value '"C:
 
 ```json
 {
-  "$schema": "https://aka.ms/terminal-profiles-schema",
-  // 默认启动的终端 id
-  "defaultProfile": "{07b52e3e-de2c-5db1-bd2d-ba144ed6c273}",
-  // 是否将选择的内容自动复制到剪切板
-  "copyOnSelect": false,
-  // 是否将格式化后的内容复制到剪切板
-  "copyFormatting": false,
-
-  // 全局设置
-  "profiles": {
-    "defaults": {
-      "fontFace": "MesloLGL NF", //字体
-      "fontSize": 12,
-      "useAcrylic": true, //使用不透明度
-      "acrylicOpacity": 0.9, //不透明度
-      "cursorShape": "bar",
-      "snapOnInput": true, //嗅探输入
-      "startingDirectory": "d:"
-    }
-  },
-  "list": [
-    {
-      // Make changes here to the powershell.exe profile.
-      "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-      "name": "电壳",
-      "commandline": "powershell.exe",
-      "hidden": false
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [],
+    "alwaysOnTop": false,
+    "alwaysShowNotificationIcon": false,
+    "centerOnLaunch": true,
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultInputScope": "alphanumericHalfWidth",
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "firstWindowPreference": "persistedWindowLayout",
+    "keybindings": [
+        {
+            "id": "Terminal.NextTab",
+            "keys": "ctrl+tab"
+        },
+        {
+            "id": "Terminal.ResizePaneDown",
+            "keys": "alt+shift+down"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "alt+down"
+        },
+        {
+            "id": "Terminal.OpenNewTab",
+            "keys": "ctrl+shift+t"
+        },
+        {
+            "id": "Terminal.MoveFocusLeft",
+            "keys": "alt+left"
+        },
+        {
+            "id": "Terminal.MoveFocusRight",
+            "keys": "alt+right"
+        },
+        {
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+up"
+        },
+        {
+            "id": "Terminal.ResizePaneLeft",
+            "keys": "alt+shift+left"
+        },
+        {
+            "id": "Terminal.ResizePaneRight",
+            "keys": "alt+shift+right"
+        },
+        {
+            "id": "Terminal.ResizePaneUp",
+            "keys": "alt+shift+up"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "Terminal.SplitPaneDown",
+            "keys": "alt+shift+minus"
+        },
+        {
+            "id": "Terminal.SplitPaneRight",
+            "keys": "alt+shift+\\"
+        }
+    ],
+    "launchMode": "maximized",
+    "newTabMenu": [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": {
+        "defaults": {
+            "font": {
+                "face": "FiraCode Nerd Font",
+                "size": 16
+            },
+            "snapOnInput": true,
+            "useAcrylic": true
+        },
+        "list": [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell",
+                "startingDirectory": "D:\\GitHub"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "commandline": "C:\\Scoop\\shims\\msys2.cmd",
+                "guid": "{6f0ee3d1-ac4f-48ca-bcf5-a9795f9942d2}",
+                "icon": "C:\\Scoop\\apps\\msys2-cn\\current\\msys2.ico",
+                "name": "MSYS2",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "guid": "{5bfd203a-d266-5705-bd99-2445051318a1}",
+                "hidden": false,
+                "name": "Ubuntu-26.04",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{8bbb00b3-6f7e-507f-a4ac-e454a233067e}",
+                "hidden": false,
+                "name": "kali-linux",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            }
+        ]
     },
-    {
-      "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
-      "hidden": false,
-      "name": "邪神",
-      "icon": "file:///c:/users/ci/pictures/icons/kali.png",
-      "source": "Windows.Terminal.Wsl"
-    },
-    {
-      "guid": "{55ca431a-3a87-5fb3-83cd-11ececc031d2}",
-      "hidden": false,
-      "name": "邪神（窗口）",
-      "icon": "file:///c:/users/ci/pictures/icons/kali.png",
-      // 窗口模式启动
-      "commandline": "wsl -d kali-linux kex --wtstart -s"
-    },
-    {
-      // Make changes here to the cmd.exe profile.
-      "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-      "name": "命令提示符",
-      "commandline": "cmd.exe",
-      "hidden": false
-    },
-    {
-      "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-      "hidden": false,
-      "name": "天蓝",
-      "source": "Windows.Terminal.Azure"
-    }
-  ]
+    "schemes": [],
+    "tabWidthMode": "titleLength",
+    "themes": []
 }
 ```
 
@@ -135,8 +218,7 @@ sudo New-Item -Path "$basePath\wt\command" -Force -Type ExpandString -Value '"C:
 在终端中键入如下命令：
 
 ```powershell
-Install-Module PowerShellGet -scope CurrentUser -Force -AllowClobber
-Install-Module PSReadLine -scope CurrentUser
+scoop install psreadline
 ```
 
 - 配置
@@ -187,8 +269,8 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 添加以下配置
 
 ```powershell
-Import-Module "$($(Get-Item $(Get-Command scoop).Path).Directory.Parent.FullName)\modules\scoop-completion"
-Import-Module "$($(Get-Item $(Get-Command scoop).Path).Directory.Parent.FullName)\modules\scoop-completion" -ErrorAction SilentlyContinue
+Import-Module scoop-completion
+. ([ScriptBlock]::Create((& scoop-search --hook | Out-String)))
 ```
 
 ### 4.3. 自定义别名

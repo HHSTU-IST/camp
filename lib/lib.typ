@@ -1,8 +1,12 @@
-#import "@preview/qooklet:0.7.0": *
+#import "@preview/qooklet:0.7.1": *
 #import "@preview/subpar:0.2.2": grid as sgrid
 #import "@preview/rexllent:0.4.1": xlsx-parser
+
+#import "@preview/touying-quick:0.5.0": *
 
 #let info-skill = toml("info.toml").skill
 #let info-tool = toml("info.toml").tool
 #let info-know = toml("info.toml").knowledge
 #let info-man = toml("info.toml").management
+
+#let info-camp = toml("info.toml").camp
