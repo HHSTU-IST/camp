@@ -83,17 +83,13 @@ Markdown Inline Editor 可以在 VSCode 中实现类似 Typora 即时渲染的�
 
 ## 3. 编辑扩展
 
-### 3.1. AutoCorrect
-
-AutoCorrect 用于「自动纠正」或「检查并建议」文案，给 CJK（中文、日语、韩语）与英文混写的场景，补充正确的空格，同时尝试以安全的方式自动纠正标点符号等等。
-
-### 3.2. Draw.io
+### 3.1. Draw.io
 
 虽然有 mermaid，但有时候我们总会需要绘制一些复杂的图形。这时，可以使用 VSCode 商店里大名鼎鼎的 [draw.io](https://app.diagrams.net/) 的内嵌扩展，安装完毕后三连：➡️ 新建 .drawio 文件 ➡️ 傻瓜绘图 ➡️ 导出为需要的格式。
 
 ![draw.io](images/vscode-drawio.png)
 
-### 3.3. Word Count CJK
+### 3.2. Word Count CJK
 
 这里推荐 Word Count CJK，可对各种字符进行统计，安装扩展后，在 setting.json 中修改
 
