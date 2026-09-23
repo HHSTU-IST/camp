@@ -210,7 +210,7 @@ mamba install ipykernel
 [tool.ruff]
 fix = true
 fix-only = true
-target-version = "py313"
+target-version = "py314"
 line-length = 88
 
 [tool.ruff.format]
