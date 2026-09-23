@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "文字校对", info: info-skill)
+#show: chapter-style.with(title: "文字校对", info: paper)
 
 #show link: underline
 

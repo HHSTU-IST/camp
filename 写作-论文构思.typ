@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "论文构思", info: info-research)
+#show: chapter-style.with(title: "论文构思", info: paper)
 
 = 概览
 <概览>

@@ -8,7 +8,7 @@ series = "高效工作流"
 institution = "灵引启慧工作室"
 ending = "谢谢大家"
 
-[research]
+[paper]
 title = ""
 footer = "Yāng Xīnbīn"
 header = "论文写作"
@@ -52,3 +52,9 @@ author = "主讲：Yang Xinbin"
 series = "企业管理"
 institution = "灵引启慧工作室"
 ending = "谢谢大家"
+
+[foreign]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "留学生活"
+lang = "zh"

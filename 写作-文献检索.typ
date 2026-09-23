@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "文献的检索与管理", info: info-research)
+#show: chapter-style.with(title: "文献的检索与管理", info: paper)
 
 = 背景知识
 <背景知识>

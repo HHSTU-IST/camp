@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "科学常识-生活", info: info-know)
+#show: chapter-style.with(title: "急救与防灾", info: info-know)
 
 = 急救
 

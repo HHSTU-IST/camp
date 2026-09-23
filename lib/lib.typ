@@ -5,9 +5,10 @@
 #import "@preview/touying-quick:0.5.0": *
 
 #let info-skill = toml("info.toml").skill
-#let info-research = toml("info.toml").research
+#let info-paper = toml("info.toml").paper
 #let info-tool = toml("info.toml").tool
 #let info-know = toml("info.toml").knowledge
 #let info-man = toml("info.toml").management
 
 #let info-camp = toml("info.toml").camp
+#let info-foreign = toml("info.toml").foreign

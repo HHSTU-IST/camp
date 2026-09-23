@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "科研论文", info: info-research)
+#show: chapter-style.with(title: "科研论文", info: paper)
 
 = 备选期刊
 
