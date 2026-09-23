@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "研究预备课", info: info-skill)
+#show: chapter-style.with(title: "研究预备课", info: info-research)
 
 = 文献
 <文献>

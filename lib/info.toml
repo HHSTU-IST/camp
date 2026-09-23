@@ -8,6 +8,12 @@ series = "高效工作流"
 institution = "灵引启慧工作室"
 ending = "谢谢大家"
 
+[research]
+title = ""
+footer = "Yāng Xīnbīn"
+header = "论文写作"
+lang = "zh"
+
 [tool]
 title = ""
 footer = "Yang Xinbin"
