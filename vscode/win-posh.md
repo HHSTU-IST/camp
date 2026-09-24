@@ -97,146 +97,142 @@ sudo New-Item -Path "$basePath\wt\command" -Force -Type ExpandString -Value '"C:
 
 ```json
 {
-    "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [],
-    "alwaysOnTop": false,
-    "alwaysShowNotificationIcon": false,
-    "centerOnLaunch": true,
-    "copyFormatting": "none",
-    "copyOnSelect": true,
-    "defaultInputScope": "alphanumericHalfWidth",
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "firstWindowPreference": "persistedWindowLayout",
-    "keybindings": [
-        {
-            "id": "Terminal.NextTab",
-            "keys": "ctrl+tab"
-        },
-        {
-            "id": "Terminal.ResizePaneDown",
-            "keys": "alt+shift+down"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
-        },
-        {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "Terminal.ClosePane",
-            "keys": "ctrl+shift+w"
-        },
-        {
-            "id": "Terminal.MoveFocusDown",
-            "keys": "alt+down"
-        },
-        {
-            "id": "Terminal.OpenNewTab",
-            "keys": "ctrl+shift+t"
-        },
-        {
-            "id": "Terminal.MoveFocusLeft",
-            "keys": "alt+left"
-        },
-        {
-            "id": "Terminal.MoveFocusRight",
-            "keys": "alt+right"
-        },
-        {
-            "id": "Terminal.MoveFocusUp",
-            "keys": "alt+up"
-        },
-        {
-            "id": "Terminal.ResizePaneLeft",
-            "keys": "alt+shift+left"
-        },
-        {
-            "id": "Terminal.ResizePaneRight",
-            "keys": "alt+shift+right"
-        },
-        {
-            "id": "Terminal.ResizePaneUp",
-            "keys": "alt+shift+up"
-        },
-        {
-            "id": "Terminal.ClosePane",
-            "keys": "alt+shift+d"
-        },
-        {
-            "id": "Terminal.SplitPaneDown",
-            "keys": "alt+shift+minus"
-        },
-        {
-            "id": "Terminal.SplitPaneRight",
-            "keys": "alt+shift+\\"
-        }
-    ],
-    "launchMode": "maximized",
-    "newTabMenu": [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": {
-        "defaults": {
-            "font": {
-                "face": "FiraCode Nerd Font",
-                "size": 16
-            },
-            "snapOnInput": true,
-            "useAcrylic": true
-        },
-        "list": [
-            {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell",
-                "startingDirectory": "D:\\GitHub"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt"
-            },
-            {
-                "commandline": "C:\\Scoop\\shims\\msys2.cmd",
-                "guid": "{6f0ee3d1-ac4f-48ca-bcf5-a9795f9942d2}",
-                "icon": "C:\\Scoop\\apps\\msys2-cn\\current\\msys2.ico",
-                "name": "MSYS2",
-                "startingDirectory": "%USERPROFILE%"
-            },
-            {
-                "guid": "{5bfd203a-d266-5705-bd99-2445051318a1}",
-                "hidden": false,
-                "name": "Ubuntu-26.04",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{8bbb00b3-6f7e-507f-a4ac-e454a233067e}",
-                "hidden": false,
-                "name": "kali-linux",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            }
-        ]
-    },
-    "schemes": [],
-    "tabWidthMode": "titleLength",
-    "themes": []
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "actions": [],
+  "alwaysOnTop": false,
+  "alwaysShowNotificationIcon": false,
+  "centerOnLaunch": true,
+  "copyFormatting": "none",
+  "copyOnSelect": true,
+  "defaultInputScope": "alphanumericHalfWidth",
+  "firstWindowPreference": "persistedWindowLayout",
+  "launchMode": "maximized",
+  "newTabMenu": [
+      {
+          "type": "remainingProfiles"
+      }
+  ],
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+  "profiles": {
+      "defaults": {
+          "font": {
+              "face": "FiraCode Nerd Font",
+              "size": 16
+          },
+          "snapOnInput": true,
+          "useAcrylic": true
+      },
+      "list": [
+          {
+              "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+              "hidden": false,
+              "name": "Windows PowerShell",
+              "startingDirectory": "D:\\GitHub"
+          },
+          {
+              "commandline": "%SystemRoot%\\System32\\cmd.exe",
+              "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+              "hidden": false,
+              "name": "Command Prompt"
+          },
+          {
+              "commandline": "C:\\Scoop\\shims\\msys2.cmd",
+              "guid": "{6f0ee3d1-ac4f-48ca-bcf5-a9795f9942d2}",
+              "icon": "C:\\Scoop\\apps\\msys2-cn\\current\\msys2.ico",
+              "name": "MSYS2",
+              "startingDirectory": "%USERPROFILE%"
+          },
+          {
+              "guid": "{5bfd203a-d266-5705-bd99-2445051318a1}",
+              "hidden": false,
+              "name": "Ubuntu-26.04",
+              "source": "Microsoft.WSL"
+          },
+          {
+              "guid": "{8bbb00b3-6f7e-507f-a4ac-e454a233067e}",
+              "hidden": false,
+              "name": "kali-linux",
+              "source": "Microsoft.WSL"
+          },
+          {
+              "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+              "hidden": false,
+              "name": "Azure Cloud Shell",
+              "source": "Windows.Terminal.Azure"
+          }
+      ]
+  },
+  "keybindings": [
+      {
+          "id": "Terminal.OpenNewTab",
+          "keys": "alt+shift+t"
+      },
+      {
+          "id": "Terminal.NextTab",
+          "keys": "alt+tab"
+      },
+      {
+          "id": "Terminal.PrevTab",
+          "keys": "alt+shift+tab"
+      },
+      {
+          "id": "Terminal.CopyToClipboard",
+          "keys": "ctrl+c"
+      },
+      {
+          "id": "Terminal.PasteFromClipboard",
+          "keys": "ctrl+v"
+      },
+      {
+          "id": "Terminal.MoveFocusDown",
+          "keys": "alt+down"
+      },
+      {
+          "id": "Terminal.MoveFocusLeft",
+          "keys": "alt+left"
+      },
+      {
+          "id": "Terminal.MoveFocusRight",
+          "keys": "alt+right"
+      },
+      {
+          "id": "Terminal.MoveFocusUp",
+          "keys": "alt+up"
+      },
+      {
+          "id": "Terminal.ResizePaneDown",
+          "keys": "alt+shift+down"
+      },
+      {
+          "id": "Terminal.ResizePaneLeft",
+          "keys": "alt+shift+left"
+      },
+      {
+          "id": "Terminal.ResizePaneRight",
+          "keys": "alt+shift+right"
+      },
+      {
+          "id": "Terminal.ResizePaneUp",
+          "keys": "alt+shift+up"
+      },
+      {
+          "id": "Terminal.ClosePane",
+          "keys": "alt+shift+d"
+      },
+      {
+          "id": "Terminal.SplitPaneDown",
+          "keys": "alt+shift+minus"
+      },
+      {
+          "id": "Terminal.SplitPaneRight",
+          "keys": "alt+shift+\\"
+      }
+  ],
+  "schemes": [],
+  "tabWidthMode": "titleLength",
+  "themes": []
 }
 ```
 

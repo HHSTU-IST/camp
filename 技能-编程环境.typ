@@ -130,10 +130,25 @@
   ]
 ]
 
-== Windows Terminal
+== 别名
 
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
+#columns()[
+  ```powershell
+  function sls {scoop list}
+  function sud {scoop update}
+  function suda {scoop update *}
+  function scl {scoop cleanup *}
+  function sst {scoop status}
+  ```
+  #colbreak()
+]
+
+= Windows Terminal
+
+== 基本配置
+
+#[
+  #set text(size: 18pt)
 
   Windows Terminal 是微软官方的终端模拟器，把 PowerShell、命令提示符、MSYS2 与 WSL 收进同一扇窗，支持标签、分屏与 GPU 渲染。
 
@@ -142,15 +157,25 @@
   ```
 
   它把配置文件放在 `settings.json` 里，外观部分写在 `profiles.defaults` 中，对所有终端类型一并生效。
+]
 
-  #colbreak()
+#columns()[
+  #set text(size: 13.5pt)
 
   ```json
   {
-    "copyOnSelect": true,
+    "alwaysOnTop": false,
+    "alwaysShowNotificationIcon": false,
     "centerOnLaunch": true,
-    "launchMode": "maximized",
+    "copyOnSelect": true,
     "defaultInputScope": "alphanumericHalfWidth",
+    "firstWindowPreference": "persistedWindowLayout",
+    "launchMode": "maximized",
+    "newTabMenu": [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": {
       "defaults": {
         "font": {
@@ -163,12 +188,12 @@
     }
   }
   ```
-])
+]
 
-=== 分屏与键位
+== 键位
 
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
+#columns()[
+  #set text(size: 18pt)
 
   *默认键位*
 
@@ -186,75 +211,33 @@
     2,
   )
 
+  分屏之后用 `Alt + 方向键` 换焦点、`Alt + Shift + 方向键` 调大小，比拖动鼠标精确得多。
+
   #colbreak()
 
-  开终端的第一件事，是把它 *窗格化*：左边跑服务、右边看日志，或者上边写代码、下边敲命令，一屏之内同时看见输入与输出。
+  #[
+    #set text(size: 14pt)
 
-  #tip[ 分屏之后用 `Alt + 方向键` 换焦点、`Alt + Shift + 方向键` 调大小，比拖动鼠标精确得多。 ]
-
-  #note[ 方向键那一行也管着标签页：`Alt + Shift + 方向键` 落在标签栏上时，是 *移动标签* 而非调整窗格。 ]
-])
-
-=== 把终端放进右键菜单
-
-#block(height: 19em)[
-  #set text(size: 15pt)
-
-  在注册表里挂三条命令，右键任意文件夹的背景，就能 *就地* 开一个终端：一条建菜单项，一条挂图标，一条写命令行。
-
-  ```powershell
-  $base = "Registry::HKEY_CLASSES_ROOT\Directory\Background\shell"
-  $wt   = "C:\Scoop\apps\windows-terminal\current"
-
-  sudo New-Item -Path "$base\wt" -Force `
-    -Value "Windows Terminal here"
-
-  sudo New-ItemProperty -Path "$base\wt" -Force `
-    -Name Icon -PropertyType ExpandString `
-    -Value "$wt\Images\LargeTile.scale-100.png"
-
-  sudo New-Item -Path "$base\wt\command" -Force `
-    -Type ExpandString `
-    -Value "$wt\WindowsTerminal.exe -p PowerShell -d %V"
-  ```
-
-  #tip[ `%V` 是资源管理器传来的当前目录——把它换掉，菜单项就会开在别处；`sudo` 则负责把这几条写进 `HKEY_CLASSES_ROOT`。 ]
+    ```json
+    {
+      "keybindings": [
+                {
+            "id": "Terminal.NextTab",
+            "keys": "alt+tab"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "alt+shift+tab"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "alt+down"
+        },
+        ...
+    }
+    ```
+  ]
 ]
-
-== 集成与别名
-
-#block(height: 18em, columns()[
-  #set text(size: 18pt)
-
-  *让 VS Code 用上这个终端*
-
-  在 `settings.json` 中加入
-
-  ```json
-  {
-    "terminal.integrated.shell.windows": "C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
-    "terminal.integrated.shellArgs.windows": [
-      "-ExecutionPolicy", "Bypass", "-NoLogo", "-NoExit"
-    ]
-  }
-  ```
-
-  #colbreak()
-
-  *给常用命令起短名字*
-
-  ```powershell
-  function sls {scoop list}
-  function sud {scoop update}
-  function suda {scoop update *}
-  function scl {scoop cleanup *}
-  function sst {scoop status}
-  ```
-
-  别名的价值不在省下几个字符，而在于 *把「我总忘的那条长命令」固定成一个词*——写进 `$PROFILE`，它就跟着你换机器、换系统。
-
-
-])
 
 = Python 环境
 
