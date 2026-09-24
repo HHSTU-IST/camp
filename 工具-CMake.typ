@@ -127,20 +127,25 @@ project(MyProject VERSION 1.0
 
 而对于其他依赖，我们应避免使用使用具有全局作用域的函数，如 ```cmake link_directories()```、```cmake include_libraries()```等。
 
-#block(height: 10em, columns()[
+#columns()[
   ```cmake
   include_directories(
     bin
     opt
     lib/Eigen/src/Array
     lib/Eigen/src/Cholesky
+  ```
+
+  #colbreak()
+
+  ```cmake
     lib/Eigen/src/Core
     lib/Eigen/src/Core/arch/AltiVec
     lib/Eigen/src/Core/arch/SSE
     lib/Eigen/src/Core/util
     ...)
   ```
-])
+]
 
 === 生成目标
 
@@ -275,54 +280,68 @@ endif()
 
 CMake 允许自定义函数（function）或宏（macro）。
 
-#block(height: 7em, columns()[
+#columns()[
   ```cmake
   # 函数
   function(<name> [<arg1> ...])
     <commands>
 
   endfunction()
+  ```
+
+  #colbreak()
+
+  ```cmake
   # 宏
   macro(<name> [<arg1> ...])
     <commands>
 
   endmacro()
   ```
-])
+]
 
 function 和 macro 在作用域上存在区别，前者的作用域是局部的，而后者的作用域是全局的。若想让 function 中定义的变量对外部可见，需要使用`PARENT_SCOPE`来改变其作用域。function 还可以有返回值，返回值可以通过```cmake set()```设置。如
 
-#block(height: 7em, columns()[
+#columns()[
   ```cmake
   function(add_numbers num1 num2)
     math(EXPR result "${num1} + ${num2}")
     set(${result} PARENT_SCOPE)
   endfunction()
+  ```
 
+  #colbreak()
+
+  ```cmake
   add_numbers(1 2)
   message("The result is ${RESULT}")
   # The result is 3
   ```
-])
+]
 
 若是在嵌套函数中，使用`PARENT_SCOPE`会变得异常繁琐，因为必须在想要变量对外的可见的所有函数中添加`PARENT_SCOPE`标志。这样函数才不会像宏那样对外“泄漏”所有的变量。实践中，我们可以通过在调用时设定变量值的形式来获取返回值。
 
-#block(height: 5em, columns()[
+#columns()[
   ```cmake
   function(add_numbers num1 num2)
     math(EXPR result "${num1} + ${num2}")
   endfunction()
+  ```
+
+  #colbreak()
+
+  ```cmake
   add_numbers(1 2 RESULT)
   message("The result is ${RESULT}")
   # The result is 3
   ```
-])
+]
 
 === 参数的控制
 
 CMake 拥有一个变量命名系统，可以通过 ```cmake cmake_parse_arguments()```来对变量进行命名与解析。这个函数在 CMake 3.5 被引入。其调用格式为
 
-#block(height: 11em, columns(gutter: 1em)[
+#columns(gutter: 1em)[
   ```cmake
   # 形式 1
   cmake_parse_arguments(<prefix>
@@ -335,6 +354,11 @@ CMake 拥有一个变量命名系统，可以通过 ```cmake cmake_parse_argumen
 
     <args>...
   )
+  ```
+
+  #colbreak()
+
+  ```cmake
   # 形式 2
   cmake_parse_arguments(PARSE_ARGV <N>
 
@@ -345,14 +369,13 @@ CMake 拥有一个变量命名系统，可以通过 ```cmake cmake_parse_argumen
     <one_val_keywords>
 
     <multi_value_keywords>
-
   )
   ```
-])
+]
 
 这里的参数似乎有点多，我们给出一个简单的例子方便理解
 
-#block(height: 15em, columns(gutter: 1em)[
+#columns(gutter: 1em)[
   ```cmake
   function(COMPLEX)
       cmake_parse_arguments(
@@ -363,7 +386,11 @@ CMake 拥有一个变量命名系统，可以通过 ```cmake cmake_parse_argumen
           ${ARGN}
       )
   endfunction()
+  ```
 
+  #colbreak()
+
+  ```cmake
   complex(
     SINGLE
     ONE_VAL value
@@ -376,7 +403,7 @@ CMake 拥有一个变量命名系统，可以通过 ```cmake cmake_parse_argumen
 
   # THE_PREFIX_MULTI_VALS = "one;two;three"
   ```
-])
+]
 
 可以看到
 
@@ -548,7 +575,7 @@ add_library(my_module SHARED my_module.cpp my_module.h)
 
 对 Windows 的动态链接库，在.h 文件开头和.cpp 文件开头，还要分别加上
 
-#block(height: 10em, columns()[
+#columns()[
   ```cmake
   #pragma once
 
@@ -556,6 +583,11 @@ add_library(my_module SHARED my_module.cpp my_module.h)
   __declspec(dllimport)
   #endif
   void func1();
+  ```
+
+  #colbreak()
+
+  ```cmake
   #include <cstdio>
 
   #ifdef _MSC_VER
@@ -563,7 +595,7 @@ add_library(my_module SHARED my_module.cpp my_module.h)
   #endif
   void func1() { ... }
   ```
-])
+]
 
 需要注意的是，.dll 和 .exe 必须在同一目录，因为 Windows 只会查找当前 .exe 所在目录，然后查找 `PATH`。这个问题的另一种解决方案是，把 .dll 文件所在位置加到我们的 `PATH` 环境变量里去，一劳永逸。当然，这两种方法都显得有一点点蠢。
 

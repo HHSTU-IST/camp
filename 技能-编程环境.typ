@@ -20,7 +20,7 @@
 
 == 提示符：Starship
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
@@ -63,12 +63,12 @@
   ```
 
   #figure(
-    image("vscode/images/starship.png", height: 55%),
+    image("vscode/images/starship.png", width: 100%),
     caption: none,
   )
 
   详情参考 #link("https://starship.rs/")[Starship 官网]
-])
+]
 
 == 扩展：让输入更顺手
 
@@ -292,16 +292,14 @@
 
 == conda 与它的四个发行版
 
-#block(height: 17em)[
-  // #set text(size: 18pt)
-  Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的依赖冲突问题；Mamba 则是 Conda 的 C++ 重写版，默认并行下载，速度更上一个台阶。Anaconda 由 Peter Wang 和 Travis Oliphant 于 2012 年创立，旨在把 Python 带进商业数据分析领域。
+// #set text(size: 18pt)
+Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的依赖冲突问题；Mamba 则是 Conda 的 C++ 重写版，默认并行下载，速度更上一个台阶。Anaconda 由 Peter Wang 和 Travis Oliphant 于 2012 年创立，旨在把 Python 带进商业数据分析领域。
 
-  #let data = csv("data/env-pkg-conda.csv")
-  #figure(
-    tableq(data, 4),
-    caption: "conda 系发行版",
-  )
-]
+#let data = csv("data/env-pkg-conda.csv")
+#figure(
+  tableq(data, 4),
+  caption: "conda 系发行版",
+)
 
 == 安装 Mamba
 
@@ -346,7 +344,15 @@
   ```sh
   function mamba { micromamba $args }
   ```
+
+  或
+
+  ```sh
+  alias mamba='micromamba'
+  ```
+
   #colbreak()
+
 
 ]
 
@@ -360,7 +366,7 @@
 
 == 配置 .condarc
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   mamba 的配置文件叫 `.condarc`，Windows 下位于 `~\.condarc`，macOS 与 Linux 下位于 `~/.condarc`。
@@ -398,11 +404,11 @@
   # 错误回滚
   rollback_enabled: true
   ```
-])
+]
 
 == Mamba 常用操作
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   *环境：一间自己的屋子*
@@ -437,11 +443,11 @@
   ```
 
   #tip[ 要让 VS Code 的 `.ipynb` 认出这个环境，得在环境里补装 `ipykernel`。 ]
-])
+]
 
 == uv：新一代包管理器
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   uv 由 Astral 公司用 Rust 写成，把 pip、pipx、virtualenv、poetry 四套工具的职责合并成一条命令，依赖求解走全局算法，装包速度通常快出一到两个数量级。
@@ -469,11 +475,11 @@
   ```
 
   #tip[ `uv.lock` 是 *可复现* 的关键——把它一起提交，换台机器 `uv sync` 就能还原出一模一样的环境。 ]
-])
+]
 
 == 配置 VS Code
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   *安装扩展*
@@ -503,7 +509,7 @@
     "ruff.configuration": "pyproject.toml"
   }
   ```
-])
+]
 
 = C/C++ 环境
 
@@ -519,7 +525,7 @@
 
 == 工具链：MSYS2
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   工具链是整个编程环境的核心。在 macOS 与 Linux 上，系统内置了 C 运行时与库文件，Windows 上则要自己补上这一块，于是我们选择微软官方推荐的 MSYS2，它同时提供了三个不同 ABI 的环境，其中 *UCRT64* 与系统自带的通用 C 运行时一致，是当下的首选。
@@ -546,11 +552,11 @@
   )
 
   #tip[ 本教程统一使用 *UCRT64*，它的 C 运行时与系统内置的一致，跨工具链混用时的坑最少。 ]
-])
+]
 
 == 配置 pacman 与 UCRT64
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   *① 换成国内源*
@@ -582,11 +588,11 @@
   ```
 
   #warning[ 若 pacman 报「无法提交处理（有冲突的文件）」，用 `pacman -S --overwrite="*" [package]` 覆盖后重试。 ]
-])
+]
 
 == 安装第三方库
 
-#block(height: 17em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   MSYS2 的包管理器和 Python 的 conda 一样，把编译好的库与头文件一起交付，不必自己下载源码编译。
@@ -614,11 +620,11 @@
   )
 
   #tip[ 库的头文件在 `ucrt64\include`，链接库在 `ucrt64\lib`——后面写工程文件时会反复用到这两个路径。 ]
-])
+]
 
 == VS Code 扩展
 
-#block(height: 17em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   在扩展商店里搜索并安装 C/C++（下载量最多的那个），它提供补全、跳转与调试前端。
@@ -635,11 +641,11 @@
     "C_Cpp.default.mergeConfigurations": true
   }
   ```
-])
+]
 
 == 工程文件：三份 JSON
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   在工作文件夹下新建 `.vscode` 目录，里面三份文件各管一段。
@@ -686,11 +692,11 @@
     ]
   }
   ```
-])
+]
 
 == 一键编译与调试
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   `tasks.json` 定义编译动作，`launch.json` 定义调试会话，两者用一个任务名串起来。
@@ -719,13 +725,13 @@
   #tip[ `preLaunchTask` 的值必须与 `tasks.json` 里的 `label` *逐字一致*，否则 F5 只会报「找不到任务」。 ]
 
   想要图形化的构建与调试，也可以下载 #link("https://mirrors.ustc.edu.cn/qtproject/official_releases/qtcreator/latest/installer_source/", "Qt Creator")，在其中把同一套工具链再配一遍。
-])
+]
 
 = 小结
 
 == 三条命令之后
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
   *一个包管理器*
@@ -748,4 +754,4 @@
   - 窗口：Windows Terminal
 
   这三件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
-])
+]

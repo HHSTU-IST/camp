@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "研究预备课", info: info-research)
+#show: chapter-style.with(title: "研究预备课", info: info-paper)
 
 = 文献
 <文献>
@@ -43,14 +43,15 @@
 
 == 图像处理
 
-#block(height: 5em, columns()[
+#columns()[
   - 位图编辑器
     - 处理格式：png, jpeg
     - 适用场景：修图得
+  #colbreak()
   - 矢量图编辑器
     - 处理格式：svg
     - 适用场景：图表排版、海报等
-])
+]
 
 #figure(
   table(

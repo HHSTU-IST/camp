@@ -1,22 +1,23 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "论文构思", info: paper)
+#show: chapter-style.with(title: "论文构思", info: info-paper)
 
 = 概览
 <概览>
 
 == 论文结构
 
-#block(height: 11em, columns()[
+#columns()[
   - 题目（Title）
   - 摘要（Abstract）
   - 正文（Body）
-    + 引言（Introduction）
-    + 研究方法（Metodology）
-    + 结果与讨论（Results/Discussion）
-    + 结论（Conclusion）
+    - 引言（Introduction）
+    - 研究方法（Metodology）
+    - 结果与讨论（Results/Discussion）
+    - 结论（Conclusion）
+  #colbreak()
   - 致谢（Acknowledgement）
   - 参考文献（Reference）
-])
+]
 
 == 审阅过程
 
@@ -25,7 +26,7 @@
 
 == 要点
 
-#block(height: 12em, columns()[
+#columns()[
   === 回答问题
 
   - 研究的主题是什么？
@@ -33,12 +34,14 @@
 
   === 段落结构
 
-  + 背景信息
+  - 背景信息
     - 宽泛主题 → 具体主题
     - 说明问题的重要性
-  + 文献引述
+  - 文献引述
     - 他人成果 → 研究空白
-  + 课题陈述
+  - 课题陈述
+
+  #colbreak()
 
   === 文献要求
 
@@ -48,7 +51,7 @@
   === 篇幅要求
 
   - 占总体：10%
-])
+]
 
 == 示例
 
@@ -57,31 +60,33 @@
 
 == 要点
 
-#block(height: 9em, columns()[
+#columns()[
   - 回答问题
     - [ ] 作者是若得到结果的？
   - 细节要求
     - [ ] 充分
     - [ ] 准确
+  #colbreak()
   - 语言要求
     - [ ] 简洁
     - [ ] 逻辑连贯
-])
+]
 
 == 体系
 
-#block(height: 11em, inset: .5em, columns()[
+#columns()[
   - 广义工程类
-    + 假设
-    + 数学推导
-    + 验证
-    + 实验设备/软件
+    - 假设
+    - 数学推导
+    - 验证
+    - 实验设备/软件
+  #colbreak()
   - 控制类
-    + 动态系统
-    + 控制器设计
-    + 稳定性分析
-    + 实验设备/软件
-])
+    - 动态系统
+    - 控制器设计
+    - 稳定性分析
+    - 实验设备/软件
+]
 
 == 示例
 
@@ -90,25 +95,26 @@
 
 == 体系
 
-#block(height: 5em, columns()[
-  + 结果描述
+#columns()[
+  - 结果描述
     - 语言描述
     - 视觉描述
-  + 结果分析
-  + 结果讨论
-])
+  - 结果分析
+  #colbreak()
+  - 结果讨论
+]
 
 == 结果描述
 
-- 定量 + 定性
+定量 + 定性
 
 === 百分比
 
-+ 统计结果表明...主要是...，占比...，其次是...，最后是，只占总数的...
+- 统计结果表明...主要是...，占比...，其次是...，最后是，只占总数的...
 
 == 结果分析
 
-- 论证 + 对比
+论证 + 对比
 
 == 结果讨论
 
@@ -121,68 +127,72 @@
 
 == 要点
 
-#block(height: 12em, columns()[
-  + 符合期刊要求
+#columns()[
+  - 符合期刊要求
     - Figure vs. Fig.
-  + 必须在正文中引用
-  + 必须在正文中描述
-  + 与正文中保持一致
+  - 必须在正文中引用
+  - 必须在正文中描述
+  #colbreak()
+  - 与正文中保持一致
     - 单位、符号的名称
     - 单位、符号的格式
-  + 标题自明
+  - 标题自明
     - 主标题：清晰、准确、完整
     - 副标题：辅助子图
-  + 图例便于区分
+  - 图例便于区分
     - 样式区分
     - 颜色区分
-])
+]
 
 = 结论、摘要、题目
 <结论-摘要-题目>
 
 == 结论
 
-#block(height: 11em, columns()[
-  + 介绍文章的主题和研究方法
+#columns()[
+  - 介绍文章的主题和研究方法
     - 1\~2句话
     - 不重复使用结果部分的句子
-  + 提炼结果与讨论
+  - 提炼结果与讨论
     - 强调发现
     - 描述扩展
     - 提出未来方案
-  + 回归引言，逻辑闭环
-])
+  #colbreak()
+  - 回归引言，逻辑闭环
+]
 
 === 示例
 
-+ This paper investigates ... using ...
+- This paper investigates ... using ...
 
 == 摘要
 
 整体为倒金字塔结构
 
-#block(height: 13em, columns()[
-  + 引言
+#columns()[
+  - 引言
     - 3 句话
     - 强调研究的重要性
-  + 研究方法
-    - 1\~2 句话
-  + 结果与讨论
+  - 研究方法
+    - 1~2 句话
+  #colbreak()
+  - 结果与讨论
     - 选取最重要的结果
     - 突出最重要的数据
-  + 结论
+  - 结论
     - 改写
     - 强调文章贡献
-])
+]
 
 == 题目
 
-#block(height: 9em, columns()[
-  + 必需要素
+#columns()[
+  - 必需要素
     - 研究内容
     - 研究方法
-  + 包含所有关键字
-  + 可选要素
+  - 包含所有关键字
+  #colbreak()
+  - 可选要素
     - 研究结果：隐含描述
       - improvement, reduce
-])
+]

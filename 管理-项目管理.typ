@@ -6,55 +6,67 @@
 
 项目是为创造独特的产品、服务、成果而进行的临时性工作。
 
-#block(height: 3em, columns(4)[
+#columns(4)[
   - 项目收益
   - 需求范围
+  #colbreak()
   - 时间进度
   - 项目资源
+  #colbreak()
   - 成本预算
   - 质量要求
+  #colbreak()
   - 风险应对
-])
+]
 
 == 项目与产品
 <项目与产品>
 
 === 项目的生命周期
 
-#block(height: 3em, columns()[
+#columns()[
   + 定义与决策：项目启动过程
   + 计划与设计：项目计划过程
+  #colbreak()
   + 实施与控制：项目执行与监控过程
   + 完工与交付：项目收尾过程
-])
+]
 
 === 产品生命周期
 
-#block(height: 1em, columns(5)[
+#columns(5)[
   + 导入期
+  #colbreak()
   + 成长期
+  #colbreak()
   + 成熟期
+  #colbreak()
   + 衰退期
+  #colbreak()
   + 消亡期
-])
+]
 
 === VUCA
 
-#block(height: 3em, columns()[
+#columns()[
   + volatility：易变性
   + uncertainty：不确定性
+  #colbreak()
   + complexity：复杂性
   + ambiguity：模糊性
-])
+]
 
 === 敏捷理念
 
-#block(height: 2em, columns(4)[
+#columns(4)[
   + 快速交付
+  #colbreak()
   + 价值导向
+  #colbreak()
   + 响应变化
+  #colbreak()
   + 简单设计
-])
+]
 
 
 == 能力要求
@@ -62,28 +74,30 @@
 
 === PMI 人才三角模型
 
-#block(height: 9em, columns(3, gutter: -2.5%)[
+#columns(3, gutter: -2.5%)[
   - 工作方式（Ways of Working）
     - 理解多种工作方式
     - 采用多种工作方式
     - 及时转变工作方式
   \
+  #colbreak()
   - 商业敏锐度（Business Acumen）
     - 理解力
     - 判断力
     - 决策力
   \
+  #colbreak()
   - 影响力（Power Skills）
     - 协作领导能力
     - 沟通能力
     - 创新思维
     - 目标导向
     - 移情能力
-])
+]
 
 === 项目经理
 
-#block(height: 7.5em, columns(4)[
+#columns(4)[
   - 问题清单
     - 问题/目标
     - 具体措施
@@ -92,12 +106,13 @@
     - 执行人和出资人
     - 验收标准
     - 突发状况的应对预案
+  #colbreak()
   - 职责
     - 明确方向
     - 整合资源
     - 规划方案
     - 控制偏差
-])
+]
 
 == 权力-利益矩阵
 
@@ -137,20 +152,22 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 == 职责
 
-#block(height: 7em, columns(3, gutter: -8%)[
+#columns(3, gutter: -8%)[
   - 项目发起人
     - 批准项目
     - 任命项目经理
     - 召开项目启动会议
+  #colbreak()
   - 商业发起人
     - 主导商业论证
     - 组织高层代表
     - 为项目获取资金和资源
+  #colbreak()
   - 项目经理
     - 明确描述项目目标和意义
     - 识别项目相关方，管理其需求
     - 商业分析、可行性分析等
-])
+]
 
 - 描述项目目标说明书（POS）原则
   + 2W1H 原则：What, When, How much
@@ -160,67 +177,76 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 === 项目启动会
 
-#block(height: 5em, columns(3)[
+#columns(3)[
   - 会前准备
     - 明确目标，认同职责
     - 充分沟通，达成共识
+  #colbreak()
   - 会中控制
     - 将信息沟通到位
     - 合理控制发言时间
     - 不做发言讨论
+  #colbreak()
   - 会后跟踪
     - 答复问题
-])
+]
 
 === 项目章程
 项目章程是动态的文件，需要随项目进展而进行动态调整
 
-#block(height: 4em, columns(3)[
+#columns(3)[
   - 项目价值及收益
   - 项目经理的权限
+  #colbreak()
   - 项目团队
   - 项目成果要求
+  #colbreak()
   - 项目的大致预算
-])
+]
 
 = 项目计划过程
 <项目计划过程>
 
 == 计划编写
 
-#block(height: 6em, columns(3)[
+#columns(3)[
   - 项目简介
     - 项目背景
     - 项目由来
     - 关键假设和约束条件
+  #colbreak()
   - 项目目标
     - 项目主要交付物
     - 交付时间要求
     - 成本预算
+  #colbreak()
   - 项目的三大基准
     - 范围基准
     - 进度基准
     - 成本基准
-])
+]
 
 === 十个子计划（不重复，不遗漏）
 
-#block(height: 5em, columns(4)[
+#columns(4)[
   + 需求管理计划
   + 进度管理计划
   + 成本管理计划
+  #colbreak()
   + 质量管理计划
   + 资源管理计划
   + 采购管理计划
+  #colbreak()
   + 沟通管理计划
   + 风险管理计划
+  #colbreak()
   + 利益相关方管理计划
   + 变更管控计划
-])
+]
 
 == 需求
 
-#block(height: 19em, columns()[
+#columns()[
   - 收集需求：5 Why 法
   - 需求分析与定义范围
     - 功能分析：KANO 模型
@@ -232,6 +258,7 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
       + Should Have
       + Could Have
       + Won’t Have
+  #colbreak()
   - WBS
     - 三要素
       + Work：具体工作
@@ -242,7 +269,7 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
       + 任务之间相互独立不交叉
       + 可成功交付导向
       + 管控适用
-])
+]
 
 == 进度
 
@@ -259,17 +286,18 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 === 关键路径
 
-#block(height: 8em, columns()[
+#columns()[
   - 节点
     - 最早开始时间
     - 最早完成时间
     - 最晚完成时间
     - 最晚开始时间
+  #colbreak()
   - 压缩关键路径时间
     - 改变活动的逻辑关系
     - 快速跟进
     - 赶工：会增加成本
-])
+]
 
 == 成本
 
@@ -297,12 +325,13 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 === 监控
 
-#block(height: 3em, columns()[
+#columns()[
   - 立项：监控完成阶段任务及相关产出
   - 规划：监控产生有效的项目计划
+  #colbreak()
   - 执行：监控按照计划实现项目目标
   - 收尾：监控项目关闭前完成所有项目工作
-])
+]
 
 === 挣值分析
 
@@ -318,12 +347,15 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 - 鼓励每位员工参与质量管理活动
 - 重在预防，将质量问题杜绝在萌芽状态
 - PDCA 持续改进
-  #block(height: 1em, columns(4)[
+  #columns(4)[
     - Plan：计划
+    #colbreak()
     - Do：执行
+    #colbreak()
     - Check：检查
+    #colbreak()
     - Act：处理
-  ])
+  ]
 
 === 变更控制要点
 
@@ -335,30 +367,32 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 === 风险应对
 
-#block(height: 3em, columns()[
+#columns()[
   - 规避策略
   - 转移策略：买保险
+  #colbreak()
   - 减轻策略：严格筛选
   - 接受策略
-])
+]
 
 
 == 团队
 
-#block(height: 10em, columns()[
+#columns()[
   - 布鲁斯-塔克曼模型
     - 形成期（Forming）：指导式
     - 震荡期（Storming）：教练式
     - 规范期（Norming）：参与式
     - 成熟期（Performing）：委任式
     - 解散期（Adjourning）
+  #colbreak()
   - 效能影响因素
     - 分工是否明确
     - 职责是否清晰
     - 流程是否合理
     - 工具是否到位
     - 成员能否完成工作
-])
+]
 
 = 项目收尾过程
 <项目收尾过程>
@@ -367,25 +401,27 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 - 项目验收，处理收付款，关闭合同
 
-#block(height: 3em, columns()[
+#columns()[
   验收依据
   项目范围说明书
+  #colbreak()
   项目验收标准
   合同的具体条目
-])
+]
 - 落实预留问题的解决方案，指派责任人
 - 组织复盘，总结经验，形成组织过程资产
 - 跟进改进事项，转交项目发起人，确认项目结束
 
 == 成功关键
 
-#block(height: 3em, columns()[
+#columns()[
   - 充分理解项目的需求和目标
   - 始终获得利益相关方的支持
   - 详尽的计划
+  #colbreak()
   - 积极地响应变化，拥抱变化
   - 沟通
-])
+]
 
 = 软件工程管理
 <软件工程管理>
@@ -394,113 +430,126 @@ Mendelow 矩阵分为 4 类，x 轴为利益相关者利益（从低到高），
 
 工程（project）：起源于军事，是一种过程模型。软件工程相当于，软件 + 项目管理。
 
-#block(height: 10em, columns(3)[
+#columns(3)[
   - 软件
     - 程序
     - 数据结构
     - 算法
     - 数据
     - 文档
+  #colbreak()
   - 软件的特点
     - 复杂性
     - 一致性
     - 可变性
     - 不可见性
   、
+  #colbreak()
   - 工程的特点
     - 可重复性
     - 可控制性
     - 可规模化
     - 保证质量
     - 按期交付
-])
+]
 
 == 代码特性
 
-#block(height: 6em, columns(4, gutter: -2%)[
+#columns(4, gutter: -2%)[
   - 使用价值
     - 正确性
     - 高性能
   \
+  #colbreak()
   - 沟通价值
     - 可读性
     - 直观的变量名称
     - 详细的注释
+  #colbreak()
   - 协作价值
     - 可维护性
     - 复用
   \
+  #colbreak()
   - 系统科学的管理方法
     - 重视规范
     - 代码评审
-])
+]
 
 == 人员要求
 
-#block(height: 8em, columns(3)[
+#columns(3)[
   - 能力要求
     - 专业知识
     - 产品思维
     - 项目管理
     - 研究创新
+  #colbreak()
   - 工作目标
     - 无序 → 有序
     - 现实问题 → 数字模型
     - 认知 → 设计与品味
+  #colbreak()
   - 一些观点
     - 只要足够多的人检查代码，代码质量就会高（存疑）
-])
+]
 
 = 系统项目总师
 <系统项目总师>
 
 == 日常积累
 
-#block(height: 7em, columns(3)[
+#columns(3)[
   - 记录日志
     - 人
     - 时间
     - 问题、解决方案
+  #colbreak()
   - 了解系统
     - 设备
     - 全流程
     - 全要素
+  #colbreak()
   - 问题
     - 优先级排序
     - 分阶段解决
     - 通过数据找原因
-])
+]
 
 == 能力与品质
 
 === 个人
 
-#block(height: 7em, columns(3, gutter: -1%)[
+#columns(3, gutter: -1%)[
   - 时间观
     - 严格的时间管理
     - 每天制定可操作性强的工作目标
+  #colbreak()
   - 执行力
     - 当日任务当日毕，遵守自己制定的规则
     - 按优先级分步实施
+  #colbreak()
   - 遇事冷静，胆大心细
     - 遇到突发问题，保持冷静
     - 遇到疑难问题，发散思考，谨慎求证
-])
+]
 
 === 团队中
 
-#block(height: 9em, columns(3)[
+#columns(3)[
   - 团队管理
     - 统一思想，统一目标
     - 发现别人的优点，各尽其才
     - 弹性管理，张弛有度,
     - 具备仪式感，保持温暖,
+  #colbreak()
   - 沟通能力
     - 正视别人
     - 留有余地
     - 化解误解,
     - 加深友谊,
+  #colbreak()
   - 安全意识
     - 人身安全
     - 信息安全
-])
+]

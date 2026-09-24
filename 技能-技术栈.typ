@@ -5,17 +5,18 @@
 
 == 选择标准
 
-#block(height: 8em, columns()[
+#columns()[
   - 首选
     - ☐ 开源软件
     - ☐ 可扩展，生态繁荣的软件
     - ☐ 有大厂（好爸爸）背书的软件
     - ☐ 提供 C++ 或 Python 接口的软件
+  #colbreak()
   - 软件必备特征
     - ☐ 跨平台
     - ☐ 半年内开发活跃
     - ☐ 贡献者过百（开源软件可见）
-])
+]
 
 == 注意事项
 
@@ -76,24 +77,27 @@ Scoop / WinGet 的设计理念略有不同，其差别如下
 
 === 通用软件
 
-#block(height: 6em, columns()[
+#columns()[
   - 绘图（禁用 Visio）
     - Draw.io
   - 科学上网
     - Clash Verge Rev
+  #colbreak()
   - 大模型
     - Ollama
-])
+]
 
 === Markdown
 
 AI 时代，大模型均支持三种语言：
 
-#block(height: 1em, columns(3)[
+#columns(3)[
   - ☐ Markdown（输入输出）
+  #colbreak()
   - ☐ Python（前端交互）
+  #colbreak()
   - ☐ C++（后端运算）
-])
+]
 
 由上到下，其学习难度递增。Markdown 是必会的。
 

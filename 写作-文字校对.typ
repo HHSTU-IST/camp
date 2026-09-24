@@ -1,12 +1,12 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "文字校对", info: paper)
+#show: chapter-style.with(title: "文字校对", info: info-paper)
 
 #show link: underline
 
 = 基本格式
 <基本格式>
 
-#block(height: 30em, columns(3)[
+#columns(3)[
   == 纸张
   - ☐ 大小
   - ☐ 页边距
@@ -22,6 +22,7 @@
   - ☐ 字体
   - ☐ 字号
 
+  #colbreak()
   == 正文
 
   - ☐ 字体
@@ -38,6 +39,7 @@
 
   == 内容
 
+  #colbreak()
   === 数字、单位
 
   - ☐ 指数上标
@@ -55,7 +57,7 @@
   == 语法
 
   - ☐ 波浪线提示
-])
+]
 
 = 内容格式
 <内容格式>
@@ -64,7 +66,7 @@
 
 统一样式，注意观察要求的样式特征。
 
-#block(height: 12em, columns(3)[
+#columns(3)[
   === 人名
 
   - ☐ 大小写
@@ -74,6 +76,7 @@
     - 姓前名后
     - 名前姓后
 
+  #colbreak()
   === 题目
 
   - ☐ Upper Case
@@ -83,13 +86,13 @@
   - ☐ Title Case
     - 所有单词首字母大写
     - 介词小写
-])
+]
 
 #pagebreak()
 
 == 翻译内容
 
-#block(height: 10em, columns()[
+#columns()[
 
   === 人名和地名
 
@@ -104,10 +107,11 @@
   - ☐ 尽量使用现代汉语进行翻译
   - ☐ 应通篇保证风格的一致性
 
+  #colbreak()
   === 较长的句子
 
   - ☐ 可进行分割翻译，不必逐字逐句、一一对应
-])
+]
 
 = 通行规范
 
