@@ -1,10 +1,260 @@
 #import "lib/lib.typ": *
 #show: touying-quick.with(
   title: "编程环境",
-  subtitle: "从解释器到终端，一次装好",
+  subtitle: "从终端到编辑器，构建高效开发流程",
   info: info-skill,
   bgimg: bghexagon,
 )
+
+= 终端环境
+
+== 开场提问
+
+#align(center + horizon)[
+  #set text(size: 28pt)
+
+  你一天要在终端里敲多少行命令？\
+  \
+  那这个终端*顺不顺手*，重要吗？
+]
+
+== 提示符：Starship
+
+#block(height: 18em, columns()[
+  #set text(size: 15pt)
+
+  Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
+
+  ```powershell
+  scoop install starship
+  ```
+
+  装完打开 PowerShell 的配置文件
+
+  ```powershell
+  code $PROFILE
+  ```
+
+  加入一行即可生效
+
+  ```powershell
+  Invoke-Expression (&starship init powershell)
+  ```
+
+  同理，对 macOS 有
+
+  ```shell
+  brew install starship
+  ```
+
+  打开`~/.zshrc`，添加：
+
+  ```shell
+  eval "$(starship init zsh)"
+  ```
+
+  #colbreak()
+
+  提示符里的图标需要一款带 Nerd Font 字形的等宽字体
+
+  ```powershell
+  scoop bucket add nerd-fonts
+  scoop install FiraCode-NF
+  ```
+
+  #figure(
+    image("vscode/images/starship.png", height: 55%),
+    caption: none,
+  )
+
+  详情参考 #link("https://starship.rs/")[Starship 官网]
+])
+
+== 扩展：让输入更顺手
+
+#columns()[
+  #set text(size: 17pt)
+  PowerShell 自带的行编辑能力相当有限，PSReadLine 把补全、历史搜索、语法高亮这一整套补上。
+
+  ```powershell
+  scoop install psreadline
+  ```
+
+  打开 `code $PROFILE`，加入
+
+  #[
+    #set text(size: 13pt)
+
+    ```powershell
+    Import-Module PSReadLine
+
+    Set-PSReadlineKeyHandler -Key Tab -Function Complete
+    Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
+    Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+    Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+    ```
+  ]
+
+  #[
+    #set text(size: 14pt)
+    #tip[
+      上下箭头变成*按前缀搜索历史* 之后，同一条长命令不需要再敲第二遍。
+    ]
+  ]
+
+  #colbreak()
+
+  Zsh 有很好的扩展性，这里推荐 3 个最常用的扩展
+
+  - zsh-autosuggestions（补全提示）
+  - zsh-syntax-highlighting（高亮）
+  - zsh-completions（补全）
+
+  安装扩展
+
+  ```shell
+  brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+  ```
+
+  在 `~/.zshrc` 中添加：
+
+  #[
+    #set text(size: 14pt)
+
+    ```shell
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    autoload -Uz compinit && compinit
+    ```
+  ]
+]
+
+== Windows Terminal
+
+#block(height: 18em, columns()[
+  #set text(size: 15pt)
+
+  Windows Terminal 是微软官方的终端模拟器，把 PowerShell、命令提示符、MSYS2 与 WSL 收进同一扇窗，支持标签、分屏与 GPU 渲染。
+
+  ```powershell
+  scoop install windows-terminal
+  ```
+
+  它把配置文件放在 `settings.json` 里，外观部分写在 `profiles.defaults` 中，对所有终端类型一并生效。
+
+  #colbreak()
+
+  ```json
+  {
+    "copyOnSelect": true,
+    "centerOnLaunch": true,
+    "launchMode": "maximized",
+    "defaultInputScope": "alphanumericHalfWidth",
+    "profiles": {
+      "defaults": {
+        "font": {
+          "face": "FiraCode Nerd Font",
+          "size": 16
+        },
+        "snapOnInput": true,
+        "useAcrylic": true
+      }
+    }
+  }
+  ```
+])
+
+=== 分屏与键位
+
+#block(height: 18em, columns()[
+  #set text(size: 15pt)
+
+  *默认键位*
+
+  #tableq(
+    (
+      ([按键], [动作]),
+      ([`Ctrl + Shift + T`], [新建标签页]),
+      ([`Ctrl + Tab`], [切换到下一个标签页]),
+      ([`Alt + Shift + -`], [向下分屏]),
+      ([`Alt + Shift + \`], [向右分屏]),
+      ([`Alt + 方向键`], [在窗格间移动焦点]),
+      ([`Alt + Shift + 方向键`], [调整窗格大小]),
+      ([`Ctrl + Shift + W`], [关闭当前窗格]),
+    ),
+    2,
+  )
+
+  #colbreak()
+
+  开终端的第一件事，是把它 *窗格化*：左边跑服务、右边看日志，或者上边写代码、下边敲命令，一屏之内同时看见输入与输出。
+
+  #tip[ 分屏之后用 `Alt + 方向键` 换焦点、`Alt + Shift + 方向键` 调大小，比拖动鼠标精确得多。 ]
+
+  #note[ 方向键那一行也管着标签页：`Alt + Shift + 方向键` 落在标签栏上时，是 *移动标签* 而非调整窗格。 ]
+])
+
+=== 把终端放进右键菜单
+
+#block(height: 19em)[
+  #set text(size: 15pt)
+
+  在注册表里挂三条命令，右键任意文件夹的背景，就能 *就地* 开一个终端：一条建菜单项，一条挂图标，一条写命令行。
+
+  ```powershell
+  $base = "Registry::HKEY_CLASSES_ROOT\Directory\Background\shell"
+  $wt   = "C:\Scoop\apps\windows-terminal\current"
+
+  sudo New-Item -Path "$base\wt" -Force `
+    -Value "Windows Terminal here"
+
+  sudo New-ItemProperty -Path "$base\wt" -Force `
+    -Name Icon -PropertyType ExpandString `
+    -Value "$wt\Images\LargeTile.scale-100.png"
+
+  sudo New-Item -Path "$base\wt\command" -Force `
+    -Type ExpandString `
+    -Value "$wt\WindowsTerminal.exe -p PowerShell -d %V"
+  ```
+
+  #tip[ `%V` 是资源管理器传来的当前目录——把它换掉，菜单项就会开在别处；`sudo` 则负责把这几条写进 `HKEY_CLASSES_ROOT`。 ]
+]
+
+== 集成与别名
+
+#block(height: 18em, columns()[
+  #set text(size: 18pt)
+
+  *让 VS Code 用上这个终端*
+
+  在 `settings.json` 中加入
+
+  ```json
+  {
+    "terminal.integrated.shell.windows": "C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "terminal.integrated.shellArgs.windows": [
+      "-ExecutionPolicy", "Bypass", "-NoLogo", "-NoExit"
+    ]
+  }
+  ```
+
+  #colbreak()
+
+  *给常用命令起短名字*
+
+  ```powershell
+  function sls {scoop list}
+  function sud {scoop update}
+  function suda {scoop update *}
+  function scl {scoop cleanup *}
+  function sst {scoop status}
+  ```
+
+  别名的价值不在省下几个字符，而在于 *把「我总忘的那条长命令」固定成一个词*——写进 `$PROFILE`，它就跟着你换机器、换系统。
+
+
+])
 
 = Python 环境
 
@@ -15,20 +265,22 @@
 
   你在自己电脑上装过几个 Python？\
   \
-  它们现在还住在 *同一个目录* 里吗？
+  它们现在还住在*同一个目录*里吗？
 ]
 
 == 包管理器怎么选
 
 #align(center + horizon)[
   #set text(size: 16pt)
-  #let data = csv("data/env-pkgman.csv")
+  #let data = csv("data/env-pkg-py.csv")
   #figure(
     tableq(data, 4),
     caption: "Python 包管理器对比",
   )
-  #v(0.4em)
-  #set text(size: 14pt)
+]
+
+#[
+  #set text(size: 16pt)
   *一句话：科学计算与多语言场景交给 mamba，纯 Python 项目交给 uv，两者在同一台机器上可以并存。*
 ]
 
@@ -41,7 +293,7 @@
 
   #v(0.3em)
 
-  #let data = csv("data/env-conda.csv")
+  #let data = csv("data/env-pkg-conda.csv")
   #figure(
     tableq(data, 4),
     caption: "conda 系发行版",
@@ -452,215 +704,6 @@
 
   想要图形化的构建与调试，也可以下载 #link("https://mirrors.ustc.edu.cn/qtproject/official_releases/qtcreator/latest/installer_source/", "Qt Creator")，在其中把同一套工具链再配一遍。
 ])
-
-= 终端环境
-
-== 开场提问
-
-#align(center + horizon)[
-  #set text(size: 28pt)
-
-  你一天要在终端里敲多少行命令？\
-  \
-  那这个终端 *顺不顺手*，重要吗？
-]
-
-== PowerShell 提示符：Starship
-
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
-
-  Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
-
-  ```powershell
-  scoop install starship
-  ```
-
-  装完打开 PowerShell 的配置文件
-
-  ```powershell
-  code $PROFILE
-  ```
-
-  加入一行即可生效
-
-  ```powershell
-  Invoke-Expression (&starship init powershell)
-  ```
-
-  #colbreak()
-
-  提示符里的图标需要一款带 Nerd Font 字形的等宽字体
-
-  ```powershell
-  scoop bucket add nerd-fonts
-  scoop install FiraCode-NF
-  ```
-
-  #figure(
-    image("vscode/images/starship.png", height: 55%),
-    caption: none,
-  )
-])
-
-== PSReadLine：让输入更顺手
-
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
-
-  PowerShell 自带的行编辑能力相当有限，PSReadLine 把补全、历史搜索、语法高亮这一整套补上。
-
-  ```powershell
-  scoop install psreadline
-  ```
-
-  #colbreak()
-
-  打开 `code $PROFILE`，加入
-
-  ```powershell
-  Import-Module PSReadLine
-
-  Set-PSReadlineKeyHandler -Key Tab -Function Complete
-  Set-PSReadLineKeyHandler -Key "Ctrl+d" -Function MenuComplete
-  Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
-  Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-  Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-  ```
-
-  #tip[ 上下箭头变成 *按前缀搜索历史* 之后，同一条长命令不需要再敲第二遍。 ]
-])
-
-== Windows Terminal
-
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
-
-  Windows Terminal 是微软官方的终端模拟器，把 PowerShell、命令提示符、MSYS2 与 WSL 收进同一扇窗，支持标签、分屏与 GPU 渲染。
-
-  ```powershell
-  scoop install windows-terminal
-  ```
-
-  它把配置文件放在 `settings.json` 里，外观部分写在 `profiles.defaults` 中，对所有终端类型一并生效。
-
-  #colbreak()
-
-  ```json
-  {
-    "copyOnSelect": true,
-    "centerOnLaunch": true,
-    "launchMode": "maximized",
-    "defaultInputScope": "alphanumericHalfWidth",
-    "profiles": {
-      "defaults": {
-        "font": {
-          "face": "FiraCode Nerd Font",
-          "size": 16
-        },
-        "snapOnInput": true,
-        "useAcrylic": true
-      }
-    }
-  }
-  ```
-])
-
-== 分屏与键位
-
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
-
-  *默认键位*
-
-  #tableq(
-    (
-      ([按键], [动作]),
-      ([`Ctrl + Shift + T`], [新建标签页]),
-      ([`Ctrl + Tab`], [切换到下一个标签页]),
-      ([`Alt + Shift + -`], [向下分屏]),
-      ([`Alt + Shift + \`], [向右分屏]),
-      ([`Alt + 方向键`], [在窗格间移动焦点]),
-      ([`Alt + Shift + 方向键`], [调整窗格大小]),
-      ([`Ctrl + Shift + W`], [关闭当前窗格]),
-    ),
-    2,
-  )
-
-  #colbreak()
-
-  开终端的第一件事，是把它 *窗格化*：左边跑服务、右边看日志，或者上边写代码、下边敲命令，一屏之内同时看见输入与输出。
-
-  #tip[ 分屏之后用 `Alt + 方向键` 换焦点、`Alt + Shift + 方向键` 调大小，比拖动鼠标精确得多。 ]
-
-  #note[ 方向键那一行也管着标签页：`Alt + Shift + 方向键` 落在标签栏上时，是 *移动标签* 而非调整窗格。 ]
-])
-
-== 把终端放进右键菜单
-
-#block(height: 19em)[
-  #set text(size: 15pt)
-
-  在注册表里挂三条命令，右键任意文件夹的背景，就能 *就地* 开一个终端：一条建菜单项，一条挂图标，一条写命令行。
-
-  ```powershell
-  $base = "Registry::HKEY_CLASSES_ROOT\Directory\Background\shell"
-  $wt   = "C:\Scoop\apps\windows-terminal\current"
-
-  sudo New-Item -Path "$base\wt" -Force `
-    -Value "Windows Terminal here"
-
-  sudo New-ItemProperty -Path "$base\wt" -Force `
-    -Name Icon -PropertyType ExpandString `
-    -Value "$wt\Images\LargeTile.scale-100.png"
-
-  sudo New-Item -Path "$base\wt\command" -Force `
-    -Type ExpandString `
-    -Value "$wt\WindowsTerminal.exe -p PowerShell -d %V"
-  ```
-
-  #tip[ `%V` 是资源管理器传来的当前目录——把它换掉，菜单项就会开在别处；`sudo` 则负责把这几条写进 `HKEY_CLASSES_ROOT`。 ]
-]
-
-== 集成与别名
-
-#block(height: 18em, columns()[
-  #set text(size: 15pt)
-
-  *让 VS Code 用上这个终端*
-
-  在 `settings.json` 中加入
-
-  ```json
-  {
-    "terminal.integrated.shell.windows": "C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
-    "terminal.integrated.shellArgs.windows": [
-      "-ExecutionPolicy", "Bypass", "-NoLogo", "-NoExit"
-    ]
-  }
-  ```
-
-  #colbreak()
-
-  *给常用命令起短名字*
-
-  ```powershell
-  function sls {scoop list}
-  function sud {scoop update}
-  function suda {scoop update *}
-  function scl {scoop cleanup *}
-  function sst {scoop status}
-  ```
-
-  别名的价值不在省下几个字符，而在于 *把「我总忘的那条长命令」固定成一个词*——写进 `$PROFILE`，它就跟着你换机器、换系统。
-
-  #figure(
-    image("vscode/images/vscode-settings.png", height: 32%),
-    caption: none,
-  )
-])
-
-// 小结
 
 = 小结
 

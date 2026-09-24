@@ -75,21 +75,10 @@ Zsh 有很好的扩展性，这里推荐 3 个最常用的扩展
 
 ### 2.1. 安装
 
-首先安装链接扩展
+安装扩展
 
 ```shell
 brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions
-```
-
-也可以选择源码安装
-
-```shell
-# zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# zsh-completions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 ```
 
 ### 2.2. 整合

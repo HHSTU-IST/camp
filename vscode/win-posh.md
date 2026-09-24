@@ -45,7 +45,36 @@ scoop install FiraCode-NF
 scoop install busybox
 ```
 
-## 2. Windows-Terminal
+## 2. PSReadLine
+
+- 安装
+
+在终端中键入如下命令：
+
+```powershell
+scoop install psreadline
+```
+
+- 配置
+
+打开配置文件
+
+```powershell
+code $PROFILE
+```
+
+添加以下配置
+
+```powershell
+Import-Module PSReadLine
+
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
+Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+```
+
+## 3. Windows-Terminal
 
 - 安装
 
@@ -53,7 +82,7 @@ scoop install busybox
 scoop install windows-terminal
 ```
 
-### 2.1. 右键菜单
+### 3.1. 右键菜单
 
 ```powershell
 $basePath = "Registry::HKEY_CLASSES_ROOT\Directory\Background\shell"
@@ -64,7 +93,7 @@ sudo New-Item -Path "$basePath\wt\command" -Force -Type ExpandString -Value '"C:
 
 ![posh](images/posh.png)
 
-### 2.2. 整体配置
+### 3.2. 整体配置
 
 ```json
 {
@@ -209,36 +238,6 @@ sudo New-Item -Path "$basePath\wt\command" -Force -Type ExpandString -Value '"C:
     "tabWidthMode": "titleLength",
     "themes": []
 }
-```
-
-## 3. PSReadLine
-
-- 安装
-
-在终端中键入如下命令：
-
-```powershell
-scoop install psreadline
-```
-
-- 配置
-
-打开配置文件
-
-```powershell
-code $PROFILE
-```
-
-添加以下配置
-
-```powershell
-Import-Module PSReadLine
-
-Set-PSReadlineKeyHandler -Key Tab -Function Complete
-Set-PSReadLineKeyHandler -Key "Ctrl+d" -Function MenuComplete
-Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 ```
 
 ## 4. 集成
