@@ -8,19 +8,19 @@ Typst 是一个 Rust 编写的新一代排版软件，是当下 LaTeX 最有力�
 
 对 macOS/Linux 用户，可以使用 Homebrew 安装
 
-```shell
+```bash
 brew install typst
 ```
 
 Windows 用户，可以使用 Scoop 安装
 
-```shell
+```bash
 scoop install typst git
 ```
 
 或者 WinGet 安装
 
-```powershell
+```sh
 winget install typst.typst
 ```
 
@@ -36,13 +36,13 @@ Typst Preview 的作者开发了一个 Typst 十分易用的格式化器，[typs
 
 对 macOS/Linux 用户，可以使用 Homebrew 安装
 
-```shell
+```bash
 brew install typstyle
 ```
 
 Windows 用户，可以使用 Scoop 安装
 
-```shell
+```bash
 scoop install typstyle
 ```
 
@@ -92,7 +92,7 @@ Typst 写 LaTeX 公式时，有时不如 Markdown 那么方便，这时可以使
 - macOS: `~/Library/Application Support`
 - Windows：`%APPDATA%`
 
-```shell
+```bash
 cd [above-path]
 git clone --depth 1 --branch main https://github.com/typst/packages typst
 ```

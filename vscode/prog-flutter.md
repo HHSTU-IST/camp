@@ -4,7 +4,7 @@
 
 macOS/Linux 用户，使用 Homebrew
 
-```shell
+```bash
 brew install flutter
 ```
 
@@ -24,7 +24,7 @@ scoop install flutter
 
 macOS/Linux 用户，使用 Homebrew
 
-```shell
+```bash
 brew install --cask android-cli
 ```
 

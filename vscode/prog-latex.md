@@ -40,13 +40,13 @@ TeX 语言本身只有 300 个命令，晦涩难懂。一个简单的符号可�
 
 对 macOS 和 Linux 用户，有 Homebrew
 
-```shell
+```bash
 brew install basictex
 ```
 
 对 Windows 用户，有 Scoop
 
-```powershell
+```sh
 # 使用 TeXLive
 scoop bucket add extras-plus https://github.com/Scoopforge/Extras-Plus
 scoop install texlive
@@ -58,7 +58,7 @@ scoop install miktex
 
 对 macOS 和 Linux 用户，有 Homebrew
 
-```shell
+```bash
 brew install tectonic
 ```
 
@@ -150,7 +150,7 @@ scoop install tectonic
 
 macOS/Linux 用户使用 Homebrew
 
-```shell
+```bash
 brew install tex-fmt
 ```
 
@@ -227,7 +227,7 @@ LaTeX 的用户里，不少人均是使用它进行英文写作的，这时就�
 
 对于 MikTeX 用户，不需要特别对包进行管理，当在文档中导入未安装的包时，LaTeX 会自动弹出窗口，询问是否安装。而对于 TeXLive 用户，需要使用包管理器 tlmgr 对 LaTeX 包进行管理。
 
-```shell
+```bash
 # 升级自身
 sudo tlmgr update --self
 # 升级所有包
@@ -238,7 +238,7 @@ sudo tlmgr list --only-installed
 
 ### 5.2. 推荐
 
-```shell
+```bash
 # 中文支持
 sudo tlmgr install ctex latexmk
 # 化学 & 电子
@@ -257,7 +257,7 @@ sudo tlmgr install ulem xcolor environ letltxmacro enumitem stringenc trimspaces
 
 需要安装 pandoc-crossref
 
-```shell
+```bash
 brew install pandoc-crossref
 # 或
 scoop install pandoc-crossref
@@ -265,7 +265,7 @@ scoop install pandoc-crossref
 
 在命令行键入
 
-```shell
+```bash
 pandoc input.tex -o output.docx -w docx --reference-doc [ref.docx] --pdf-engine xelatex --filter pandoc-crossref --bibliography=[ref.bib]
 ```
 

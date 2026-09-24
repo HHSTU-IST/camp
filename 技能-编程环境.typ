@@ -25,31 +25,31 @@
 
   Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
 
-  ```powershell
+  ```sh
   scoop install starship
   ```
 
   装完打开 PowerShell 的配置文件
 
-  ```powershell
+  ```sh
   code $PROFILE
   ```
 
   加入一行即可生效
 
-  ```powershell
+  ```sh
   Invoke-Expression (&starship init powershell)
   ```
 
   同理，对 macOS 有
 
-  ```shell
+  ```bash
   brew install starship
   ```
 
   打开`~/.zshrc`，添加：
 
-  ```shell
+  ```bash
   eval "$(starship init zsh)"
   ```
 
@@ -57,7 +57,7 @@
 
   提示符里的图标需要一款带 Nerd Font 字形的等宽字体
 
-  ```powershell
+  ```sh
   scoop bucket add nerd-fonts
   scoop install FiraCode-NF
   ```
@@ -76,7 +76,7 @@
   #set text(size: 17pt)
   PowerShell 自带的行编辑能力相当有限，PSReadLine 把补全、历史搜索、语法高亮这一整套补上。
 
-  ```powershell
+  ```sh
   scoop install psreadline
   ```
 
@@ -85,7 +85,7 @@
   #[
     #set text(size: 13pt)
 
-    ```powershell
+    ```sh
     Import-Module PSReadLine
 
     Set-PSReadlineKeyHandler -Key Tab -Function Complete
@@ -112,7 +112,7 @@
 
   安装扩展
 
-  ```shell
+  ```bash
   brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions
   ```
 
@@ -121,7 +121,7 @@
   #[
     #set text(size: 14pt)
 
-    ```shell
+    ```bash
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -133,14 +133,33 @@
 == 别名
 
 #columns()[
-  ```powershell
-  function sls {scoop list}
-  function sud {scoop update}
-  function suda {scoop update *}
-  function scl {scoop cleanup *}
-  function sst {scoop status}
+
+  ```sh
+  function .. { cd .. }
+  function ... { cd ../.. }
+  function cat { bat $args }
+  function ls { lsd $args }
+  function ll { lsd -l $args }
+  function la { lsd -a $args }
+  function lla { lsd -la $args }
+  function e { echo $args }
+  function rr { rm -rf $args }
+  function c { clear }
   ```
   #colbreak()
+
+  ```bash
+  alias ..="cd .."
+  alias ...="cd ../.."
+  alias cat="bat"
+  alias ls="lsd"
+  alias ll="ls -l"
+  alias la="ls -a"
+  alias lla="ls -la"
+  alias e="echo"
+  alias rr="rm -r"
+  alias c="clear"
+  ```
 ]
 
 = Windows Terminal
@@ -152,7 +171,7 @@
 
   Windows Terminal 是微软官方的终端模拟器，把 PowerShell、命令提示符、MSYS2 与 WSL 收进同一扇窗，支持标签、分屏与 GPU 渲染。
 
-  ```powershell
+  ```sh
   scoop install windows-terminal
   ```
 
@@ -293,13 +312,13 @@
 
   *① 包管理器安装*（能翻墙时首选）
 
-  ```powershell
+  ```sh
   winget install Mamba.Micromamba
   ```
 
   或走 Scoop
 
-  ```powershell
+  ```sh
   scoop bucket add main-plus https://github.com/Scoopforge/Main-Plus
   scoop install micromamba
   ```
@@ -314,11 +333,11 @@
 
   *③ 让命令叫回 mamba*
 
-  ```powershell
+  ```sh
   code $PROFILE
   ```
 
-  ```powershell
+  ```sh
   function mamba { micromamba $args }
   ```
 
@@ -334,7 +353,7 @@
 
   先用 VS Code 把它打开
 
-  ```shell
+  ```bash
   code .condarc
   ```
 
@@ -374,7 +393,7 @@
 
   *环境：一间自己的屋子*
 
-  ```shell
+  ```bash
   # 创建，指定名字与 Python 版本
   mamba create -n my_python python=3.12
   # 进入与退出
@@ -391,7 +410,7 @@
 
   *包：屋子里的家具*
 
-  ```shell
+  ```bash
   # 安装与删除
   mamba install numpy
   mamba uninstall numpy
@@ -415,7 +434,7 @@
 
   它只声明一件事：这个项目 *依赖什么*，剩下的事务——建环境、锁版本、跑脚本——全部由 uv 代劳。
 
-  ```powershell
+  ```sh
   winget install astral-sh.uv
   ```
 
@@ -423,7 +442,7 @@
 
   *一个项目的完整生命周期*
 
-  ```shell
+  ```bash
   # 初始化，生成 pyproject.toml
   uv init
   # 按 pyproject.toml 建环境并锁定
@@ -491,7 +510,7 @@
 
   工具链是整个编程环境的核心。在 macOS 与 Linux 上，系统内置了 C 运行时与库文件，Windows 上则要自己补上这一块，于是我们选择微软官方推荐的 MSYS2，它同时提供了三个不同 ABI 的环境，其中 *UCRT64* 与系统自带的通用 C 运行时一致，是当下的首选。
 
-  ```powershell
+  ```sh
   scoop bucket add extras-cn https://github.com/scoopforge/Extras-CN
   scoop install msys2-cn
   ```
@@ -524,13 +543,13 @@
 
   进入 MSYS2 的 UCRT64 终端，把官方镜像换成中科大镜像
 
-  ```shell
+  ```bash
   sed -i "s#https\?://mirror.msys2.org/#https://mirrors.ustc.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
   ```
 
   *② 安装 UCRT 工具链*
 
-  ```shell
+  ```bash
   pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
   ```
 
@@ -542,7 +561,7 @@
 
   *④ 重启终端后逐条验证*
 
-  ```powershell
+  ```sh
   gcc --version
   g++ --version
   gdb --version
@@ -560,7 +579,7 @@
 
   回到 UCRT64 终端，逐条执行
 
-  ```shell
+  ```bash
   pacman -S mingw-w64-ucrt-x86_64-cmake
   pacman -S mingw-w64-ucrt-x86_64-opencv
   pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative

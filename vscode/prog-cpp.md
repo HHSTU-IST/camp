@@ -21,13 +21,13 @@ scoop install msys2-cn
 
 进入 MSYS2 的 UCRT64 终端，执行如下命令，使用清华源
 
-```shell
+```bash
 sed -i "s#https\?://mirror.msys2.org/#https://mirrors.ustc.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
 ```
 
 然后安装 UCRT (Universal C Runtime) 工具链
 
-```shell
+```bash
 pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
 ```
 
@@ -50,19 +50,19 @@ gdb --version
 
 - CMake
 
-```shell
+```bash
 pacman -S mingw-w64-ucrt-x86_64-cmake
 ```
 
 - OpenCV
 
-```shell
+```bash
 pacman -S mingw-w64-ucrt-x86_64-opencv
 ```
 
 - Qt6
 
-```shell
+```bash
 pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
 ```
 

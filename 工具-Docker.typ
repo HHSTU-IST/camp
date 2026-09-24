@@ -19,7 +19,7 @@
 
 == 对应关系
 
-```shell
+```bash
 docker run -d --name nginx_host -p 8080:80 -v /opt/nginx:/opt/nginx/html nginx:latest
 ```
 上述命令可转写为 `docker-compose.yml` 文件：

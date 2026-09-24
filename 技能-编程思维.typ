@@ -227,13 +227,13 @@
 
   === 允许本用户执行脚本
 
-  ```shell
+  ```bash
   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
   ```
 
   === 自定义安装目录
 
-  ```shell
+  ```bash
   irm get.scoop.sh -outfile 'install.ps1'
   .\install.ps1 -ScoopDir 'C:\Scoop' -NoProxy
   ```
@@ -242,19 +242,19 @@
 
   === 装好基础件
 
-  ```shell
+  ```bash
   scoop install git aria2
   ```
 
   === 添加官方扩展库
 
-  ```shell
+  ```bash
   scoop bucket add extras
   ```
 
   === 添加自定义扩展库
 
-  ```shell
+  ```bash
   scoop bucket add extras-cn https://github.com/scoopforge/Extras-CN
   ```
 ]
@@ -265,7 +265,7 @@
   #set text(size: 20pt)
 
   *五个高频命令*
-  ```shell
+  ```bash
   scoop search <app>   # 搜索软件
   scoop list           # 已装清单
   scoop status         # 哪些可更新
@@ -305,19 +305,19 @@
 
   === 给现在的机器拍一张快照
 
-  ```shell
+  ```bash
   winget export -o packages.json
   ```
 
   === 换一台电脑重放一遍
 
-  ```shell
+  ```bash
   winget import -i packages.json --accept-package-agreements
   ```
 
   === 更简单的写法：一个 `setup.ps1`
 
-  ```shell
+  ```bash
   winget install Git.Git --silent
   winget install Microsoft.VisualStudioCode --silent
   winget upgrade --all --silent
@@ -441,7 +441,7 @@
   #set text(size: 16pt)
 
   *① 起一个工程*
-  ```shell
+  ```bash
   mkdir bearing-lab; cd bearing-lab
   git init
   # 写下 README.md
@@ -450,7 +450,7 @@
   ```
 
   *② 试一个冒险的改动*
-  ```shell
+  ```bash
   git branch exp/new-material
   git switch exp/new-material
   # 随便改 torque.py，main 分支保持干净
@@ -459,7 +459,7 @@
   ```
 
   *③ 成功就合并*
-  ```shell
+  ```bash
   git switch main
   git merge exp/new-material
   git log --oneline --graph
@@ -468,18 +468,18 @@
   #colbreak()
 
   *④ 放到安全的地方*
-  ```shell
+  ```bash
   git remote add origin https://github.com/<you>/bearing-lab.git
   git push -u origin main
   ```
 
   *⑤ 在另一台机器上取回来*
-  ```shell
+  ```bash
   git clone https://github.com/<you>/bearing-lab.git
   ```
 
   *常用分支与查看操作*
-  ```shell
+  ```bash
   git branch <name>      # 新建分支
   git switch <name>      # 切换分支
   git branch -d <name>   # 删除已合并的分支
@@ -580,7 +580,7 @@
   - Pandoc：文档格式领域的瑞士军刀，负责最后一步输出
 ]
 
-```shell
+```bash
 code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdown-inline-editor-vscode hediet.vscode-drawio
 ```
 
@@ -632,14 +632,14 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
   #set text(size: 20pt)
 
   *从 Markdown 出发*（需要 Pandoc）
-  ```shell
+  ```bash
   scoop install pandoc
   pandoc README.md -o README.docx
   pandoc README.md -o README.pdf
   ```
 
   *从 Typst 出发*
-  ```shell
+  ```bash
   typst compile report.typ report.pdf
   ```
   #[
@@ -702,20 +702,20 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
   #set text(size: 18pt)
 
   *装软件*
-  ```shell
+  ```bash
   scoop install typst git
   # 或
   winget install typst.typst
   ```
 
   *再装格式化器*
-  ```shell
+  ```bash
   scoop install typstyle
   ```
 
   *安装扩展 Tinymist*
 
-  ```shell
+  ```bash
   code --install-extension myriad-dreamin.tinymist czhang03.unicode-math-input
   ```
 
@@ -794,18 +794,18 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
   #set text(size: 18pt)
 
   *写出成品*
-  ```shell
+  ```bash
   typst compile 技能-编程思维.typ out.pdf
   ```
 
   *边写边看*
-  ```shell
+  ```bash
   typst watch 技能-编程思维.typ
   ```
 
   *导出图片序列*
 
-  ```shell
+  ```bash
   typst compile --ppi 100 deck.typ "output/{0p}.png"
   ```
 
@@ -834,7 +834,7 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
   \
   \
 
-  ```shell
+  ```bash
   typst compile 技能-编程思维.typ 技能-编程思维.pdf
   ```
 

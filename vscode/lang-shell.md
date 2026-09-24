@@ -33,7 +33,7 @@
 - `printf` 作为输出的移植性好，建议使用
   - 不会像 `echo` 自动添加换行符，可以手动添加 `\n`
 
-```shell
+```bash
 ## printf format-string [arguments...]
 printf "%-10s %-8s %-4.2f\n"
 ```
@@ -55,7 +55,7 @@ printf "%-10s %-8s %-4.2f\n"
 - 单行注释：`#`
 - 多行注释
 
-```shell
+```bash
 <<EOS
   This is a multi-line comment.
 EOS
@@ -73,7 +73,7 @@ EOS
 
 - 创建 & 删除
 
-```shell
+```bash
 ## 普通变量
 ## =两边不可有空格
 name="test"
@@ -94,7 +94,7 @@ unset name
 
 - 调用
 
-```shell
+```bash
 echo $name
 ## 推荐使用大括号版
 echo ${name}
@@ -104,7 +104,7 @@ echo ${name}
 
 - 引号
 
-```shell
+```bash
 ## 单引号变量只能原样输出，不能出现转义符
 var='test'
 ## 双引号变量可出现转义符
@@ -115,14 +115,14 @@ var="my name is ${name}"
 
 - 获取长度
 
-```shell
+```bash
 name="test";
 echo ${#name}; ## 4
 ```
 
 - 切片
 
-```shell
+```bash
 name="this is my name";
 echo ${name:1:4} ## is i
 echo ${name::4} ## this
@@ -132,7 +132,7 @@ echo ${name::4} ## this
 
 拼接中间无任何 `+` 之类的字符，以下语句等效（与引号类型无关）
 
-```shell
+```bash
 name="this is"" my name"
 name="this is my name"
 name="this" is "my name"
@@ -140,7 +140,7 @@ name="this" is "my name"
 
 利用括号表达式
 
-```shell
+```bash
 ## 两端拼接
 echo x{Hello, World}x
 ## echo xHellox Worldx
@@ -161,7 +161,7 @@ git add {main, x{1,2}}.rs
 
 #### 1.3.3. 批量生成
 
-```shell
+```bash
 ## 对数值字符串
 rm d{01..20}/file
 ## rm d01/file d02/file d03/file d04/file....
@@ -177,7 +177,7 @@ cat {a..f}.txt
 
 bash 只支持一维数组，不支持多维数组
 
-```shell
+```bash
 array=(li la le)
 array_name[0]="lo";
 
@@ -195,13 +195,13 @@ ${#array_name[1]}
 
 #### 2.1.1. for...in
 
-```shell
+```bash
 for num in {1...5}; do
   echo "The value is: $num"
 done
 ```
 
-```shell
+```bash
 for ((i=0; i<3; i++)); do
     touch test_${i}.txt
     echo "shell is easy" >> test_${i}.txt
@@ -210,7 +210,7 @@ done
 
 #### 2.1.2. while
 
-```shell
+```bash
 while condition
 do
   exec
@@ -236,7 +236,7 @@ done
 
 #### 2.2.2. if...else
 
-```shell
+```bash
 if condition1
 then
     exec1
@@ -250,7 +250,7 @@ fi
 
 #### 2.2.3. case...in
 
-```shell
+```bash
 case $name in
     a)  echo 'do a'
     ;;
@@ -271,7 +271,7 @@ esac
 - `-n`：检测字符串长度是否为 0
 - `$`：检测字符串是否为空
 
-```shell
+```bash
 ## 测试字符串为空
 if [[ -z "${my_var}" ]]; then
     do_something
@@ -294,7 +294,7 @@ fi
 - `-ge`：检测左边的数是否大于等于右边的
 - `-le`：检测左边的数是否小于等于右边的
 
-```shell
+```bash
 $(($a + $b))
 ```
 
@@ -302,7 +302,7 @@ $(($a + $b))
 
 #### 2.4.1. 定义
 
-```shell
+```bash
 ## Single function
 my_func() {
   action;
@@ -339,7 +339,7 @@ mypackage::my_func() {
 
 #### 2.4.4. 扩展变量
 
-```shell
+```bash
 ## param 为空，则返回 string
 ${param:-string}
 ## param 为空，则 param 为 string
@@ -368,7 +368,7 @@ ${param:?string}
 - `-s file`：检测文件是否为空（大小是否大于 0）。
 - `-e file`：检测文件（包括目录）是否存在。
 
-```shell
+```bash
 if [[ -f /var/test.log ]]
 then
   echo "File exts"
@@ -382,7 +382,7 @@ fi
   - 1：stdout（标准输出）
   - 2：stderr（标准错误）
 
-```shell
+```bash
 ## 获得命令的标准输出，标准错误依然会打印到屏幕上显示。
 i=$(ls 123.txt)
 ## ls命令若出现了错误提示，就会被重定向到/dev/null垃圾桶
@@ -393,11 +393,11 @@ i=$(ls 123.txt 2> /dev/null)
 
 #### 3.2.1. 直接执行
 
-```shell
+```bash
 curl -fsSL https://xxx/install.sh | sh
 ```
 
-```powershell
+```sh
 iwr -useb https://xxx/install.ps1 | iex
 ```
 

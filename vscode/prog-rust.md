@@ -6,7 +6,7 @@
 
 macOS/Linux 用户，使用 Homebrew
 
-```shell
+```bash
 brew install rustup
 ```
 
@@ -20,13 +20,13 @@ scoop install rustup
 
 - 使用 rustup 自动配置
 
-```shell
+```bash
 rustup
 ```
 
 - 启动 cargo
 
-```shell
+```bash
 source ~/.cargo/env
 ```
 

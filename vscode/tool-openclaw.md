@@ -6,7 +6,7 @@
 
 macOS/Linux 用户，使用 Homebrew
 
-```shell
+```bash
 brew install nodejs
 ```
 

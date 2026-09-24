@@ -10,7 +10,7 @@ Doxygen 简化了另行编写文档带来的重复性劳动，将代码和文档
 
 macOS 及 Linux 用户使用
 
-```shell
+```bash
 brew install doxygen
 ```
 
@@ -26,13 +26,13 @@ scoop install doxygen
 
 Debian/Ubuntu 用户使用
 
-```shell
+```bash
 sudo apt-get install doxygen-gui
 ```
 
 macOS 用户使用
 
-```shell
+```bash
 brew install doxygen-app
 ```
 
@@ -51,7 +51,7 @@ graphviz 是一个由 AT&T 实验室启动的开源图形可视化软件，它�
 
 macOS 及 Linux 用户使用
 
-```shell
+```bash
 brew install graphviz
 ```
 
@@ -154,7 +154,7 @@ scoop install graphviz
 
 相比于 GUI，命令行操作要简单的多，`cd` 到项目路径下，然后执行命令
 
-```shell
+```bash
 doxygen -g
 ```
 

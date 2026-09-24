@@ -8,7 +8,7 @@ Zsh 是公认的终极 Shell，其因强大的补全功能、高度的可定制�
 
 推荐使用 Homebrew 安装，详见本专栏的姊妹篇「搭建 macOS/Linux 统一开发环境」。
 
-```shell
+```bash
 # 安装 Zsh
 brew install zsh
 ```
@@ -19,13 +19,13 @@ Starship 是由 Rust 编写的命令行主题，简单高效、容易配置（�
 
 使用 Homebrew 安装
 
-```shell
+```bash
 brew install starship
 ```
 
 打开`~/.zshrc`，添加：
 
-```shell
+```bash
 eval "$(starship init zsh)"
 ```
 
@@ -37,7 +37,7 @@ eval "$(starship init zsh)"
 
 ### 1.2. 字体
 
-```shell
+```bash
 brew install font-fira-code-nerd-font
 ```
 
@@ -45,7 +45,7 @@ brew install font-fira-code-nerd-font
 
 打开`~/.zshrc`，添加：
 
-```shell
+```bash
 # 导入 bash 配置
 source ~/.bash_profile
 # linux
@@ -61,7 +61,7 @@ alias find="fd"
 
 ### 1.4. 大小写敏感
 
-```shell
+```bash
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 ```
 
@@ -77,7 +77,7 @@ Zsh 有很好的扩展性，这里推荐 3 个最常用的扩展
 
 安装扩展
 
-```shell
+```bash
 brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 ```
 
@@ -85,7 +85,7 @@ brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 
 在 `~/.zshrc` 中添加：
 
-```shell
+```bash
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -98,7 +98,7 @@ autoload -Uz compinit && compinit
 
 打开`~/.zshrc`，添加：
 
-```shell
+```bash
 zmodload zsh/zprof
 
 alias tt="\time zsh -i -c exit"

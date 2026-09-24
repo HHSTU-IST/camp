@@ -18,7 +18,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，其解决了 Python �
 
 下载 [MacOS 系统安装包](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/Miniforge3-MacOSX-arm64.sh)，然后到对应路径，输入
 
-```shell
+```bash
 sh Miniforge3-MacOSX-arm64.sh
 ```
 
@@ -33,25 +33,25 @@ scoop install micromamba
 
 或使用 WinGet
 
-```powershell
+```sh
 winget install Mamba.Micromamba
 ```
 
 对 macOS 用户，有 Homebrew
 
-```shell
+```bash
 brew install micromamba
 ```
 
 安装完毕后，通过如下语句打开 PowerShell 配置
 
-```powershell
+```sh
 code $PROFILE
 ```
 
 然后写入
 
-```powershell
+```sh
 function mamba { micromamba $args }
 ```
 
@@ -71,7 +71,7 @@ mamba 配置文件为 `.condarc`。其位置如下：
 
 输入
 
-```shell
+```bash
 code .condarc
 ```
 
@@ -111,7 +111,7 @@ remote_max_retries: 3
 
 mamba 常用操作可使用命令 `mamba -h` 和 `mamba config -h` 查看，这里列出几个常用命令：
 
-```shell
+```bash
 # 创建
 mamba create -n [env_name]
 # 删除
@@ -128,7 +128,7 @@ mamba info
 
 接下来，需要创建虚拟环境，也就是自己的工作区，可简单理解为系统登录时的用户。基本命令需指定**环境名称**和**Python 版本**：
 
-```shell
+```bash
 # 基本格式
 mamba create -n [env_name] [python= version]
 # 例子
@@ -137,7 +137,7 @@ mamba create -n my_python python=3.12
 
 安装完毕后，进入环境：
 
-```shell
+```bash
 # 进入
 mamba active my_python
 # 退出
@@ -148,7 +148,7 @@ mamba deactivate
 
 ### 3.1. 常用包操作
 
-```shell
+```bash
 # 安装
 mamba install [package_name]
 # 删除
@@ -167,7 +167,7 @@ mamba list
 
 为使用 VSCode 的 Jupyter，还需要安装 `ipykernel`
 
-```shell
+```bash
 mamba install ipykernel
 ```
 
