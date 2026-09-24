@@ -1,5 +1,5 @@
 ﻿发行版,包管理器,内置内容,主打
-Anaconda,conda,解释器、conda 与数百个数据科学包,开箱即用
-Miniconda,conda,解释器与 conda,自定义
-Miniforge,conda 与 mamba,仅环境管理功能,高度自定义
+Anaconda,conda,解释器 + conda + 数百个数据科学包,开箱即用
+Miniconda,conda,解释器 + conda,自定义
+Miniforge,mamba,仅环境管理功能,高度自定义
 MicroMamba,mamba,仅一个可执行文件,零安装、免管理员

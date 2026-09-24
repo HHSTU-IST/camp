@@ -134,6 +134,8 @@
 
 #columns()[
 
+  PowerShell 中，function 关键字用于封装函数，配合`$args`也可以定义别名。
+
   ```sh
   function .. { cd .. }
   function ... { cd ../.. }
@@ -147,6 +149,8 @@
   function c { clear }
   ```
   #colbreak()
+
+  Linux/Unix 中，alias 关键字/命令用来给命令、函数、类型或字段定义别名。
 
   ```bash
   alias ..="cd .."
@@ -289,49 +293,51 @@
 == conda 与它的四个发行版
 
 #block(height: 17em)[
-  #set text(size: 14pt)
-
-  Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的依赖冲突问题；Mamba 则是 Conda 的 C++ 重写版，默认并行下载，速度更上一个台阶。Anaconda 由 Peter Wang 和 Travis Oliphant 于 2012 年创立，旨在把 Python 带进商业数据分析领域，其社区版把 conda 与数百个数据科学包打包在一起。
-
-  #v(0.3em)
+  // #set text(size: 18pt)
+  Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的依赖冲突问题；Mamba 则是 Conda 的 C++ 重写版，默认并行下载，速度更上一个台阶。Anaconda 由 Peter Wang 和 Travis Oliphant 于 2012 年创立，旨在把 Python 带进商业数据分析领域。
 
   #let data = csv("data/env-pkg-conda.csv")
   #figure(
     tableq(data, 4),
     caption: "conda 系发行版",
   )
-
-  #v(0.2em)
-  *推荐 Miniforge*：自带 mamba、只含环境管理功能、不夹带任何数据科学包，装完就是一个干净的工作台。
 ]
 
 == 安装 Mamba
 
-#block(height: 18em, columns()[
+#columns()[
   #set text(size: 15pt)
 
-  *① 包管理器安装*（能翻墙时首选）
+  === 包管理器安装
+  micromamba 只有 *一个可执行文件*，不写注册表。
 
-  ```sh
-  winget install Mamba.Micromamba
-  ```
-
-  或走 Scoop
+  对 Windows 用户：
 
   ```sh
   scoop bucket add main-plus https://github.com/Scoopforge/Main-Plus
   scoop install micromamba
   ```
 
-  micromamba 只装出 *一个可执行文件*，不写注册表，也不需要管理员权限，但它与 conda 生态的命令并不完全同名，所以要在 `$PROFILE` 里补一个函数给它改回名字。
+  对 macOS 用户：
 
+  ```sh
+  brew install micromamba
+  ```
+
+  === 初始化
+
+  ```sh
+  micromamba shell init --shell powershell
+  ```
+
+  或
+
+  ```sh
+  micromamba shell init --shell zsh
+  ```
   #colbreak()
 
-  *② 手动安装*（不能翻墙时走这条）
-
-  下载 #link("https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/Miniforge3-Windows-x86_64.exe")[Miniforge 安装包]，一路向下，不要做任何改动，直至安装完成。
-
-  *③ 让命令叫回 mamba*
+  === 让命令叫回 mamba
 
   ```sh
   code $PROFILE
@@ -340,9 +346,17 @@
   ```sh
   function mamba { micromamba $args }
   ```
+  #colbreak()
 
-  #tip[ 装完记得 *新开* 一个终端，旧终端不会重新加载 PATH。 ]
-])
+]
+
+#[
+  #set text(size: 14pt)
+  #tip[
+    装完记得 *新开* 一个终端，旧终端不会重新加载 PATH。
+  ]
+]
+
 
 == 配置 .condarc
 
