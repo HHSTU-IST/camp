@@ -21,7 +21,7 @@
 == 提示符：Starship
 
 #columns()[
-  #set text(size: 18pt)
+  #set text(size: 16pt)
 
   Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
 
@@ -494,7 +494,7 @@
   scoop install typst
   ```
 
-  对 macOS / Linux 用户：
+  对 macOS/Linux 用户：
 
   ```sh
   brew install typst
@@ -625,7 +625,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   scoop install micromamba
   ```
 
-  对 macOS / Linux 用户：
+  对 macOS/Linux 用户：
 
   ```sh
   brew install micromamba
@@ -985,6 +985,14 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   #colbreak()
 
+  #set text(size: 16pt)
+
+  *这份文件只管「看」*：补全、跳转与报错红线都以它为准，编译另由 `tasks.json` 负责。
+
+  - `name`：配置名，显示在状态栏的选择器里
+  - `includePath`：去哪找头文件；`${workspaceFolder}/**` 是工作区递归，`ucrt64\include` 收着标准库与第三方库，再往里的 `opencv5` 才是 OpenCV 的头
+  - `compilerPath`：填上 g++ 之后，VS Code 直接问它系统头文件在哪，`includePath` 里的系统部分可以省
+  - `intelliSenseMode`：解析模式，要与编译器 ABI 对上，`windows-gcc-x64` 即 Windows 上的 64 位 GCC
 ]
 
 == tasks.json
@@ -1018,12 +1026,29 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   }
   ```
   #colbreak()
+
+  #set text(size: 15pt)
+
+  `command` 与 `args` 拼起来，就是终端里的一条命令：
+
+  ```bash
+  g++ -g main.cpp -o main.exe \
+      -I include -L lib -lopencv_core
+  ```
+
+  - `type`：取 `cppbuild`，说明任务由 C/C++ 扩展接管
+  - `label`：任务名
+  - `command`：真正执行的程序，这里是 g++
+  - `-g`：把调试信息写进可执行文件，缺了 gdb 就断不进去
+  - `${file}`：当前打开的源文件；`-o ${fileDirname}/${fileBasenameNoExtension}.exe` 让产物落在源文件旁，与它同名
+  - `-I`/`-L`：头文件与库文件的搜索路径，分别指向 `ucrt64\include` 与 `ucrt64\lib`
+  - `-l`：要链接的库，`-lopencv_core` 即 `libopencv_core.dll.a`
 ]
 
 == launch.json
 
 #columns()[
-  #set text(size: 13pt)
+  #set text(size: 14pt)
 
   ```json
   {
@@ -1036,11 +1061,9 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "externalConsole": false,
             "cwd": "${fileDirname}",
             "MIMode": "gdb",
             "miDebuggerPath": "{msys2_root}\\ucrt64\\bin\\gdb.exe",
-            "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": "Build OpenCV5 on Windows"
         }
     ]
@@ -1048,9 +1071,20 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   ```
 
   #colbreak()
-  #set text(size: 18pt)
 
-  - `preLaunchTask` 的值必须与 `tasks.json` 里的 `label` *逐字一致*」。
+
+  #set text(size: 16pt)
+
+  - `name`：调试配置名，出现在运行面板的下拉里
+  - `type`：前端取 `cppdbg`（MSVC 是 `cppvsdbg`）
+  - `request`：`launch` 由 VS Code 拉起程序，改成 `attach` 就变成挂到已运行的进程上
+  - `program`：要调试的可执行文件，要与 `tasks.json` 里 `-o` 的输出一致
+  - `args`：传给程序自己的命令行参数
+  - `stopAtEntry`：取 `false` 不在 `main` 停
+  - `cwd`：程序的运行目录，取 `${fileDirname}` 时读图读数据的相对路径才对得上
+  - `MIMode`/`miDebuggerPath`：调试器类型与路径，gdb 走 MI 协议
+  - `preLaunchTask`：按下调试前先跑的任务，值必须与 `tasks.json` 的 `label` *逐字一致*
+
 ]
 
 = 小结
