@@ -93,7 +93,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
 
 在工作文件夹下，新建 `.vscode` 文件夹 ，在`c_cpp_properties.json`、`launch.json`和`tasks.json`三个文件中分别写入
 
-> 以下的 `{msys2根目录}` 通常为 `C:\\msys64`。对 `Scoop` 使用者为 `${env:SCOOP}\\apps\\msys2\\current`。
+> 以下的 `{msys2_root}` 通常为 `C:\\msys64`。对 `Scoop` 使用者为 `${env:SCOOP}\\apps\\msys2\\current`。
 
 #### c_cpp_properties.json
 
@@ -101,24 +101,63 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
 {
     "configurations": [
         {
-            "name": "win-conda-opencv",
+            "name": "win-opencv",
             "includePath": [
                 "${workspaceFolder}/**",
-                "{msys2根目录}\\ucrt64\\include",
-                "{msys2根目录}\\ucrt64\\include\\opencv5"
+                "{msys2_root}\\ucrt64\\include",
+                "{msys2_root}\\ucrt64\\include\\opencv5"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
+            "compilerPath": "{msys2_root}\\ucrt64\\bin\\g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4
+}
+```
+
+#### tasks.json
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build OpenCV5 on Windows",
+            "command": "{msys2_root}\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-I",
+                "{msys2_root}\\ucrt64\\include",
+                "-I",
+                "{msys2_root}\\ucrt64\\include\\opencv5",
+                "-L",
+                "{msys2_root}\\ucrt64\\lib",
+                "-lopencv_core",
+                "-lopencv_highgui",
+                "-lopencv_imgcodecs",
+                "-lopencv_imgproc",
+            ],
+            "options": {
+                "cwd": "{msys2_root}\\ucrt64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
 }
 ```
 
@@ -139,7 +178,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
             "externalConsole": false,
             "cwd": "${fileDirname}",
             "MIMode": "gdb",
-            "miDebuggerPath": "{msys2根目录}\\ucrt64\\bin\\gdb.exe",
+            "miDebuggerPath": "{msys2_root}\\ucrt64\\bin\\gdb.exe",
             "internalConsoleOptions": "openOnSessionStart",
             "setupCommands": [
                 {
@@ -148,46 +187,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
                     "ignoreFailures": false
                 }
             ],
-            // "preLaunchTask": "Build OpenCV5 on Windows"
-        }
-    ]
-}
-```
-
-#### tasks.json
-
-```json
-{
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "cppbuild",
-            "label": "Build OpenCV5 on Windows",
-            "command": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe",
-                "-I",
-                "{msys2根目录}\\ucrt64\\include",
-                "-I",
-                "{msys2根目录}\\ucrt64\\include\\opencv5",
-                "-L",
-                "{msys2根目录}\\ucrt64\\lib",
-                "-lopencv_core",
-                "-lopencv_highgui",
-                "-lopencv_imgcodecs",
-                "-lopencv_imgproc",
-            ],
-            "options": {
-                "cwd": "{msys2根目录}\\ucrt64\\bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
+            "preLaunchTask": "Build OpenCV5 on Windows"
         }
     ]
 }

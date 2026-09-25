@@ -21,7 +21,7 @@
 == 提示符：Starship
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   Starship 由 Rust 编写，是一款跨平台的命令行提示符，默认配置已经能报出版本控制、语言与运行时的状态，配置有独立的文件，不与 shell 本身耦合。
 
@@ -167,9 +167,7 @@
   ```
 ]
 
-= Windows Terminal
-
-== 基本配置
+== Windows Terminal 基本配置
 
 #[
   #set text(size: 18pt)
@@ -214,7 +212,7 @@
   ```
 ]
 
-== 键位
+== Windows Terminal 键位
 
 #columns()[
   #set text(size: 18pt)
@@ -270,21 +268,21 @@
 #align(center + horizon)[
   #set text(size: 28pt)
 
-  你写过多少份 Markdown？\
+  你用 Markdown 写过多少份学习笔记 ？\
   \
-  其中有多少次，是*在源码与预览之间来回切*着写完的？
+  其中有多少次，是*在不同程序之间来回切*着写完的？
 ]
 
 == 为什么在编辑器里写
 
 #columns()[
-  #set text(size: 18pt)
+  #set text(size: 17pt)
 
-  VS Code 的起点是一台代码编辑器，写起文档反而有三处占优
+  相比于常见的 Markdown 应用，VS Code 的起点是一台代码编辑器，写起文档有三处占优
 
-  - 集成的布局：大纲与工作区顺手，长文档里跳章节不必靠搜索
-  - 强大的补全：LaTeX 公式、链接、图片路径都有人管
-  - 丰富的扩展：绘图、查错、导出，都能挂上来
+  - 集成的布局：大纲与工作区弹性布局，通过拖拽自定义
+  - 强大的补全：LaTeX 公式、链接、图片路径都能自动补全
+  - 丰富的扩展：不用切换应用，就能同时完成编程和写作
 
   \
 
@@ -295,13 +293,13 @@
 
   VS Code 内置 Markdown 支持，还缺三件事：写得快、查得严、看得见效果。
 
-  - *Markdown All in One* 是个大一统：快捷命令、自动编号、目录更新、公式补全都在里面，下载榜榜首
+  - *Markdown All in One* 是个大一统：快捷命令、自动编号、目录更新、公式补全都在里面
   - *rumdl* 管规范：既查语法也做格式化，保存时一并收齐
   - *Markdown Inline Editor* 管观感：像 Typora 一样边写边渲染，分屏省掉了
 ]
 
 #[
-  #set text(size: 16pt)
+  #set text(size: 14pt)
   #tip[
     挑扩展的通用判据就是看它有没有一个 *别人不做的* 职责。
   ]
@@ -349,13 +347,6 @@
   - `rumdl.fixOnSave`：格式问题在保存时顺手修掉，不必等 CI 来报
 ]
 
-== 控制台实用命令
-
-#columns()[
-  #set text(size: 16pt)
-
-]
-
 == 编辑扩展：Draw.io
 
 #columns()[
@@ -365,12 +356,18 @@
 
   在 VS Code 里新建 `.drawio` 文件，绘图界面就在编辑器里打开，画完导出 PNG 或 SVG。
 
+  #colbreak()
+
   #figure(
     image("vscode/images/vscode-drawio.png", height: 50%),
     caption: none,
   )
+]
 
-  #tip[ `.drawio` 本质是一份文本，与 `.md` 一样进版本库，于是改图的过程也能被 git 记下来。 ]
+#[
+  #set text(size: 16pt)
+  #note[
+    `.drawio` 本质是一份文本，与 `.md` 一样进版本库，于是改图的过程也能被 git 记下来。 ]
 ]
 
 == 输出扩展：Pandoc
@@ -378,7 +375,7 @@
 #columns()[
   #set text(size: 18pt)
 
-  Pandoc 是文档格式领域的瑞士军刀，从 Markdown 出发，几乎能变到所有常见文本格式。
+  Pandoc 是文档格式领域的瑞士军刀，从 Markdown 出发，几乎能得到所有常见文本格式。
 
   对 Windows 用户
 
@@ -392,7 +389,17 @@
   brew install pandoc
   ```
 
-  装完再装 `vscode-pandoc` 扩展，控制台中就会多出「Pandoc Render」。
+  对复杂格式，还需安装 LaTeX 引擎，使用
+
+  ```sh
+  scoop install miktex
+  ```
+
+  或
+
+  ```sh
+  brew install basictex
+  ```
 
   #colbreak()
 
@@ -406,13 +413,30 @@
     }
     ```
   ]
+
+  #[
+    #set text(size: 12pt)
+    #note[
+      `CJKmainfont` 与 `monofont` 是中文导出的两处必填项，缺一个可能就是满纸空白。
+    ]
+  ]
 ]
 
+
+
+== 控制台实用命令
+
 #[
-  #set text(size: 16pt)
-  #tip[
-    `CJKmainfont` 与 `monofont` 是中文导出的两处必填项，缺一个就是满纸空白。
-  ]
+  #set text(size: 18pt)
+  通过 `Ctrl + Shift + P` 打开命令面板，输入 `markdown` 就能看到一堆 Markdown 相关的命令。最常用的有
+
+  - Markdown All in One: Add/Update section numbers
+  - Markdown All in One: Remove section numbers
+  - Markdown All in One: Create Table of Contents
+  - Markdown All in One: Update Table of Contents
+  - Draw.io: Convert Mermaid to Draw.io
+  - Draw.io: Convert To...
+  - Pandoc Render
 ]
 
 = Typst 环境
@@ -425,7 +449,7 @@
   Markdown 管得住*文档的结构*，\
   却管不住*公式与版式*。\
   \
-  补上这一块，要换一套工具吗？
+  补上这一块，要换会 Word 吗？
 ]
 
 == 为什么用 Typst
@@ -446,14 +470,19 @@
   - 语法接近 Markdown，编译却只要毫秒级
   - 数学、参考文献、图表编号都内建，不必拼装宏包
   - 编译产物是单个 PDF，源码与数据一样能进版本库
+]
 
-  #tip[ 两者不是替代关系：说明文档交给 Markdown，课件与论文交给 Typst。 ]
+#[
+  #set text(size: 16pt)
+  #tip[
+    两者不是替代关系：说明文档交给 Markdown，课件、手册和论文交给 Typst。
+  ]
 ]
 
 == 安装
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   === 编译器
 
@@ -465,51 +494,19 @@
   scoop install typst
   ```
 
-  或
-
-  ```sh
-  winget install typst.typst
-  ```
-
   对 macOS / Linux 用户：
 
   ```sh
   brew install typst
   ```
 
-  `typst init` 拉模板要用 git，Windows 那条命令已经把它一并装上。
-  #colbreak()
-
   === 格式化器
 
   仿照编译器安装，将其中的 `typst` 替换为 `typstyle`。
 
-  typstyle 是独立的一个可执行程序，Tinymist 自己去找它，装在哪儿由包管理器决定。
+  #colbreak()
 
-  === 验证
-
-  ```sh
-  typst --version
-  ```
-
-  ```
-  typst 0.15.1 (9dfd3a08)
-  ```
-
-  WinGet 与 Homebrew 装出来的是同一个二进制，选哪条只取决于你已经在用哪个包管理器。
-]
-
-#[
-  #set text(size: 14pt)
-  #tip[
-    typst 与 typstyle 各自独立发版，两者版本号对不齐是正常的。
-  ]
-]
-
-== 必需扩展：Tinymist
-
-#columns()[
-  #set text(size: 18pt)
+  === VS Code 扩展
 
   VS Code 侧的入口只有一个扩展：*Tinymist*（Tiny + LSP）。
 
@@ -519,63 +516,32 @@
   - 实时预览与保存时自动导出 PDF
   - 语法检查与格式化
 
-  #colbreak()
-
-  #figure(
-    image("vscode/images/typst.png", width: 100%),
-    caption: none,
-  )
+  #[
+    #set text(size: 14pt)
+    #tip[
+      typstyle 是独立的一个可执行程序，Tinymist 自己去找它，装在哪儿由包管理器决定。
+    ]
+  ]
 ]
 
-== 格式化：typstyle
+== 扩展配置
 
 #columns()[
   #set text(size: 18pt)
 
-  Typst 对空白的宽容度高于 LaTeX，可手写几页之后，缩进与折行照样会失控。
+  装完扩展，`settings.json` 里补上这一段。
 
-  typstyle 是 Typst Preview 的作者写的格式化器，已经集成进 Tinymist：`tinymist.formatterMode` 取 `typstyle`，Tinymist 就调用它，`[typst]` 一节再把它指定成默认格式化器，保存即整理。
-
-  #colbreak()
-
-  #[
-    #set text(size: 12pt)
-
-    ```sh
-    scoop install typstyle
-
-    typstyle --check .          # 只查不改
-    typstyle --diff 课件.typ     # 只看要改哪里
-    typstyle -i 课件.typ         # 落盘
-    ```
-  ]
-
-  #tip[ typstyle *无条件* 把 CRLF 换成 LF——在一个 CRLF 文件上落盘，整文件 diff 会淹掉真正的改动。 ]
-]
-
-== 本机配置
-
-#columns()[
-  #set text(size: 16pt)
-
-  装完扩展，`settings.json` 里补上这一段——值取自本机。
-
-  #[
-    #set text(size: 11pt)
-
-    ```json
-    {
-      "[typst]": {
-        "editor.defaultFormatter": "myriad-dreamin.tinymist"
-      },
-      "tinymist.completion.triggerOnSnippetPlaceholders": true,
-      "tinymist.exportPdf": "onDocumentHasTitle",
-      "tinymist.formatterMode": "typstyle",
-      "tinymist.lint.enabled": true,
-      "tinymist.outputPath": "$root/articles/$name"
-    }
-    ```
-  ]
+  ```json
+  {
+    "[typst]": {
+      "editor.defaultFormatter": "myriad-dreamin.tinymist"
+    },
+    "tinymist.exportPdf": "onDocumentHasTitle",
+    "tinymist.formatterMode": "typstyle",
+    "tinymist.lint.enabled": true,
+    "tinymist.outputPath": "$root/articles/$name"
+  }
+  ```
 
   #colbreak()
 
@@ -605,35 +571,6 @@
   )
 ]
 
-== 第三方包开发
-
-#columns()[
-  #set text(size: 18pt)
-
-  想改包的源码或做自己的包，先弄清 Typst 去哪找包：按 `{数据目录}/typst/packages/{命名空间}/{包名}/{版本}` 逐级找，本地有就不走网络。
-
-  数据目录各大平台不同
-
-  - Windows：`%APPDATA%`
-  - macOS：`~/Library/Application Support`
-  - Linux：`$XDG_DATA_HOME` 或 `~/.local/share`
-
-  #colbreak()
-
-  #[
-    #set text(size: 12pt)
-
-    ```sh
-    cd [above-path]
-
-    git clone --depth 1 --branch main \
-      https://github.com/typst/packages typst
-    ```
-  ]
-
-  #tip[ 本机走的是 `local` 命名空间：`%APPDATA%\typst\packages\local\` 下每个包一个 git 仓库，改完即生效，不必等发布。 ]
-]
-
 = Python 环境
 
 == 开场提问
@@ -649,7 +586,7 @@
 == 包管理器怎么选
 
 #align(center + horizon)[
-  #set text(size: 16pt)
+  #set text(size: 18pt)
   #let data = csv("data/env-pkg-py.csv")
   #figure(
     tableq(data, 4),
@@ -659,7 +596,7 @@
 
 #[
   #set text(size: 16pt)
-  *一句话：科学计算与多语言场景交给 mamba，纯 Python 项目交给 uv，两者在同一台机器上可以并存。*
+  *一句话：科学计算与多语言场景交给 conda/mamba，纯 Python 项目交给 uv，两者在同一台机器上可以并存。*
 ]
 
 == conda 与它的四个发行版
@@ -676,7 +613,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 == 安装 Mamba
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   === 包管理器安装
   micromamba 只有 *一个可执行文件*，不写注册表。
@@ -688,7 +625,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   scoop install micromamba
   ```
 
-  对 macOS 用户：
+  对 macOS / Linux 用户：
 
   ```sh
   brew install micromamba
@@ -696,22 +633,19 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   === 初始化
 
-  ```sh
-  micromamba shell init --shell powershell
-  ```
-
-  或
+  装完需要初始化，让终端自动加载
 
   ```sh
-  micromamba shell init --shell zsh
+  micromamba shell init --shell {shell}
   ```
-  #colbreak()
 
   === 让命令叫回 mamba
 
   ```sh
   code $PROFILE
   ```
+
+  写入
 
   ```sh
   function mamba { micromamba $args }
@@ -723,15 +657,16 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   alias mamba='micromamba'
   ```
 
-  为方便起见，以下将 `micromamba` 简称为 `mamba`。
-]
+  最后 *新开* 一个终端，旧终端不会重新加载 PATH。
 
-#[
-  #set text(size: 14pt)
-  #tip[
-    装完记得 *新开* 一个终端，旧终端不会重新加载 PATH。
+  #[
+    #set text(size: 14pt)
+    #note[
+      为方便起见，以下将 `micromamba` 简称为 `mamba`。
+    ]
   ]
 ]
+
 
 == 配置 .condarc
 
@@ -780,22 +715,20 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 == Mamba 常用操作
 
 #columns()[
-  #set text(size: 18pt)
+  // #set text(size: 18pt)
 
   *环境：一间自己的屋子*
 
   ```bash
   # 创建，指定名字与 Python 版本
-  mamba create -n my_python python=3.12
+  mamba create -n {env_name} python=3.14
   # 进入与退出
-  mamba activate my_python
+  mamba activate {env_name}
   mamba deactivate
   # 列出与删除
   mamba env list
-  mamba env remove -n my_python
+  mamba env remove -n {env_name}
   ```
-
-  环境可以简单理解为系统登录时的用户，同一台机器上的两套环境互不干扰。
 
   #colbreak()
 
@@ -814,22 +747,40 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   ```
 ]
 
+#[
+  // #set text(size: 18pt)
+  环境可以简单理解为系统登录时的用户，同一台机器上的两套环境互不干扰。
+]
+
 == uv：新一代包管理器
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   uv 由 Astral 公司用 Rust 写成，把 pip、pipx、virtualenv、poetry 四套工具的职责合并成一条命令，依赖求解走全局算法，装包速度通常快出一到两个数量级。
-
-  它只声明一件事：这个项目 *依赖什么*，剩下的事务，如建环境、锁版本、跑脚本全部由 uv 代劳。
 
   ```sh
   scoop install uv
   ```
 
+  或
+
+  ```sh
+  brew install uv
+  ```
+
+  #[
+    #set text(size: 16pt)
+    #tip[
+      Astral 公司还出品了 ruff 和 ty，前者是 Python 最流行的格式化器和检查器，后者是 Python 最快的类型检查器。
+    ]
+  ]
+
   #colbreak()
 
-  *一个项目的完整生命周期*
+  === 一个项目的完整生命周期
+
+  pyproject.toml 只声明一件事：这个项目 *依赖什么*，剩下的事务，如建环境、锁版本、跑脚本全部由 uv 代劳。
 
   ```bash
   # 初始化，生成 pyproject.toml
@@ -843,7 +794,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   uv run python main.py
   ```
 
-  #tip[ `uv.lock` 是 *可复现* 的关键——把它一起提交，换台机器 `uv sync` 就能还原出一模一样的环境。 ]
+
 ]
 
 == 配置 VS Code
@@ -854,41 +805,36 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   *安装扩展*
 
   - Python (Microsoft)
-  - Pyrefly (Meta)
   - Ruff (Astral Software)
+  - ty (Astral Software)
   - Jupyter (Microsoft)
+  \
 
-  扩展装完，新建一个 `.ipynb` 文件，即可开启 Python 之旅。
+  Jupyter 是数据科学的必备工具，提供交互式的编程环境，要让 VS Code 的 Jupyter 文件 `.ipynb` 认出这个环境，得在环境里补装 `ipykernel`。
 
-  #[
-    #set text(size: 14pt)
-    #tip[
-      要让 VS Code 的 `.ipynb` 认出这个环境，得在环境里补装 `ipykernel`。
-    ]
-  ]
+  ```sh
+  micromamba activate {env_name}
+  micromamba install ipykernel
+  ```
 
   #colbreak()
 
   *配置扩展*
 
-  用 `Ctrl + ,` 打开设置，右上角图标切到 `settings.json`，写入
+  在 `settings.json`，写入
 
-  #[
-    #set text(size: 13pt)
-
-    ```json
-    {
-      "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.codeActionsOnSave": {
-          "source.fixAll": "explicit",
-          "source.organizeImports": "explicit"
-        }
-      },
-      "ruff.configuration": "pyproject.toml"
-    }
-    ```
-  ]
+  ```json
+  {
+    "[python]": {
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+      }
+    },
+    "ruff.configuration": "pyproject.toml"
+  }
+  ```
 ]
 
 = C/C++ 环境
@@ -898,28 +844,22 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 #align(center + horizon)[
   #set text(size: 28pt)
 
-  在 Windows 上编译一段 C++，\
+  在 Windows 上编译一个 C++ 工程，\
   \
-  你缺的是 *编辑器*，还是 *编译器*？
+  你是否还在*手动*管理项目依赖各种库 ？
 ]
 
 == 工具链：MSYS2
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
-  工具链是整个编程环境的核心。在 macOS 与 Linux 上，系统内置了 C 运行时与库文件，Windows 上则要自己补上这一块，于是我们选择微软官方推荐的 MSYS2，它同时提供了三个不同 ABI 的环境，其中 *UCRT64* 与系统自带的通用 C 运行时一致，是当下的首选。
+  工具链是整个编程环境的核心。在 macOS 与 Linux 上，系统内置了 C 运行时与库文件，Windows 上则要自己补上这一块，于是我们选择*微软官方推荐*的 MSYS2，它同时提供了三个不同 ABI 的环境，其中 *UCRT64* 与系统自带的通用 C 运行时一致，是当下的首选。
 
   ```sh
   scoop bucket add extras-cn https://github.com/scoopforge/Extras-CN
   scoop install msys2-cn
   ```
-
-  #colbreak()
-
-  也可以手动安装，下载 #link("https://mirrors.ustc.edu.cn/msys2/distrib/msys2-x86_64-latest.exe")[MSYS2 安装包]，默认一路向下，直至完成。
-
-  *同一个 MSYS2，三个环境*
 
   #tableq(
     (
@@ -931,13 +871,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
     3,
   )
 
-  #tip[ 本教程统一使用 *UCRT64*，它的 C 运行时与系统内置的一致，跨工具链混用时的坑最少。 ]
-]
-
-== 配置 pacman 与 UCRT64
-
-#columns()[
-  #set text(size: 15pt)
+  #colbreak()
 
   *① 换成国内源*
 
@@ -953,27 +887,19 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
   ```
 
-  #colbreak()
-
-  *③ 把编译器交给系统*
-
-  接受默认配置一路向下，然后把 MSYS2 安装路径下的 `ucrt64\bin` 加进环境变量 `PATH`。
-
-  *④ 重启终端后逐条验证*
+  *③ 重启终端后逐条验证*
 
   ```sh
   gcc --version
   g++ --version
   gdb --version
   ```
-
-  #warning[ 若 pacman 报「无法提交处理（有冲突的文件）」，用 `pacman -S --overwrite="*" [package]` 覆盖后重试。 ]
 ]
 
 == 安装第三方库
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   MSYS2 的包管理器和 Python 的 conda 一样，把编译好的库与头文件一起交付，不必自己下载源码编译。
 
@@ -985,33 +911,26 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   pacman -S mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-qt6-declarative
   ```
 
+  #[
+    #set text(size: 16pt)
+    #warning[
+      若 pacman 报「无法提交处理（有冲突的文件）」，用 `pacman -S --overwrite="*" [package]` 覆盖后重试。
+    ]
+  ]
+
   #colbreak()
 
-  *库与包名一一对应*
-
-  #tableq(
-    (
-      ([库], [pacman 包名]),
-      ([CMake], [`mingw-w64-ucrt-x86_64-cmake`]),
-      ([OpenCV], [`...-ucrt-x86_64-opencv`]),
-      ([Qt6], [`...-ucrt-x86_64-qt6-base`]),
-    ),
-    2,
-  )
-
-  #tip[ 库的头文件在 `ucrt64\include`，链接库在 `ucrt64\lib`——后面写工程文件时会反复用到这两个路径。 ]
+  库的头文件在 `ucrt64\include`，链接库在 `ucrt64\lib`——后面写工程文件时会反复用到这两个路径。
 ]
 
 == VS Code 扩展
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   在扩展商店里搜索并安装 C/C++（下载量最多的那个），它提供补全、跳转与调试前端。
 
-  装完用 `Ctrl + ,` 进入设置，切到 `settings.json` 写入右栏配置。
-
-  #colbreak()
+  在 `settings.json` 写入如下配置。
 
   ```json
   {
@@ -1021,87 +940,117 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
     "C_Cpp.default.mergeConfigurations": true
   }
   ```
-]
 
-== 工程文件：三份 JSON
-
-#columns()[
-  #set text(size: 15pt)
+  #colbreak()
 
   在工作文件夹下新建 `.vscode` 目录，里面三份文件各管一段。
 
   #tableq(
     (
       ([文件], [管什么]),
-      ([`c_cpp_properties.json`], [IntelliSense 去哪找头文件]),
-      ([`launch.json`], [F5 时用哪个调试器]),
+      ([`c_cpp_properties.json`], [去哪找头文件]),
       ([`tasks.json`], [编译时敲哪条命令]),
+      ([`launch.json`], [用哪个调试器]),
     ),
     2,
   )
-
-  下文中的 `{msys2根目录}` 通常为 `C:\msys64`，Scoop 用户则为 `$env:SCOOP\apps\msys2\current`。
-
-  #colbreak()
-
-  #[
-    #set text(size: 10pt)
-
-    ```json
-    {
-      "version": "2.0.0",
-      "tasks": [
-        {
-          "type": "cppbuild",
-          "label": "Build OpenCV5 on Windows",
-          "command": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
-          "args": [
-            "-fdiagnostics-color=always", "-g", "${file}",
-            "-o", "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "-I", "{msys2根目录}\\ucrt64\\include",
-            "-L", "{msys2根目录}\\ucrt64\\lib",
-            "-lopencv_core", "-lopencv_imgcodecs", "-lopencv_imgproc"
-          ],
-          "problemMatcher": ["$gcc"],
-          "group": "build"
-        }
-      ]
-    }
-    ```
-  ]
 ]
 
-== 一键编译与调试
+== c_cpp_properties.json
+
+#[
+  #set text(size: 18pt)
+  下文中，`{msys2_root}` 通常为 `C:\msys64`，Scoop 用户则为 `$env:SCOOP\apps\msys2\current`。
+]
 
 #columns()[
-  #set text(size: 15pt)
-
-  `tasks.json` 定义编译动作，`launch.json` 定义调试会话，两者用一个任务名串起来。
+  #set text(size: 14.5pt)
 
   ```json
   {
-    "name": "Debug OpenCV on Windows",
-    "type": "cppdbg",
-    "request": "launch",
-    "targetArchitecture": "x86_64",
-    "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-    "cwd": "${fileDirname}",
-    "MIMode": "gdb",
-    "miDebuggerPath": "{msys2根目录}\\ucrt64\\bin\\gdb.exe",
-    "preLaunchTask": "Build OpenCV5 on Windows"
+      "configurations": [
+          {
+              "name": "win-opencv",
+              "includePath": [
+                  "${workspaceFolder}/**",
+                  "{msys2_root}\\ucrt64\\include",
+                  "{msys2_root}\\ucrt64\\include\\opencv5"
+              ],
+              "compilerPath": "{msys2_root}\\ucrt64\\bin\\g++.exe",
+              "intelliSenseMode": "windows-gcc-x64"
+          }
+      ],
   }
   ```
 
   #colbreak()
 
-  *两个快捷键走完全程*
+]
 
-  - `Ctrl + Shift + B` 按 `tasks.json` 编译
-  - `F5` 编译并按 `launch.json` 起调试器
+== tasks.json
 
-  #tip[ `preLaunchTask` 的值必须与 `tasks.json` 里的 `label` *逐字一致*，否则 F5 只会报「找不到任务」。 ]
+#columns()[
+  #set text(size: 12pt)
 
-  想要图形化的构建与调试，也可以下载 #link("https://mirrors.ustc.edu.cn/qtproject/official_releases/qtcreator/latest/installer_source/", "Qt Creator")，在其中把同一套工具链再配一遍。
+  ```json
+  {
+    "tasks": [
+        {
+          "type": "cppbuild",
+          "label": "Build OpenCV5 on Windows",
+          "command": "{msys2_root}\\ucrt64\\bin\\g++.exe",
+          "args": [
+              "-g",
+              "${file}",
+              "-o",
+              "${fileDirname}/${fileBasenameNoExtension}.exe",
+              "-I",
+              "{msys2_root}\\ucrt64\\include",
+              "-I",
+              "{msys2_root}\\ucrt64\\include\\opencv5",
+              "-L",
+              "{msys2_root}\\ucrt64\\lib",
+              "-lopencv_core",
+              ...
+            ],
+        }
+    ]
+  }
+  ```
+  #colbreak()
+]
+
+== launch.json
+
+#columns()[
+  #set text(size: 13pt)
+
+  ```json
+  {
+    "configurations": [
+        {
+            "name": "Debug OpenCV on Windows",
+            "type": "cppdbg",
+            "request": "launch",
+            "targetArchitecture": "x86_64",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "externalConsole": false,
+            "cwd": "${fileDirname}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "{msys2_root}\\ucrt64\\bin\\gdb.exe",
+            "internalConsoleOptions": "openOnSessionStart",
+            "preLaunchTask": "Build OpenCV5 on Windows"
+        }
+    ]
+  }
+  ```
+
+  #colbreak()
+  #set text(size: 18pt)
+
+  - `preLaunchTask` 的值必须与 `tasks.json` 里的 `label` *逐字一致*」。
 ]
 
 = 小结
