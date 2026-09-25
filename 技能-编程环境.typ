@@ -148,6 +148,7 @@
   function rr { rm -rf $args }
   function c { clear }
   ```
+
   #colbreak()
 
   Linux/Unix 中，alias 关键字/命令用来给命令、函数、类型或字段定义别名。
