@@ -1,5 +1,5 @@
 #import "lib/lib.typ": *
-#show: chapter-style.with(title: "技能树", info: info-skill)
+#show: chapter-style.with(title: "技术栈", info: info-skill)
 
 = 软件选择
 

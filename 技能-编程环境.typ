@@ -263,6 +263,12 @@
   ]
 ]
 
+= VS Code 概览
+
+== 通用配置
+
+== 通用扩展
+
 = Python 环境
 
 == 开场提问
@@ -352,9 +358,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   alias mamba='micromamba'
   ```
 
-  #colbreak()
-
-
+  为方便起见，以下将 `micromamba` 简称为 `mamba`。
 ]
 
 #[
@@ -364,23 +368,20 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   ]
 ]
 
-
 == 配置 .condarc
 
 #columns()[
-  #set text(size: 15pt)
+  // #set text(size: 18pt)
 
-  mamba 的配置文件叫 `.condarc`，Windows 下位于 `~\.condarc`，macOS 与 Linux 下位于 `~/.condarc`。
+  conda/mamba 的配置文件为`~\.condarc`，其中`~`表示用户家目录。
 
-  先用 VS Code 把它打开
+  用 VS Code 把它打开
 
   ```bash
   code .condarc
   ```
 
-  再写入右栏内容——前三段决定 *从哪儿下载*，后面几行决定 *怎么下载*。
-
-  #colbreak()
+  再写入如下内容
 
   ```yaml
   # 频道
@@ -389,28 +390,32 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   # 使用镜像
   custom_channels:
     conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
+  ```
 
+  #colbreak()
+
+  其他相对重要的配置选项还有
+
+  ```yaml
   # 地址
   envs_dirs:
     - ~/.conda/envs
   pkgs_dirs:
     - ~/.conda/pkgs
 
-  # 将 pip 作为 Python 的依赖
-  add_pip_as_python_dependency: true
-  # 安装按照频道的顺序
-  channel_priority: flexible
-  # 显示频道具体链接
-  show_channel_urls: true
-  # 错误回滚
-  rollback_enabled: true
+  # network
+  remote_max_retries: 1
+  ssl_verify: true
+  # solver
+  auto_update_conda: true
+  channel_priority: strict
   ```
 ]
 
 == Mamba 常用操作
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   *环境：一间自己的屋子*
 
@@ -442,8 +447,6 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   mamba search numpy
   mamba list
   ```
-
-  #tip[ 要让 VS Code 的 `.ipynb` 认出这个环境，得在环境里补装 `ipykernel`。 ]
 ]
 
 == uv：新一代包管理器
@@ -453,10 +456,10 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   uv 由 Astral 公司用 Rust 写成，把 pip、pipx、virtualenv、poetry 四套工具的职责合并成一条命令，依赖求解走全局算法，装包速度通常快出一到两个数量级。
 
-  它只声明一件事：这个项目 *依赖什么*，剩下的事务——建环境、锁版本、跑脚本——全部由 uv 代劳。
+  它只声明一件事：这个项目 *依赖什么*，剩下的事务，如建环境、锁版本、跑脚本全部由 uv 代劳。
 
   ```sh
-  winget install astral-sh.uv
+  scoop install uv
   ```
 
   #colbreak()
@@ -481,7 +484,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 == 配置 VS Code
 
 #columns()[
-  #set text(size: 15pt)
+  #set text(size: 18pt)
 
   *安装扩展*
 
@@ -491,6 +494,13 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   - Jupyter (Microsoft)
 
   扩展装完，新建一个 `.ipynb` 文件，即可开启 Python 之旅。
+
+  #[
+    #set text(size: 14pt)
+    #tip[
+      要让 VS Code 的 `.ipynb` 认出这个环境，得在环境里补装 `ipykernel`。
+    ]
+  ]
 
   #colbreak()
 
@@ -661,7 +671,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
     2,
   )
 
-  下文中的 `{msys2根目录}` 通常为 `C:\msys64`，Scoop 用户则为 `%SCOOP%\apps\msys2\current`。
+  下文中的 `{msys2根目录}` 通常为 `C:\msys64`，Scoop 用户则为 `$env:SCOOP\apps\msys2\current`。
 
   #colbreak()
 
@@ -733,20 +743,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 == 三条命令之后
 
 #columns()[
-  #set text(size: 15pt)
-
-  *一个包管理器*
-
-  - 科学计算与多语言：`mamba`
-  - 日常 Python 项目：`uv`
-  - Windows 上的通用软件：`scoop` 与 `winget`
-
-  *一条工具链*
-
-  - 编译器与调试器：MSYS2 的 UCRT64
-  - 构建与第三方库：`pacman` 一次装齐
-
-  #colbreak()
+  #set text(size: 18pt)
 
   *一个终端*
 
@@ -754,5 +751,29 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   - 行编辑：PSReadLine
   - 窗口：Windows Terminal
 
-  这三件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
+  *一个编辑器*
+
+  - 窗口：VS Code
+  - 命令行：code
+  - 通用扩展：
+
+  #colbreak()
+
+  *一个包管理器*
+
+  - 科学计算与多语言：`micromamba`
+  - 日常 Python 项目：`uv`
+  - Windows 上的通用软件：`scoop` 与 `winget`
+
+  *一条工具链*
+
+  - 编译器与调试器：MSYS2 的 UCRT64
+  - 构建与第三方库：`pacman` 一次装齐
 ]
+\
+
+#[
+  #set text(size: 18pt)
+  这 4 件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
+]
+
