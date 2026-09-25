@@ -242,7 +242,6 @@ extend-select = [
 fixable = ["ALL"]
 ignore = [
 
-  "ISC001",
   "RUF001",
   "RUF002",
   "RUF003",
