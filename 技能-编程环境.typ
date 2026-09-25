@@ -263,11 +263,376 @@
   ]
 ]
 
-= VS Code 概览
+= Markdown 环境
 
-== 通用配置
+== 开场提问
 
-== 通用扩展
+#align(center + horizon)[
+  #set text(size: 28pt)
+
+  你写过多少份 Markdown？\
+  \
+  其中有多少次，是*在源码与预览之间来回切*着写完的？
+]
+
+== 为什么在编辑器里写
+
+#columns()[
+  #set text(size: 18pt)
+
+  VS Code 的起点是一台代码编辑器，写起文档反而有三处占优
+
+  - 集成的布局：大纲与工作区顺手，长文档里跳章节不必靠搜索
+  - 强大的补全：LaTeX 公式、链接、图片路径都有人管
+  - 丰富的扩展：绘图、查错、导出，都能挂上来
+
+  \
+
+  这三样恰好覆盖「写得快」「写得对」「交得出去」。
+
+
+  #colbreak()
+
+  VS Code 内置 Markdown 支持，还缺三件事：写得快、查得严、看得见效果。
+
+  - *Markdown All in One* 是个大一统：快捷命令、自动编号、目录更新、公式补全都在里面，下载榜榜首
+  - *rumdl* 管规范：既查语法也做格式化，保存时一并收齐
+  - *Markdown Inline Editor* 管观感：像 Typora 一样边写边渲染，分屏省掉了
+]
+
+#[
+  #set text(size: 16pt)
+  #tip[
+    挑扩展的通用判据就是看它有没有一个 *别人不做的* 职责。
+  ]
+]
+
+== 扩展配置
+
+#columns()[
+  #set text(size: 18pt)
+
+  在 `settings.json`里补上这一段。
+
+  #[
+    #set text(size: 12pt)
+
+    ```json
+    {
+      "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.rumdl": "explicit"
+        },
+        "editor.quickSuggestions": {
+          "other": "on",
+          "comments": "off",
+          "strings": "off"
+        }
+      },
+      "markdown.extension.toc.levels": "2..4",
+      "markdown.updateLinksOnFileMove.enabled": "always",
+      "markdown.validate.enabled": true,
+      "markdown.preview.fontSize": 16,
+      "markdown.preview.openMarkdownLinks": "inEditor",
+      "rumdl.fixOnSave": true
+    }
+    ```
+  ]
+
+  #colbreak()
+
+  - `[markdown]` 一节管的是保存那一刻：All in One 负责排版，rumdl 负责查错与修错
+  - `toc.levels` 取 `2..4`：目录只收二级到四级标题，一级标题自己当封面
+  - `updateLinksOnFileMove` 取 `always`：文件改名或挪目录，指向它的链接自动跟着改
+  - `preview.openMarkdownLinks` 取 `inEditor`：预览里点链接原地跳转，不另开窗口
+  - `rumdl.fixOnSave`：格式问题在保存时顺手修掉，不必等 CI 来报
+]
+
+== 控制台实用命令
+
+#columns()[
+  #set text(size: 16pt)
+
+]
+
+== 编辑扩展：Draw.io
+
+#columns()[
+  #set text(size: 18pt)
+
+  mermaid 能画流程图，却画不了任意形状的示意图，这时用 draw.io 的内嵌扩展。
+
+  在 VS Code 里新建 `.drawio` 文件，绘图界面就在编辑器里打开，画完导出 PNG 或 SVG。
+
+  #figure(
+    image("vscode/images/vscode-drawio.png", height: 50%),
+    caption: none,
+  )
+
+  #tip[ `.drawio` 本质是一份文本，与 `.md` 一样进版本库，于是改图的过程也能被 git 记下来。 ]
+]
+
+== 输出扩展：Pandoc
+
+#columns()[
+  #set text(size: 18pt)
+
+  Pandoc 是文档格式领域的瑞士军刀，从 Markdown 出发，几乎能变到所有常见文本格式。
+
+  对 Windows 用户
+
+  ```sh
+  scoop install pandoc
+  ```
+
+  对 macOS/Linux 用户
+
+  ```sh
+  brew install pandoc
+  ```
+
+  装完再装 `vscode-pandoc` 扩展，控制台中就会多出「Pandoc Render」。
+
+  #colbreak()
+
+  #[
+    #set text(size: 16pt)
+
+    ```json
+    {
+      "pandoc.pdfOptString": "-f gfm --pdf-engine=xelatex -V colorlinks -V urlcolor=NavyBlue --syntax-highlighting tango -V geometry:a4paper -V geometry:margin=2.5cm -V CJKmainfont=\"STFangsong\" -V monofont=\"FiraCode Nerd Font\"",
+      "pandoc.htmlOptString": "-f gfm --standalone --mathjax --shift-heading-level-by=-1"
+    }
+    ```
+  ]
+]
+
+#[
+  #set text(size: 16pt)
+  #tip[
+    `CJKmainfont` 与 `monofont` 是中文导出的两处必填项，缺一个就是满纸空白。
+  ]
+]
+
+= Typst 环境
+
+== 开场提问
+
+#align(center + horizon)[
+  #set text(size: 28pt)
+
+  Markdown 管得住*文档的结构*，\
+  却管不住*公式与版式*。\
+  \
+  补上这一块，要换一套工具吗？
+]
+
+== 为什么用 Typst
+
+#columns()[
+  #set text(size: 18pt)
+
+  上一节的 Markdown 换来了统一的写法，代价是表达力封顶
+
+  - 公式要外挂 LaTeX 语法，渲染还得看引擎脸色
+  - 分页、页眉、编号这些版式需求，Markdown 里没有对应物
+  - 导出要交给 pandoc 转一手，转完还得自己校版
+
+  #colbreak()
+
+  Typst 用 Rust 写成，是当下 LaTeX 最有力的竞争者
+
+  - 语法接近 Markdown，编译却只要毫秒级
+  - 数学、参考文献、图表编号都内建，不必拼装宏包
+  - 编译产物是单个 PDF，源码与数据一样能进版本库
+
+  #tip[ 两者不是替代关系：说明文档交给 Markdown，课件与论文交给 Typst。 ]
+]
+
+== 安装
+
+#columns()[
+  #set text(size: 15pt)
+
+  === 编译器
+
+  typst 只有 *一个可执行文件*，不必装运行时。
+
+  对 Windows 用户：
+
+  ```sh
+  scoop install typst
+  ```
+
+  或
+
+  ```sh
+  winget install typst.typst
+  ```
+
+  对 macOS / Linux 用户：
+
+  ```sh
+  brew install typst
+  ```
+
+  `typst init` 拉模板要用 git，Windows 那条命令已经把它一并装上。
+  #colbreak()
+
+  === 格式化器
+
+  仿照编译器安装，将其中的 `typst` 替换为 `typstyle`。
+
+  typstyle 是独立的一个可执行程序，Tinymist 自己去找它，装在哪儿由包管理器决定。
+
+  === 验证
+
+  ```sh
+  typst --version
+  ```
+
+  ```
+  typst 0.15.1 (9dfd3a08)
+  ```
+
+  WinGet 与 Homebrew 装出来的是同一个二进制，选哪条只取决于你已经在用哪个包管理器。
+]
+
+#[
+  #set text(size: 14pt)
+  #tip[
+    typst 与 typstyle 各自独立发版，两者版本号对不齐是正常的。
+  ]
+]
+
+== 必需扩展：Tinymist
+
+#columns()[
+  #set text(size: 18pt)
+
+  VS Code 侧的入口只有一个扩展：*Tinymist*（Tiny + LSP）。
+
+  它把编译器包成语言服务器，于是编辑器里能拿到
+
+  - 补全、悬停文档与定义跳转
+  - 实时预览与保存时自动导出 PDF
+  - 语法检查与格式化
+
+  #colbreak()
+
+  #figure(
+    image("vscode/images/typst.png", width: 100%),
+    caption: none,
+  )
+]
+
+== 格式化：typstyle
+
+#columns()[
+  #set text(size: 18pt)
+
+  Typst 对空白的宽容度高于 LaTeX，可手写几页之后，缩进与折行照样会失控。
+
+  typstyle 是 Typst Preview 的作者写的格式化器，已经集成进 Tinymist：`tinymist.formatterMode` 取 `typstyle`，Tinymist 就调用它，`[typst]` 一节再把它指定成默认格式化器，保存即整理。
+
+  #colbreak()
+
+  #[
+    #set text(size: 12pt)
+
+    ```sh
+    scoop install typstyle
+
+    typstyle --check .          # 只查不改
+    typstyle --diff 课件.typ     # 只看要改哪里
+    typstyle -i 课件.typ         # 落盘
+    ```
+  ]
+
+  #tip[ typstyle *无条件* 把 CRLF 换成 LF——在一个 CRLF 文件上落盘，整文件 diff 会淹掉真正的改动。 ]
+]
+
+== 本机配置
+
+#columns()[
+  #set text(size: 16pt)
+
+  装完扩展，`settings.json` 里补上这一段——值取自本机。
+
+  #[
+    #set text(size: 11pt)
+
+    ```json
+    {
+      "[typst]": {
+        "editor.defaultFormatter": "myriad-dreamin.tinymist"
+      },
+      "tinymist.completion.triggerOnSnippetPlaceholders": true,
+      "tinymist.exportPdf": "onDocumentHasTitle",
+      "tinymist.formatterMode": "typstyle",
+      "tinymist.lint.enabled": true,
+      "tinymist.outputPath": "$root/articles/$name"
+    }
+    ```
+  ]
+
+  #colbreak()
+
+  - `[typst]` 与 `formatterMode` 是同一件事的两半：排版交给外部的 typstyle，调用它的是 Tinymist
+  - `triggerOnSnippetPlaceholders`：补全里的占位符直接用 Tab 跳，不必先退出补全
+  - `exportPdf` 取 `onDocumentHasTitle`：只有带标题的文档才导出，零散片段不生成 PDF
+  - `lint.enabled` 常开检查，`outputPath` 把导出物收进源码旁的 `articles/`，不与 `.typ` 混放
+]
+
+== 辅助扩展：Unicode 与 Emoji
+
+#columns()[
+  #set text(size: 18pt)
+
+  Typst 的公式写法比 LaTeX 短，可符号表仍要记。
+
+  *Unicode Math Input* 让你照 LaTeX 的习惯敲，边敲边在候选里挑
+
+  - 敲 `\delta`，从候选里挑出 δ
+  - Emoji 同理，敲 `\:` 触发转义输入
+
+  #colbreak()
+
+  #figure(
+    image("vscode/images/vscode-unicode.png", width: 100%),
+    caption: none,
+  )
+]
+
+== 第三方包开发
+
+#columns()[
+  #set text(size: 18pt)
+
+  想改包的源码或做自己的包，先弄清 Typst 去哪找包：按 `{数据目录}/typst/packages/{命名空间}/{包名}/{版本}` 逐级找，本地有就不走网络。
+
+  数据目录各大平台不同
+
+  - Windows：`%APPDATA%`
+  - macOS：`~/Library/Application Support`
+  - Linux：`$XDG_DATA_HOME` 或 `~/.local/share`
+
+  #colbreak()
+
+  #[
+    #set text(size: 12pt)
+
+    ```sh
+    cd [above-path]
+
+    git clone --depth 1 --branch main \
+      https://github.com/typst/packages typst
+    ```
+  ]
+
+  #tip[ 本机走的是 `local` 命名空间：`%APPDATA%\typst\packages\local\` 下每个包一个 git 仓库，改完即生效，不必等发布。 ]
+]
 
 = Python 环境
 
@@ -508,18 +873,22 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   用 `Ctrl + ,` 打开设置，右上角图标切到 `settings.json`，写入
 
-  ```json
-  {
-    "[python]": {
-      "editor.defaultFormatter": "charliermarsh.ruff",
-      "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit",
-        "source.organizeImports": "explicit"
-      }
-    },
-    "ruff.configuration": "pyproject.toml"
-  }
-  ```
+  #[
+    #set text(size: 13pt)
+
+    ```json
+    {
+      "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit",
+          "source.organizeImports": "explicit"
+        }
+      },
+      "ruff.configuration": "pyproject.toml"
+    }
+    ```
+  ]
 ]
 
 = C/C++ 环境
@@ -675,34 +1044,31 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   #colbreak()
 
-  ```json
-  {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "type": "cppbuild",
-        "label": "Build OpenCV5 on Windows",
-        "command": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
-        "args": [
-          "-fdiagnostics-color=always",
-          "-g",
-          "${file}",
-          "-o",
-          "${fileDirname}/${fileBasenameNoExtension}.exe",
-          "-I",
-          "{msys2根目录}\\ucrt64\\include",
-          "-L",
-          "{msys2根目录}\\ucrt64\\lib",
-          "-lopencv_core",
-          "-lopencv_imgcodecs",
-          "-lopencv_imgproc",
-        ],
-        "problemMatcher": ["$gcc"],
-        "group": "build"
-      }
-    ]
-  }
-  ```
+  #[
+    #set text(size: 10pt)
+
+    ```json
+    {
+      "version": "2.0.0",
+      "tasks": [
+        {
+          "type": "cppbuild",
+          "label": "Build OpenCV5 on Windows",
+          "command": "{msys2根目录}\\ucrt64\\bin\\g++.exe",
+          "args": [
+            "-fdiagnostics-color=always", "-g", "${file}",
+            "-o", "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "-I", "{msys2根目录}\\ucrt64\\include",
+            "-L", "{msys2根目录}\\ucrt64\\lib",
+            "-lopencv_core", "-lopencv_imgcodecs", "-lopencv_imgproc"
+          ],
+          "problemMatcher": ["$gcc"],
+          "group": "build"
+        }
+      ]
+    }
+    ```
+  ]
 ]
 
 == 一键编译与调试
@@ -755,7 +1121,8 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   - 窗口：VS Code
   - 命令行：code
-  - 通用扩展：
+  - 通用扩展：Markdown 三件套、Draw.io、Pandoc
+  - 排版：Typst 与 Tinymist
 
   #colbreak()
 
@@ -773,7 +1140,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 \
 
 #[
-  #set text(size: 18pt)
+  #set text(size: 16pt)
   这 4 件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
 ]
 
