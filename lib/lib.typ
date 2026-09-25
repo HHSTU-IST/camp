@@ -3,6 +3,7 @@
 #import "@preview/rexllent:0.4.1": xlsx-parser
 
 #import "@preview/touying-quick:0.5.0": *
+#import "@preview/keyle:0.4.0": kbd
 
 #let info-skill = toml("info.toml").skill
 #let info-paper = toml("info.toml").paper

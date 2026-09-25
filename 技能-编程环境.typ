@@ -288,7 +288,6 @@
 
   这三样恰好覆盖「写得快」「写得对」「交得出去」。
 
-
   #colbreak()
 
   VS Code 内置 Markdown 支持，还缺三件事：写得快、查得严、看得见效果。
@@ -310,10 +309,10 @@
 #columns()[
   #set text(size: 18pt)
 
-  在 `settings.json`里补上这一段。
+  在 `settings.json` 中写入如下配置。
 
   #[
-    #set text(size: 12pt)
+    #set text(size: 13pt)
 
     ```json
     {
@@ -345,6 +344,13 @@
   - `updateLinksOnFileMove` 取 `always`：文件改名或挪目录，指向它的链接自动跟着改
   - `preview.openMarkdownLinks` 取 `inEditor`：预览里点链接原地跳转，不另开窗口
   - `rumdl.fixOnSave`：格式问题在保存时顺手修掉，不必等 CI 来报
+
+  #[
+    #set text(size: 12pt)
+    #tip[
+      #kbd("Ctrl") + #kbd(",")，打开配置文件，点击右上角的活页图标，进入 json 界面，即打开了 `settings.json`文件。
+    ]
+  ]
 ]
 
 == 编辑扩展：Draw.io
@@ -422,13 +428,11 @@
   ]
 ]
 
-
-
 == 控制台实用命令
 
 #[
   #set text(size: 18pt)
-  通过 `Ctrl + Shift + P` 打开命令面板，输入 `markdown` 就能看到一堆 Markdown 相关的命令。最常用的有
+  通过 #kbd("Ctrl") + #kbd("Shift") + #kbd("P") 打开命令面板，输入 `markdown` 就能看到一堆 Markdown 相关的命令。最常用的有
 
   - Markdown All in One: Add/Update section numbers
   - Markdown All in One: Remove section numbers
@@ -529,7 +533,7 @@
 #columns()[
   #set text(size: 18pt)
 
-  装完扩展，`settings.json` 里补上这一段。
+  在 `settings.json` 中写入如下配置。
 
   ```json
   {
@@ -821,7 +825,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   *配置扩展*
 
-  在 `settings.json`，写入
+  在 `settings.json` 中写入如下配置。
 
   ```json
   {
@@ -930,7 +934,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   在扩展商店里搜索并安装 C/C++（下载量最多的那个），它提供补全、跳转与调试前端。
 
-  在 `settings.json` 写入如下配置。
+  在 `settings.json` 中写入如下配置。
 
   ```json
   {
@@ -1089,41 +1093,26 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
 = 小结
 
-== 三条命令之后
+== 一层一个配置文件
 
 #columns()[
-  #set text(size: 18pt)
+  #set text(size: 16pt)
 
-  *一个终端*
+  *终端* —— Starship 管提示符、PSReadLine 管行编辑、Windows Terminal 管窗口；别名与初始化写进 `$PROFILE`，Zsh 那边是 `~/.zshrc`。
 
-  - 提示符：Starship
-  - 行编辑：PSReadLine
-  - 窗口：Windows Terminal
+  *文档* —— VS Code 里写 Markdown，All in One 管快捷命令、rumdl 管规范、Inline Editor 管观感，Draw.io 补上示意图，Pandoc 负责导出。
 
-  *一个编辑器*
-
-  - 窗口：VS Code
-  - 命令行：code
-  - 通用扩展：Markdown 三件套、Draw.io、Pandoc
-  - 排版：Typst 与 Tinymist
+  *排版* —— Typst 管公式与版式，typstyle 管格式，Tinymist 把两者接进编辑器，三者的开关都落在 `settings.json`。
 
   #colbreak()
 
-  *一个包管理器*
+  *环境* —— 科学计算与多语言交给 `micromamba`，日常 Python 项目交给 `uv`；频道与镜像写进 `.condarc`，依赖写进 `pyproject.toml`。
 
-  - 科学计算与多语言：`micromamba`
-  - 日常 Python 项目：`uv`
-  - Windows 上的通用软件：`scoop` 与 `winget`
-
-  *一条工具链*
-
-  - 编译器与调试器：MSYS2 的 UCRT64
-  - 构建与第三方库：`pacman` 一次装齐
+  *工具链* —— MSYS2 的 UCRT64 提供 g++ 与 gdb，`pacman` 一次装齐第三方库；工程怎么补全、怎么编、怎么调，由 `.vscode/` 下那三份 json 分别说清楚。
 ]
-\
 
 #[
   #set text(size: 16pt)
-  这 4 件事的共同点是：它们都 *把配置写进了文件*，于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
+  所有事的共同点：都 *把配置写进了文件*。于是换一台机器时，你只需要带走几个点文件，而不需要重新回忆当初点过哪些「下一步」。
 ]
 

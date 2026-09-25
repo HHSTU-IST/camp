@@ -730,7 +730,7 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
 
   #colbreak()
 
-  *让编辑器用上它*：`settings.json`
+  在 `settings.json` 中写入如下配置。
 
   ```json
   {
