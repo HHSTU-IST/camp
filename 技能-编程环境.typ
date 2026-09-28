@@ -284,10 +284,6 @@
   - 强大的补全：LaTeX 公式、链接、图片路径都能自动补全
   - 丰富的扩展：不用切换应用，就能同时完成编程和写作
 
-  \
-
-  这三样恰好覆盖「写得快」「写得对」「交得出去」。
-
   #colbreak()
 
   VS Code 内置 Markdown 支持，还缺三件事：写得快、查得严、看得见效果。
@@ -295,14 +291,23 @@
   - *Markdown All in One* 是个大一统：快捷命令、自动编号、目录更新、公式补全都在里面
   - *rumdl* 管规范：既查语法也做格式化，保存时一并收齐
   - *Markdown Inline Editor* 管观感：像 Typora 一样边写边渲染，分屏省掉了
+
+  #[
+    #set text(size: 14pt)
+    #tip[
+      挑扩展的通用判据就是看它有没有一个 *别人不做的* 职责。
+    ]
+  ]
 ]
 
 #[
-  #set text(size: 14pt)
-  #tip[
-    挑扩展的通用判据就是看它有没有一个 *别人不做的* 职责。
-  ]
+  #set text(size: 16pt)
+
+  ```sh
+  code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdown-inline-editor-vscode
+  ```
 ]
+
 
 == 扩展配置
 
