@@ -1013,7 +1013,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   {
     "tasks": [
         {
-          "type": "cppbuild",
+          "type": "process",
           "label": "Build OpenCV5 on Windows",
           "command": "{msys2_root}\\ucrt64\\bin\\g++.exe",
           "args": [
@@ -1045,7 +1045,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
       -I include -L lib -lopencv_core
   ```
 
-  - `type`：取 `cppbuild`，说明任务由 C/C++ 扩展接管
+  - `type`：取 `process`，即进程类型（默认值）
   - `label`：任务名
   - `command`：真正执行的程序，这里是 g++
   - `-g`：把调试信息写进可执行文件，缺了 gdb 就断不进去
@@ -1057,22 +1057,18 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 == launch.json
 
 #columns()[
-  #set text(size: 14pt)
+  #set text(size: 17pt)
 
   ```json
   {
     "configurations": [
         {
             "name": "Debug OpenCV on Windows",
-            "type": "cppdbg",
+            "type": "node",
             "request": "launch",
-            "targetArchitecture": "x86_64",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [],
-            "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "MIMode": "gdb",
-            "miDebuggerPath": "{msys2_root}\\ucrt64\\bin\\gdb.exe",
             "preLaunchTask": "Build OpenCV5 on Windows"
         }
     ]
@@ -1080,20 +1076,13 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   ```
 
   #colbreak()
-
-
-  #set text(size: 16pt)
-
   - `name`：调试配置名，出现在运行面板的下拉里
-  - `type`：前端取 `cppdbg`（MSVC 是 `cppvsdbg`）
+  - `type`：前端取 `node`
   - `request`：`launch` 由 VS Code 拉起程序，改成 `attach` 就变成挂到已运行的进程上
   - `program`：要调试的可执行文件，要与 `tasks.json` 里 `-o` 的输出一致
   - `args`：传给程序自己的命令行参数
-  - `stopAtEntry`：取 `false` 不在 `main` 停
   - `cwd`：程序的运行目录，取 `${fileDirname}` 时读图读数据的相对路径才对得上
-  - `MIMode`/`miDebuggerPath`：调试器类型与路径，gdb 走 MI 协议
   - `preLaunchTask`：按下调试前先跑的任务，值必须与 `tasks.json` 的 `label` *逐字一致*
-
 ]
 
 = 小结
