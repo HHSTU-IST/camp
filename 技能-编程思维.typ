@@ -677,25 +677,23 @@ code --install-extension yzhang.markdown-all-in-one rvben.rumdl codesmith.markdo
 == Typst 是什么
 
 #[
-  // #set text(size: 18pt)
   Typst 是可用于出版的可编程标记语言，拥有变量、函数与包管理等现代编程语言的特性，注重于科学写作，定位与 LaTeX 相似，是当前 LaTeX 最有力的竞争者：既有 Markdown 的简洁语法，又有 LaTeX 的多样版式，编译速度快到可以边写边看。
 ]
 \
 \
 #columns()[
-  // #set text(size: 18pt)
   - 语法简洁：上手难度近似 Markdown
-  - 编译速度快：使用 Rust 语言编写
-  - 环境搭建简单：使用 VSCode 本地开发
-  - 现代编程语言：拥有变量、函数、包管理与错误检查等现代编程语言的特性
+    - 编译速度快：使用 Rust 语言编写
+    - 环境搭建简单：使用 VSCode 本地开发
+    - 现代编程语言：拥有变量、函数、包管理与错误检查等现代编程语言的特性
 
-  - #link("https://typst.app/universe/search/?kind=packages")[Typst 社区]
+    - #link("https://typst.app/universe/search/?kind=packages")[Typst 社区]
 
-  #colbreak()
-  #figure(
-    image("vscode/images/typst.png", width: 90%),
-    caption: none,
-  )
+    #colbreak()
+    #figure(
+      image("vscode/images/typst.png", width: 90%),
+      caption: none,
+    )
 ]
 
 == 安装与编辑器配置
