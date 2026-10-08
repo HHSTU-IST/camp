@@ -1,0 +1,9 @@
+Dimension,Scoop,WinGet
+Positioning,Community package manager,Microsoft's official package manager
+Availability,Must be installed manually,Preinstalled on Windows 10/11
+Software sources,Official and third-party buckets carry equal weight,Mainly the official repository
+Package count,"2,000+" (customizable),"3,000+"
+Version control,Supports switching between multiple versions,Single version only
+User rights,No administrator rights needed,Requires administrator rights
+Install method,Extract and it is installed,Automatically invokes the installer
+Best for,Developers and customized environments,General users and standardized enterprise management
