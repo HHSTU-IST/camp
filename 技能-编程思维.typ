@@ -46,48 +46,16 @@
 == 今日路线图·四个模块
 
 #align(center + horizon)[
-  #grid(
-    columns: (1fr,) * 4,
-    modcard(
-      [🛠 模块一],
-      [WinGet / Scoop],
-      [系统软件 \ 一条命令装好],
-      rgb("#EAF2FF"),
-      rgb("#BFD7FF"),
-      inset: 10pt,
-      radius: 18pt,
-      size: 18pt,
+  #modgrid(
+    (
+      (title: [🛠 模块一], topic: [WinGet / Scoop], note: [系统软件 \ 一条命令装好]),
+      (title: [🌳 模块二], topic: [Git], note: [每一次改动 \ 都有出处]),
+      (title: [📝 模块三], topic: [Markdown], note: [程序文档 \ 本身就是文本]),
+      (title: [📐 模块四], topic: [Typst], note: [笔记与幻灯片 \ 也可以是代码]),
     ),
-    modcard(
-      [🌳 模块二],
-      [Git],
-      [每一次改动 \ 都有出处],
-      rgb("#EAFBEA"),
-      rgb("#A8E6A8"),
-      inset: 10pt,
-      radius: 18pt,
-      size: 18pt,
-    ),
-    modcard(
-      [📝 模块三],
-      [Markdown],
-      [程序文档 \ 本身就是文本],
-      rgb("#FFF6E0"),
-      rgb("#FFE08A"),
-      inset: 10pt,
-      radius: 18pt,
-      size: 18pt,
-    ),
-    modcard(
-      [📐 模块四],
-      [Typst],
-      [笔记与幻灯片 \ 也可以是代码],
-      rgb("#F3EAFF"),
-      rgb("#D6BBFF"),
-      inset: 10pt,
-      radius: 18pt,
-      size: 18pt,
-    ),
+    inset: 10pt,
+    radius: 18pt,
+    size: 18pt,
   )
   \
 

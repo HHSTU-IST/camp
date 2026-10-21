@@ -65,14 +65,13 @@
 == 今日路线图·五个模块
 
 #align(center + horizon)[
-  #grid(
-    columns: (1fr,) * 5,
-    modcard([模块一], [提示词的结构], [说清一件事], rgb("#EAF2FF"), rgb("#BFD7FF")),
-    modcard([模块二], [工作流], [拆开与验收], rgb("#EAFBEA"), rgb("#A8E6A8")),
-    modcard([模块三], [Skill 是什么], [把经验封装], rgb("#FFF6E0"), rgb("#FFE08A")),
-    modcard([模块四], [使用 Skill], [找到、调起、串联], rgb("#FFEFEF"), rgb("#FFC2C2")),
-    modcard([模块五], [写自己的 Skill], [沉淀与维护], rgb("#F3EAFF"), rgb("#D6BBFF")),
-  )
+  #modgrid((
+    (title: [模块一], topic: [提示词的结构], note: [说清一件事]),
+    (title: [模块二], topic: [工作流], note: [拆开与验收]),
+    (title: [模块三], topic: [Skill 是什么], note: [把经验封装]),
+    (title: [模块四], topic: [使用 Skill], note: [找到、调起、串联]),
+    (title: [模块五], topic: [写自己的 Skill], note: [沉淀与维护]),
+  ))
   \
 
   #set text(size: 24pt)
