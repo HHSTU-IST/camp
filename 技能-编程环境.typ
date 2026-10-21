@@ -682,12 +682,12 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 #columns()[
   // #set text(size: 18pt)
 
-  conda/mamba 的配置文件为`~\.condarc`，其中`~`表示用户家目录。
+  conda/mamba 的配置文件为`~/.condarc`，其中`~`表示用户家目录。
 
   用 VS Code 把它打开
 
   ```bash
-  code .condarc
+  code ~/.condarc
   ```
 
   再写入如下内容
@@ -1012,7 +1012,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
   {
     "tasks": [
         {
-          "type": "process",
+          "type": "cppbuild",
           "label": "Build OpenCV5 on Windows",
           "command": "{msys2_root}\\ucrt64\\bin\\g++.exe",
           "args": [
@@ -1044,7 +1044,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
       -I include -L lib -lopencv_core
   ```
 
-  - `type`：取 `process`，即进程类型（默认值）
+  - `type`：取 `cppbuild`
   - `label`：任务名
   - `command`：真正执行的程序，这里是 g++
   - `-g`：把调试信息写进可执行文件，缺了 gdb 就断不进去
@@ -1063,12 +1063,13 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
     "configurations": [
         {
             "name": "Debug OpenCV on Windows",
-            "type": "node",
+            "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${fileDirname}",
-            "preLaunchTask": "Build OpenCV5 on Windows"
+            "preLaunchTask": "Build OpenCV5 on Windows",
+            "miDebuggerPath": "C:\\Scoop\\apps\\msys2-cn\\current\\ucrt64\\bin\\gdb.exe"
         }
     ]
   }
@@ -1076,7 +1077,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，它解决了 pip 的�
 
   #colbreak()
   - `name`：调试配置名，出现在运行面板的下拉里
-  - `type`：前端取 `node`
+  - `type`：前端取 `cppdbg`
   - `request`：`launch` 由 VS Code 拉起程序，改成 `attach` 就变成挂到已运行的进程上
   - `program`：要调试的可执行文件，要与 `tasks.json` 里 `-o` 的输出一致
   - `args`：传给程序自己的命令行参数
