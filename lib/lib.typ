@@ -1,9 +1,9 @@
 #import "@preview/qooklet:0.7.2": *
-#import "@preview/subpar:0.2.2": grid as sgrid
-#import "@preview/rexllent:0.4.1": xlsx-parser
-
 #import "@preview/touying-quick:0.5.0": *
 #import "@preview/keyle:0.4.0": kbd
+#import "@preview/rexllent:0.4.1": xlsx-parser
+#import "@preview/sicons:16.0.0": sicon-label
+#import "@preview/subpar:0.2.2": grid as sgrid
 
 #let info-skill = toml("info.toml").skill
 #let info-paper = toml("info.toml").paper
@@ -24,21 +24,23 @@
 
 #let modgrid(cards, inset: 8pt, radius: 16pt, width: 90%, size: 15pt) = grid(
   columns: (1fr,) * cards.len(),
-  ..cards.enumerate().map(((i, card)) => {
-    let tone = modtones.at(card.at("tone", default: i))
-    block(
-      fill: tone.fill,
-      stroke: tone.stroke,
-      inset: inset,
-      radius: radius,
-      width: width,
-    )[
-      #align(center)[
-        *#card.title*\
-        #set text(size: size)
-        #card.topic \
-        #card.note
+  ..cards
+    .enumerate()
+    .map(((i, card)) => {
+      let tone = modtones.at(card.at("tone", default: i))
+      block(
+        fill: tone.fill,
+        stroke: tone.stroke,
+        inset: inset,
+        radius: radius,
+        width: width,
+      )[
+        #align(center)[
+          *#card.title*\
+          #set text(size: size)
+          #card.topic \
+          #card.note
+        ]
       ]
-    ]
-  }),
+    }),
 )
