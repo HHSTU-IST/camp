@@ -13,6 +13,7 @@
 
 #let info-camp = toml("info.toml").camp
 #let info-foreign = toml("info.toml").foreign
+#let info-intel = toml("info.toml").intel
 
 #let modtones = (
   (fill: rgb("#EAF2FF"), stroke: rgb("#BFD7FF")),

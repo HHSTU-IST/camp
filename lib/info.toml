@@ -58,3 +58,12 @@ title = ""
 footer = "Yāng Xīnbīn"
 header = "留学生活"
 lang = "zh"
+
+[intel]
+footer = "Huanghe S&T University"
+header = "Introduction to AI"
+lang = "en"
+author = "Xavier Yáng"
+series = ""
+institution = "Center of Big Data & Artificial Intelligence"
+ending = "Thank you for your attention"
