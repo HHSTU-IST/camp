@@ -163,13 +163,15 @@ mamba search [package_name]
 mamba list
 ```
 
+> 常见 Python 环境配置如下
+>
+> ```python
+> mamba install ipykernel opencv scikit-image matplotlib pandas
+> ```
+
 ### 3.2. 安装包
 
-为使用 VSCode 的 Jupyter，还需要安装 `ipykernel`
-
-```bash
-mamba install ipykernel
-```
+为使用 VSCode 的 Jupyter，需要安装 `ipykernel`，如上所示。
 
 ## 4. VSCode
 
@@ -214,15 +216,12 @@ target-version = "py314"
 line-length = 88
 
 [tool.ruff.format]
-# Enable reformatting of code snippets in docstrings
 docstring-code-format = true
-# Format all docstring code snippets with a line length of 60
 docstring-code-line-length = 60
-# Use `\n` line endings for all files
 line-ending = "lf"
-
 skip-magic-trailing-comma = true
 
+[tool.ruff.lint]
 [tool.ruff.lint]
 extend-select = [
   "DTZ",
@@ -241,7 +240,7 @@ extend-select = [
 ]
 fixable = ["ALL"]
 ignore = [
-
+  "ISC001",
   "RUF001",
   "RUF002",
   "RUF003",
