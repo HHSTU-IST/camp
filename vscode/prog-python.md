@@ -6,9 +6,9 @@
 
 Conda 是服务于 Python 和 R 的多语言包管理器，其解决了 Python 原生包管理器 Pip 的依赖冲突问题，极大地方便了 Python 环境的管理。Mamba 是 Conda 的 C++ 版本，默认并行下载，效率比 Conda 更上一个台阶。
 
-这里推荐安装 Miniforge，基于 Mamba 的最小安装版本，只包含环境管理功能。前往[清华源](https://mirrors.ustc.edu.cn/)，进入[对应页面](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/)，下载安装程序。
+这里推荐安装 Miniforge，基于 Mamba 的最小安装版本，只包含环境管理功能。前往[中科大源](https://mirrors.ustc.edu.cn/)，进入[对应页面](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/LatestRelease/)，下载安装程序。
 
-### 1.2. 手动安装（不可翻墙用户推荐）
+### 1.2. 手动安装（未翻墙用户）
 
 - 对 Windows 用户
 
@@ -22,7 +22,7 @@ Conda 是服务于 Python 和 R 的多语言包管理器，其解决了 Python �
 sh Miniforge3-MacOSX-arm64.sh
 ```
 
-### 1.3. 包管理器安装（可翻墙用户推荐）
+### 1.3. 包管理器安装（可翻墙用户）
 
 对 Windows 用户，使用 Scoop
 
@@ -59,14 +59,11 @@ function mamba { micromamba $args }
 
 ### 2.1. 配置文件
 
-mamba 配置文件为 `.condarc`。其位置如下：
+mamba 配置文件为 `.condarc`，其位置为 `~/.condarc`。打开对应终端环境
 
-- Windows：`~\.condarc`
-- macOS 和 Linux：`~/.condarc`
-
-打开对应终端环境
-
-- Windows 用户：Miniforge Prompt
+- Windows 用户
+  - Miniforge：Miniforge Prompt
+  - micromamba：PowerShell
 - MacOS 用户：终端（Terminal）
 
 输入
@@ -78,104 +75,41 @@ code .condarc
 在 `.condarc` 中写入
 
 ```yaml
-# 频道
 channels:
   - conda-forge
-# 使用镜像
 custom_channels:
   conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
-
-# 地址
-envs_dirs:
-  - ~/.conda/envs
-pkgs_dirs:
-  - ~/.conda/pkgs
-
-# 将 pip 作为 Python 的依赖
-add_pip_as_python_dependency: true
-# 安装按照频道的顺序
-channel_priority: flexible
-# 生成错误报告
-report_errors: false
-# ssl 验证
-ssl_verify: false
-# 显示频道具体链接
-show_channel_urls: true
-# 错误回滚
-rollback_enabled: true
-# 重试
-remote_max_retries: 3
 ```
 
-### 2.2. 常用环境操作
+### 2.2. 环境搭建
 
-mamba 常用操作可使用命令 `mamba -h` 和 `mamba config -h` 查看，这里列出几个常用命令：
-
-```bash
-# 创建
-mamba create -n [env_name]
-# 删除
-mamba env remove -n [env_name]
-# 参照配置文件更新
-mamba env update --file [file.yml]
-# 环境列表
-mamba env list
-# mamba 信息
-mamba info
-```
-
-### 2.3. 创建环境
-
-接下来，需要创建虚拟环境，也就是自己的工作区，可简单理解为系统登录时的用户。基本命令需指定**环境名称**和**Python 版本**：
+接下来，需要创建虚拟环境，也就是自己的工作区。基本命令需指定**环境名称**和**Python 版本**：
 
 ```bash
-# 基本格式
-mamba create -n [env_name] [python= version]
-# 例子
-mamba create -n my_python python=3.12
+mamba create -n {env_name} python=3.14
 ```
 
 安装完毕后，进入环境：
 
 ```bash
-# 进入
-mamba active my_python
+mamba active {env_name}
 # 退出
 mamba deactivate
 ```
 
-## 3. 包管理
+常见 Python 环境配置如下
 
-### 3.1. 常用包操作
-
-```bash
-# 安装
-mamba install [package_name]
-# 删除
-mamba uninstall [package_name]
-# 更新
-mamba update [package_name]
-# 更新所有包
-mamba update --all
-# 搜索
-mamba search [package_name]
-# 已安装列表
-mamba list
+```python
+mamba install ipykernel pandas matplotlib scikit-image opencv
 ```
 
-> 常见 Python 环境配置如下
->
-> ```python
-> mamba install ipykernel opencv scikit-image matplotlib pandas
-> ```
-
-### 3.2. 安装包
+### 2.3. 安装包
 
 为使用 VSCode 的 Jupyter，需要安装 `ipykernel`，如上所示。
 
-## 4. VSCode
+## 3. VSCode
 
-### 4.1. 安装扩展
+### 3.1. 安装扩展
 
 在 VSCode 扩展商店，搜索并安装以下扩展：
 
@@ -187,7 +121,7 @@ mamba list
 
 扩展安装完毕，新建 `.ipynb` 文件，即可开启 Python 之旅。
 
-### 4.2. 配置扩展
+### 3.2. 配置扩展
 
 相关配置如下
 
@@ -204,7 +138,7 @@ mamba list
 }
 ```
 
-## 5. 项目管理
+## 4. 项目管理
 
 项目根目录下的 `pyproject.toml` 可采用如下编写
 
@@ -221,7 +155,6 @@ docstring-code-line-length = 60
 line-ending = "lf"
 skip-magic-trailing-comma = true
 
-[tool.ruff.lint]
 [tool.ruff.lint]
 extend-select = [
   "DTZ",
@@ -258,4 +191,76 @@ case-sensitive = true
 combine-as-imports = true
 force-wrap-aliases = true
 order-by-type = true
+```
+
+## 5. 附录
+
+### 5.1. conda 配置
+
+```yml
+# 频道
+channels:
+  - conda-forge
+# 使用镜像
+custom_channels:
+  conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
+
+# 地址
+envs_dirs:
+  - ~/.conda/envs
+pkgs_dirs:
+  - ~/.conda/pkgs
+
+# 将 pip 作为 Python 的依赖
+add_pip_as_python_dependency: true
+# 安装按照频道的顺序
+channel_priority: flexible
+# 生成错误报告
+report_errors: false
+# ssl 验证
+ssl_verify: false
+# 显示频道具体链接
+show_channel_urls: true
+# 错误回滚
+rollback_enabled: true
+# 重试
+remote_max_retries: 3
+```
+
+### 5.2. 常用环境操作
+
+mamba 常用操作可使用命令 `mamba -h` 和 `mamba config -h` 查看，这里列出几个常用命令：
+
+```bash
+# 创建
+mamba create -n {env_name} python={version}
+# 删除
+mamba env remove -n {env_name}
+# 参照配置文件更新
+mamba env update --file {file.yml}
+# 环境列表
+mamba env list
+# mamba 信息
+mamba info
+# 进入
+mamba activate {env_name}
+# 退出
+mamba deactivate
+```
+
+### 5.3. 常用包操作
+
+```bash
+# 安装
+mamba install {package_name}
+# 删除
+mamba uninstall {package_name}
+# 更新
+mamba update {package_name}
+# 更新所有包
+mamba update --all
+# 搜索
+mamba search {package_name}
+# 已安装列表
+mamba list
 ```
