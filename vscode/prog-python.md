@@ -151,8 +151,8 @@ line-length = 88
 
 [tool.ruff.format]
 docstring-code-format = true
-docstring-code-line-length = 60
-line-ending = "lf"
+
+
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
@@ -190,7 +190,7 @@ convention = "numpy"
 case-sensitive = true
 combine-as-imports = true
 force-wrap-aliases = true
-order-by-type = true
+
 ```
 
 ## 5. 附录
