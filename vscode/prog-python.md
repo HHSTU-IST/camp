@@ -43,18 +43,6 @@ winget install Mamba.Micromamba
 brew install micromamba
 ```
 
-安装完毕后，通过如下语句打开 PowerShell 配置
-
-```sh
-code $PROFILE
-```
-
-然后写入
-
-```sh
-function mamba { micromamba $args }
-```
-
 ## 2. 管理环境
 
 ### 2.1. 配置文件
@@ -92,7 +80,7 @@ mamba create -n {env_name} python=3.14
 安装完毕后，进入环境：
 
 ```bash
-mamba active {env_name}
+mamba activate {env_name}
 # 退出
 mamba deactivate
 ```
@@ -263,4 +251,21 @@ mamba update --all
 mamba search {package_name}
 # 已安装列表
 mamba list
+```
+
+### 命令别名设置
+
+通过如下语句打开 PowerShell 配置
+
+```sh
+code $PROFILE
+```
+
+然后写入
+
+```sh
+# 用 m 代替 mamba
+function m { mamba $args }
+# 用 mis 代替 mamba install
+function mis { mamba install $args }
 ```

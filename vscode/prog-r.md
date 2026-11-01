@@ -7,14 +7,14 @@
 经过最近两年的迭代，最新的 VSCode 中的 R 扩展基本实现了 RStudio 的所有主要功能，如
 
 - 逐行运行（command/ctrl + 回车）
-- RMarkdown
+- RMarkdown 内置支持
 - ggplot2 扩展
 
 更重要的是，我们还可以使用 VSCode 提供的工具链和其他扩展配合使用，尤其对于多语言的用户来说，VSCode 显然是更好的选择。
 
 ## 2. VSCode 调用 R
 
-VSCode 的文件浏览（explorer）和大纲（outline）以及整个工作区的排布（layout）是非常合理和方便的。
+VSCode 的文件浏览和大纲以及整个工作区的排布是非常合理和方便的。
 
 ![rmarkdown](images/rmd.png)
 
@@ -24,28 +24,28 @@ VSCode 的文件浏览（explorer）和大纲（outline）以及整个工作区�
 
 ```bash
 # 基本格式
-mamba create -n [env_name] [python= version]
+mamba create -n {env_name} {python=version}
 # 例子
-mamba create -n my_python python=3.12
+mamba create -n rstupid python=3.12
 ```
 
 进入 conda 环境，安装 "r-languageserver" 和 "radian"：
 
 ```bash
 # 进入
-mamba active my_python
+mamba activate rstupid
 # 安装
 mamba install r-languageserver radian
 ```
 
 因为本配置主要针对需要同时使用 R 的 Python 用户，因此具体 mamba 是个什么东西，这里就不赘述了，具体介绍见 [mamba](https://github.com/mamba-org/mamba)。
 
-推荐安装其中的 Miniforge 版本，[Miniforge 的清华镜像](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/)
+推荐安装其中的 Miniforge 版本，[Miniforge 的中科大镜像](https://mirrors.ustc.edu.cn/github-release/conda-forge/miniforge/)
 
 对于 R 的第三方包的安装，命令格式如下
 
 ```bash
-mamba install r-[package]
+mamba install r-{package_name}
 # 如，安装 ggplot2
 mamba install r-ggplot2
 ```
@@ -130,21 +130,3 @@ mamba install r-ggplot2
 ### 2.4. 运行效果
 
 ![run](images/r.png)
-
-## 3. JupyterLab 调用 R
-
-JupyterLab 是一个非常友好的交互环境，通过安装扩展，可方便地进行变量查看，弥补了上文提到的 VSCode 当下的两点不足。
-
-### 3.1. 安装相关包
-
-进入 conda 环境，安装 `r-irkernel`：
-
-```bash
-mamba install r-irkernel
-```
-
-若安装完毕，但仍不显示 kernel，则需要在命令行中进入 R，键入如下命令：
-
-```bash
-IRkernel::installspec()
-```

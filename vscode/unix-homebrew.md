@@ -100,7 +100,7 @@ brew tap brewforge/chinese
 |      App 名       |     Cask 名     | 原创  | 自动更新 |
 | :---------------: | :-------------: | :---: | :------: |
 |  M3U8-Downloader  | m3u8-downloader |   √   |    √     |
-| Miniforge 清华源  | `miniforge-cn`  |   √   |    √     |
+| Miniforge 国内源  | `miniforge-cn`  |   √   |    √     |
 | WPS Office 国内版 | `wpsoffice-cn`  |   √   |    √     |
 |   每日法语听力    |    `ting-fr`    |   √   |    √     |
 |   每日英语听力    |    `ting-en`    |   √   |    √     |

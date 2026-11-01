@@ -17,7 +17,9 @@ scoop install flutter
 ## 2. 安卓环境配置
 
 你不需要安装 Android Studio !
+
 你不需要安装 Android Studio !
+
 你不需要安装 Android Studio !
 
 ### 安装 Android 命令行工具
@@ -73,7 +75,7 @@ export PATH="$ANDROID_HOME/emulator:$PATH"
 
 对 Windows 用户，在环境变量中 Path 中添加 `{$env:SCOOP}\apps\flutter\current\bin`
 
-> `{$env:SCOOP}` 是 Scoop 安装目录，通常是`C:\Scoop`或`C:\Users\{username}\Scoop`。
+> `{$env:SCOOP}` 是 Scoop 安装目录。
 
 ## 3. 安装扩展
 
